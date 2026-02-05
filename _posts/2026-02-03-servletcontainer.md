@@ -8,7 +8,7 @@
 > 📌 구조  
 > **Servlet Container → Spring Container → Application**
 
-![서블릿-스프링-구조](./images/servletcontainer/container-structure.png)
+![서블릿-스프링-구조](/assets/images/servletcontainer/container-structure.png)
 
 **스프링 컨테이너**는 객체 생명주기와 구성을 관리하고,  
 **서블릿 컨테이너**는 HTTP 요청과 응답을 처리한다.
@@ -79,7 +79,7 @@
   - 리소스 로딩
   - 엔터프라이즈 기능 제공
 
-![ApplicationContext 구조](./images/servletcontainer/applicationcontext.png)
+![ApplicationContext 구조](/assets/images/servletcontainer/applicationcontext.png)
 
 ---
 
@@ -105,7 +105,7 @@ HTTP 요청을 받아 서블릿을 실행하고 응답을 반환한다.
 
 ## 📌 HTTP 요청 처리 과정
 
-![HTTP 흐름](./images/servletcontainer/http-flow.png)
+![HTTP 흐름](/assets/images/servletcontainer/http-flow.png)
 
 ### 처리 단계
 
@@ -185,7 +185,7 @@ HTTP 요청을 받아 서블릿을 실행하고 응답을 반환한다.
 3. DispatcherServlet → Servlet Context 생성
 4. 클라이언트 요청 → Controller 실행
 
-![전체 흐름](./images/servletcontainer/full-flow.png)
+![전체 흐름](/assets/images/servletcontainer/full-flow.png)
 
 ---
 
