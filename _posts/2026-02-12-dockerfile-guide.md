@@ -120,5 +120,4 @@ docker build -t my-spring-app:1.0 .
 
 ## 참고
 
-- 출처: Claude Desktop 대화 (2026-02-12)
 - 공식 문서: https://docs.docker.com/engine/reference/builder/

@@ -144,6 +144,5 @@ SSH로 배포 서버 접속
 
 ## 참고
 
-- 출처: Claude Desktop 대화 (2026-02-12)
 - Jenkins 공식 문서: https://www.jenkins.io/doc/
 - Docker Hub: https://hub.docker.com/

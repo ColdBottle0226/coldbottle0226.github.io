@@ -64,6 +64,4 @@ tags: [docker, container, vm, image, 가상화]
 ---
 
 ## 참고
-
-- 출처: Claude Desktop 대화 (2026-02-12)
 - 공식 문서: https://docs.docker.com

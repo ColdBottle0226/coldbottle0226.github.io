@@ -188,5 +188,4 @@ VSCode 등에서 제공하는 Dev Containers 기능을 사용하면 개발 환�
 
 ## 참고
 
-- 출처: Claude Desktop 대화 (2026-02-12)
 - 공식 문서: https://docs.docker.com/compose/
