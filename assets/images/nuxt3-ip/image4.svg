@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 480" width="880" height="480">
+  <defs>
+    <style>text { font-family: 'Segoe UI', Arial, sans-serif; }</style>
+    <marker id="mb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#3b82f6"/></marker>
+    <filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#00000015"/></filter>
+  </defs>
+
+  <rect width="880" height="480" rx="16" fill="#f8f9fc"/>
+  <text x="440" y="36" font-size="20" font-weight="700" fill="#1a2030" text-anchor="middle">useState / payload 를 통한 SSR → CSR 상태 공유</text>
+
+  <!-- SSR 영역 -->
+  <rect x="18" y="55" width="390" height="390" rx="12" fill="#f3f0ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="38" y="78" font-size="14" font-weight="700" fill="#8b5cf6">⚡ SSR (서버)</text>
+
+  <!-- SSR 스텝들 -->
+  <rect x="32" y="90" width="360" height="68" rx="8" fill="#fff" stroke="#8b5cf6" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="44" y="110" font-size="12" font-weight="700" fill="#8b5cf6">① IP 추출</text>
+  <text x="44" y="128" font-size="10" fill="#374151" font-family="'Courier New',monospace">getRequestHeader(event, 'x-real-ip')</text>
+  <text x="44" y="146" font-size="10" fill="#374151" font-family="'Courier New',monospace">→ '203.0.113.5'</text>
+
+  <rect x="32" y="172" width="360" height="68" rx="8" fill="#fff" stroke="#8b5cf6" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="44" y="192" font-size="12" font-weight="700" fill="#8b5cf6">② payload 저장</text>
+  <text x="44" y="210" font-size="10" fill="#374151" font-family="'Courier New',monospace">nuxtApp.payload.clientIp</text>
+  <text x="44" y="228" font-size="10" fill="#374151" font-family="'Courier New',monospace">= '203.0.113.5'</text>
+
+  <rect x="32" y="254" width="360" height="68" rx="8" fill="#fff" stroke="#8b5cf6" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="44" y="274" font-size="12" font-weight="700" fill="#8b5cf6">③ 정책 API 호출</text>
+  <text x="44" y="292" font-size="10" fill="#374151" font-family="'Courier New',monospace">await $fetch('/api/common/ip-policy')</text>
+  <text x="44" y="310" font-size="10" fill="#374151" font-family="'Courier New',monospace">→ allowedRanges: ['10.0.0.0/8']</text>
+
+  <rect x="32" y="336" width="360" height="68" rx="8" fill="#fff" stroke="#8b5cf6" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="44" y="356" font-size="12" font-weight="700" fill="#8b5cf6">④ useState 저장</text>
+  <text x="44" y="374" font-size="10" fill="#374151" font-family="'Courier New',monospace">useState('ipPolicy').value</text>
+  <text x="44" y="392" font-size="10" fill="#374151" font-family="'Courier New',monospace">= &#123; isLoaded: true, ... &#125;</text>
+
+  <!-- 중앙 화살표 -->
+  <line x1="408" y1="250" x2="472" y2="250" stroke="#3b82f6" stroke-width="3" marker-end="url(#mb)"/>
+  <rect x="406" y="218" width="68" height="62" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
+  <text x="440" y="238" font-size="10" font-weight="700" fill="#3b82f6" text-anchor="middle">HTML +</text>
+  <text x="440" y="252" font-size="10" fill="#3b82f6" text-anchor="middle" font-family="'Courier New',monospace">__NUXT__</text>
+  <text x="440" y="266" font-size="10" fill="#3b82f6" text-anchor="middle">전송</text>
+
+  <!-- CSR 영역 -->
+  <rect x="472" y="55" width="390" height="390" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="492" y="78" font-size="14" font-weight="700" fill="#3b82f6">💻 CSR (클라이언트 hydration)</text>
+
+  <!-- CSR 스텝들 -->
+  <rect x="486" y="90" width="360" height="68" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="498" y="110" font-size="12" font-weight="700" fill="#3b82f6">① payload 복원</text>
+  <text x="498" y="128" font-size="10" fill="#374151" font-family="'Courier New',monospace">nuxtApp.payload.clientIp</text>
+  <text x="498" y="146" font-size="10" fill="#22c55e" font-family="'Courier New',monospace">= '203.0.113.5'  ← 서버에서 받은 값</text>
+
+  <rect x="486" y="172" width="360" height="68" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="498" y="192" font-size="12" font-weight="700" fill="#3b82f6">② useState 복원</text>
+  <text x="498" y="210" font-size="10" fill="#374151" font-family="'Courier New',monospace">ipPolicy.value.isLoaded</text>
+  <text x="498" y="228" font-size="10" fill="#22c55e" font-family="'Courier New',monospace">= true  ← API 재호출 없음</text>
+
+  <rect x="486" y="254" width="360" height="68" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="498" y="274" font-size="12" font-weight="700" fill="#3b82f6">③ Middleware 실행</text>
+  <text x="498" y="292" font-size="10" fill="#374151" font-family="'Courier New',monospace">checkIpAllowed('203.0.113.5', policy)</text>
+  <text x="498" y="310" font-size="10" fill="#374151" font-family="'Courier New',monospace">→ isIpInRange() 비트마스크 연산</text>
+
+  <rect x="486" y="336" width="360" height="68" rx="8" fill="#fff" stroke="#22c55e" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="498" y="356" font-size="12" font-weight="700" fill="#22c55e">④ 라우트 허용</text>
+  <text x="498" y="374" font-size="10" fill="#374151" font-family="'Courier New',monospace">return  // 아무것도 반환하지 않음</text>
+  <text x="498" y="392" font-size="10" fill="#22c55e" font-family="'Courier New',monospace">→ 목적지 페이지 정상 렌더링</text>
+
+  <!-- 하단 요약 -->
+  <rect x="18" y="458" width="844" height="16" rx="6" fill="#fff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="30" y="470" font-size="10" fill="#1a2030" font-weight="700">핵심:</text>
+  <text x="72" y="470" font-size="10" fill="#6b7280">SSR에서 한 번 추출·로딩한 데이터를 payload &amp; useState로 CSR이 그대로 재사용 → API 중복 호출 Zero</text>
+</svg>

@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 620" width="840" height="620">
+  <defs>
+    <style>text { font-family: 'Segoe UI', Arial, sans-serif; }</style>
+    <filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#00000015"/></filter>
+  </defs>
+
+  <rect width="840" height="620" rx="16" fill="#f8f9fc"/>
+  <text x="420" y="36" font-size="20" font-weight="700" fill="#1a2030" text-anchor="middle">전체 요청 처리 흐름</text>
+
+  <!-- ── SSR 컬럼 ── -->
+  <rect x="18" y="54" width="388" height="550" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="38" y="76" font-size="14" font-weight="700" fill="#8b5cf6">⚡ SSR 최초 요청</text>
+
+  <!-- SSR 스텝 1 -->
+  <rect x="32" y="88" width="360" height="62" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="2" filter="url(#sh)"/>
+  <rect x="32" y="88" width="6" height="62" rx="3" fill="#3b82f6"/>
+  <text x="50" y="108" font-size="12" font-weight="700" fill="#3b82f6">브라우저 최초 요청</text>
+  <text x="50" y="126" font-size="10" fill="#6b7280" font-family="'Courier New',monospace">GET /  (IP: 203.0.113.5)</text>
+  <!-- 화살표 -->
+  <line x1="212" y1="150" x2="212" y2="166" stroke="#d1d5db" stroke-width="2.5"/>
+  <polygon points="206,162 212,172 218,162" fill="#d1d5db"/>
+
+  <!-- SSR 스텝 2 -->
+  <rect x="32" y="174" width="360" height="62" rx="8" fill="#fff" stroke="#14b8a6" stroke-width="2" filter="url(#sh)"/>
+  <rect x="32" y="174" width="6" height="62" rx="3" fill="#14b8a6"/>
+  <text x="50" y="194" font-size="12" font-weight="700" fill="#14b8a6">Plugin: IP 추출</text>
+  <text x="50" y="212" font-size="10" fill="#6b7280" font-family="'Courier New',monospace">X-Real-IP → payload.clientIp = '203.0.113.5'</text>
+  <line x1="212" y1="236" x2="212" y2="252" stroke="#d1d5db" stroke-width="2.5"/>
+  <polygon points="206,248 212,258 218,248" fill="#d1d5db"/>
+
+  <!-- SSR 스텝 3 -->
+  <rect x="32" y="260" width="360" height="62" rx="8" fill="#fff" stroke="#14b8a6" stroke-width="2" filter="url(#sh)"/>
+  <rect x="32" y="260" width="6" height="62" rx="3" fill="#14b8a6"/>
+  <text x="50" y="280" font-size="12" font-weight="700" fill="#14b8a6">Plugin: 정책 로딩</text>
+  <text x="50" y="298" font-size="10" fill="#6b7280" font-family="'Courier New',monospace">$fetch('/api/ip-policy') → useState 저장</text>
+  <line x1="212" y1="322" x2="212" y2="338" stroke="#d1d5db" stroke-width="2.5"/>
+  <polygon points="206,334 212,344 218,334" fill="#d1d5db"/>
+
+  <!-- SSR 스텝 4 -->
+  <rect x="32" y="346" width="360" height="62" rx="8" fill="#fff" stroke="#f97316" stroke-width="2" filter="url(#sh)"/>
+  <rect x="32" y="346" width="6" height="62" rx="3" fill="#f97316"/>
+  <text x="50" y="366" font-size="12" font-weight="700" fill="#f97316">Middleware: 경로 체크</text>
+  <text x="50" y="384" font-size="10" fill="#6b7280" font-family="'Courier New',monospace">/maintenance 제외 확인 → 계속 진행</text>
+  <line x1="212" y1="408" x2="212" y2="424" stroke="#d1d5db" stroke-width="2.5"/>
+  <polygon points="206,420 212,430 218,420" fill="#d1d5db"/>
+
+  <!-- SSR 스텝 5 -->
+  <rect x="32" y="432" width="360" height="62" rx="8" fill="#fff" stroke="#f97316" stroke-width="2" filter="url(#sh)"/>
+  <rect x="32" y="432" width="6" height="62" rx="3" fill="#f97316"/>
+  <text x="50" y="452" font-size="12" font-weight="700" fill="#f97316">Middleware: IP 검증</text>
+  <text x="50" y="470" font-size="10" fill="#6b7280" font-family="'Courier New',monospace">isIpInRange('203.0.113.5','10.0.0.0/8') → true</text>
+  <line x1="212" y1="494" x2="212" y2="510" stroke="#d1d5db" stroke-width="2.5"/>
+  <polygon points="206,506 212,516 218,506" fill="#d1d5db"/>
+
+  <!-- SSR 스텝 6 -->
+  <rect x="32" y="518" width="360" height="62" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="2" filter="url(#sh)"/>
+  <rect x="32" y="518" width="6" height="62" rx="3" fill="#22c55e"/>
+  <text x="50" y="538" font-size="12" font-weight="700" fill="#22c55e">✅ 페이지 렌더링</text>
+  <text x="50" y="556" font-size="10" fill="#6b7280" font-family="'Courier New',monospace">HTML + __NUXT__ payload 클라이언트로 전송</text>
+
+  <!-- ── CSR 컬럼 ── -->
+  <rect x="434" y="54" width="388" height="550" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="454" y="76" font-size="14" font-weight="700" fill="#3b82f6">💻 CSR 라우트 이동</text>
+
+  <!-- CSR 스텝 1 -->
+  <rect x="448" y="88" width="360" height="62" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="2" filter="url(#sh)"/>
+  <rect x="448" y="88" width="6" height="62" rx="3" fill="#3b82f6"/>
+  <text x="466" y="108" font-size="12" font-weight="700" fill="#3b82f6">라우트 이동</text>
+  <text x="466" y="126" font-size="10" fill="#6b7280" font-family="'Courier New',monospace">SPA 내 페이지 이동 (서버 왕복 없음)</text>
+  <line x1="628" y1="150" x2="628" y2="166" stroke="#d1d5db" stroke-width="2.5"/>
+  <polygon points="622,162 628,172 634,162" fill="#d1d5db"/>
+
+  <!-- CSR 스텝 2 -->
+  <rect x="448" y="174" width="360" height="62" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="448" y="174" width="6" height="62" rx="3" fill="#9ca3af"/>
+  <text x="466" y="194" font-size="12" font-weight="700" fill="#9ca3af">Plugin: skip ⏭</text>
+  <text x="466" y="212" font-size="10" fill="#9ca3af" font-family="'Courier New',monospace">isLoaded = true → API 재호출 없음</text>
+  <line x1="628" y1="236" x2="628" y2="252" stroke="#d1d5db" stroke-width="2.5"/>
+  <polygon points="622,248 628,258 634,248" fill="#d1d5db"/>
+
+  <!-- CSR 스텝 3 -->
+  <rect x="448" y="260" width="360" height="62" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="448" y="260" width="6" height="62" rx="3" fill="#9ca3af"/>
+  <text x="466" y="280" font-size="12" font-weight="700" fill="#9ca3af">Plugin: skip ⏭</text>
+  <text x="466" y="298" font-size="10" fill="#9ca3af" font-family="'Courier New',monospace">payload.clientIp 이미 존재 → 재추출 없음</text>
+  <line x1="628" y1="322" x2="628" y2="338" stroke="#d1d5db" stroke-width="2.5"/>
+  <polygon points="622,334 628,344 634,334" fill="#d1d5db"/>
+
+  <!-- CSR 스텝 4 -->
+  <rect x="448" y="346" width="360" height="62" rx="8" fill="#fff" stroke="#f97316" stroke-width="2" filter="url(#sh)"/>
+  <rect x="448" y="346" width="6" height="62" rx="3" fill="#f97316"/>
+  <text x="466" y="366" font-size="12" font-weight="700" fill="#f97316">Middleware: 경로 체크</text>
+  <text x="466" y="384" font-size="10" fill="#6b7280" font-family="'Courier New',monospace">/maintenance 제외 확인 → 계속 진행</text>
+  <line x1="628" y1="408" x2="628" y2="424" stroke="#d1d5db" stroke-width="2.5"/>
+  <polygon points="622,420 628,430 634,420" fill="#d1d5db"/>
+
+  <!-- CSR 스텝 5 -->
+  <rect x="448" y="432" width="360" height="62" rx="8" fill="#fff" stroke="#f97316" stroke-width="2" filter="url(#sh)"/>
+  <rect x="448" y="432" width="6" height="62" rx="3" fill="#f97316"/>
+  <text x="466" y="452" font-size="12" font-weight="700" fill="#f97316">Middleware: IP 검증</text>
+  <text x="466" y="470" font-size="10" fill="#6b7280" font-family="'Courier New',monospace">서버 상태 재사용 → 동일 비트마스크 연산</text>
+  <line x1="628" y1="494" x2="628" y2="510" stroke="#d1d5db" stroke-width="2.5"/>
+  <polygon points="622,506 628,516 634,506" fill="#d1d5db"/>
+
+  <!-- CSR 스텝 6 -->
+  <rect x="448" y="518" width="360" height="62" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="2" filter="url(#sh)"/>
+  <rect x="448" y="518" width="6" height="62" rx="3" fill="#22c55e"/>
+  <text x="466" y="538" font-size="12" font-weight="700" fill="#22c55e">✅ 페이지 렌더링</text>
+  <text x="466" y="556" font-size="10" fill="#6b7280" font-family="'Courier New',monospace">서버 왕복 없이 즉시 전환</text>
+</svg>
