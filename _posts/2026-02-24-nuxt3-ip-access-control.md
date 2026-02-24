@@ -17,7 +17,7 @@ tags: [Nuxt3, SpringBoot, Redis, Middleware, Plugin, IP, 접근제어]
 
 이 기능을 구현하기 위해 크게 세 가지 레이어를 활용한다.
 
-![image](/assets/images/nuxt3-ip/architecture.png)
+[![image](/assets/images/nuxt3-ip/image1.svg)](/assets/images/nuxt3-ip/image1.svg)
 
 | 레이어 | 역할 |
 |--------|------|
@@ -39,14 +39,7 @@ Nuxt3에서 접근 제어를 구현하려면 먼저 **Plugin**과 **Middleware**
 
 Nuxt 공식 문서([Nuxt Lifecycle](https://nuxt.com/docs/4.x/guide/concepts/nuxt-lifecycle))에 따르면 SSR 요청 시 실행 순서는 다음과 같다.
 
-![image](/assets/images/nuxt3-ip/lifecycle.png)
-
-```
-Server Middleware (server/middleware/)
-    → App Plugins (plugins/)
-        → Route Middleware (middleware/)
-            → Page 렌더링
-```
+[![image](/assets/images/nuxt3-ip/image2.svg)](/assets/images/nuxt3-ip/image2.svg)
 
 이 순서가 핵심이다. **Plugin이 Middleware보다 먼저 실행**되기 때문에, Plugin에서 데이터를 준비하고 Middleware에서 그 데이터를 활용하는 패턴이 가능하다.
 
@@ -101,15 +94,9 @@ IP 접근 제어는 모든 페이지에 적용되어야 하므로 **Global Middl
 
 실제 운영 환경에서는 클라이언트와 Nuxt 서버 사이에 Nginx 같은 **리버스 프록시**가 존재한다.
 
-![image](/assets/images/nuxt3-ip/proxy.png)
+[![image](/assets/images/nuxt3-ip/image3.svg)](/assets/images/nuxt3-ip/image3.svg)
 
-```
-클라이언트(203.0.113.5) ──▶ Nginx(10.0.0.1) ──▶ Nuxt SSR
-```
-
-이 구조에서 Nuxt가 `socket.remoteAddress`만 보면 실제 클라이언트 IP가 아닌 **Nginx의 IP**(`10.0.0.1`)를 클라이언트 IP로 인식하게 된다.
-
-이 문제를 해결하기 위해 Nginx는 원래 클라이언트 IP를 **HTTP 헤더에 담아** Nuxt로 전달한다.
+이 구조에서 Nuxt가 `socket.remoteAddress`만 보면 실제 클라이언트 IP가 아닌 **Nginx의 IP**를 클라이언트 IP로 인식하게 된다. 이 문제를 해결하기 위해 Nginx는 원래 클라이언트 IP를 **HTTP 헤더에 담아** Nuxt로 전달한다.
 
 ```nginx
 # nginx.conf
@@ -118,8 +105,6 @@ proxy_set_header X-Forwarded-For  $proxy_add_x_forwarded_for;
 ```
 
 ### 📌 X-Real-IP vs X-Forwarded-For
-
-두 헤더는 프록시 환경에서 실제 클라이언트 IP를 전달하기 위한 사실상의 표준(de facto standard)이다.
 
 **X-Real-IP**는 Nginx가 `$remote_addr`(실제 연결된 클라이언트 IP)를 직접 세팅하는 헤더다. 단일 프록시 환경에서 가장 신뢰도가 높다.
 
@@ -139,20 +124,9 @@ X-Forwarded-For: "203.0.113.5, 10.0.0.1, 172.16.0.1"
 
 일반 `ref()`는 SSR과 CSR 각각 독립적인 상태를 가진다. 즉, 서버에서 만든 `ref` 값이 클라이언트에서 재사용되지 않는다.
 
-반면 `useState`는 서버에서 생성한 상태를 **hydration 시 클라이언트가 그대로 이어받는다**. Plugin에서 `useState`로 IP 정책을 저장해두면, CSR 환경의 Middleware에서도 동일한 상태를 바로 읽을 수 있어 API 재호출이 필요 없다.
+반면 `useState`는 서버에서 생성한 상태를 **hydration 시 클라이언트가 그대로 이어받는다**. 또한 Nuxt SSR은 HTML을 생성할 때 `__NUXT__` 라는 전역 객체를 HTML 안에 포함시켜 클라이언트로 전달하는데, `nuxtApp.payload`가 바로 이 데이터 공간이다.
 
-또한 Nuxt SSR은 HTML을 생성할 때 `__NUXT__` 라는 전역 객체를 HTML 안에 포함시켜 클라이언트로 전달한다. `nuxtApp.payload`가 바로 이 데이터 공간이다.
-
-```html
-<!-- 서버가 생성한 HTML 내부 -->
-<script>
-  window.__NUXT__ = {
-    payload: {
-      clientIp: "203.0.113.5"  // 서버에서 추출한 IP
-    }
-  }
-</script>
-```
+[![image](/assets/images/nuxt3-ip/image4.svg)](/assets/images/nuxt3-ip/image4.svg)
 
 서버(SSR)에서 추출한 클라이언트 IP를 `payload`에 저장해두면, 이후 CSR 라우트 이동 시 Middleware에서 동일한 IP 값을 별도 API 호출 없이 재사용할 수 있다.
 
@@ -168,15 +142,7 @@ IP 허용 정책은 단일 IP뿐만 아니라 **IP 대역(CIDR 표기)**으로 �
 
 CIDR 포함 여부 체크는 **비트마스크 연산**으로 수행한다. IP 문자열을 32bit 정수로 변환한 뒤, 마스크를 적용해 네트워크 주소 부분만 비교한다.
 
-```
-10.0.0.5  가 10.0.0.0/8 에 속하는지 체크:
-
-마스크(/8): 11111111.00000000.00000000.00000000
-
-10.0.0.5   & 마스크 = 10.0.0.0
-10.0.0.0   & 마스크 = 10.0.0.0
-                       ↑ 일치 → 허용
-```
+[![image](/assets/images/nuxt3-ip/image5.svg)](/assets/images/nuxt3-ip/image5.svg)
 
 ---
 
@@ -661,50 +627,7 @@ h1     { font-size: 24px; font-weight: 700; color: #1a1a2e; margin-bottom: 16px;
 
 ---
 
-### 📌 SSR 최초 요청
-
-![image](/assets/images/nuxt3-ip/flow-ssr.png)
-
-```
-브라우저 요청 (최초 진입)
-    │
-    ▼
-[Plugin: 01.ip-policy.ts]
-  ① X-Real-IP 헤더에서 클라이언트 IP 추출
-       → nuxtApp.payload.clientIp = "10.0.0.5" 저장
-  ② GET /api/common/ip-policy 호출 (Spring Boot)
-       → Redis cmcd:list 조회
-       → useYn=Y && cmcd=ipAddr 필터링
-       → comCdNm 쉼표 분리 → ["10.0.0.0/8", "192.168.1.0/24"]
-  ③ useState('ipPolicy') 업데이트 완료
-    │
-    ▼
-[Middleware: ip-guard.global.ts]
-  ④ /maintenance 경로 아니므로 체크 진행
-  ⑤ ipPolicy.isLoaded = true → 정상 진행
-  ⑥ allowedAll = false → IP 체크 진행
-  ⑦ payload.clientIp = "10.0.0.5"
-  ⑧ isIpInRange("10.0.0.5", "10.0.0.0/8") → 비트마스크 연산 → true → 통과
-    │
-    ▼
-[페이지 렌더링] → HTML + payload 클라이언트로 전송
-```
-
-### 📌 CSR 라우트 이동
-
-```
-라우트 이동
-    │
-    ▼
-[Plugin: 01.ip-policy.ts]
-  └── ipPolicy.isLoaded = true (hydration으로 유지) → skip
-    │
-    ▼
-[Middleware: ip-guard.global.ts]
-  ├── useState → 서버 상태 그대로 유지 (API 재호출 없음)
-  ├── payload.clientIp → 서버에서 주입한 값 재사용
-  └── checkIpAllowed() → 동일하게 동작
-```
+[![image](/assets/images/nuxt3-ip/image6.svg)](/assets/images/nuxt3-ip/image6.svg)
 
 ### 📌 비허용 IP 접근 시
 
@@ -712,17 +635,13 @@ h1     { font-size: 24px; font-weight: 700; color: #1a1a2e; margin-bottom: 16px;
 브라우저 요청 (비허용 IP: 8.8.8.8)
     │
     ▼
-[Plugin]
-  ① payload.clientIp = "8.8.8.8"
-  ② 정책 로딩 완료
+[Plugin] payload.clientIp = "8.8.8.8", 정책 로딩 완료
     │
     ▼
-[Middleware]
-  ③ checkIpAllowed("8.8.8.8", policy) → false
-  ④ navigateTo('/maintenance')
+[Middleware] checkIpAllowed("8.8.8.8", policy) → false
     │
     ▼
-[점검 페이지 렌더링]
+navigateTo('/maintenance') → 점검 페이지 렌더링
 ```
 
 ---
@@ -770,9 +689,7 @@ Global Middleware의 `EXCLUDED_PATHS`에 `/maintenance`를 추가하지 않으�
 - **Plugin**: "어떤 IP를 허용할 것인가" 라는 정책 데이터를 API에서 **한 번** 가져오는 역할
 - **Middleware**: "이 접속자가 허용된 IP인가" 를 **매 라우트마다** 검사하는 역할
 
-또한 SSR에서 추출한 클라이언트 IP를 `payload`를 통해 CSR로 전달함으로써, 클라이언트 측에서 별도 API 호출 없이도 일관된 IP 체크가 가능하다.
-
-Redis에 IP 정책을 관리하면 서버 재시작 없이 `*` 값 하나로 전체 허용 전환, `useYn = N` 으로 정책 비활성화 등 **운영 유연성**을 확보할 수 있다.
+또한 SSR에서 추출한 클라이언트 IP를 `payload`를 통해 CSR로 전달함으로써, 클라이언트 측에서 별도 API 호출 없이도 일관된 IP 체크가 가능하다. Redis에 IP 정책을 관리하면 서버 재시작 없이 `*` 값 하나로 전체 허용 전환, `useYn = N`으로 정책 비활성화 등 **운영 유연성**을 확보할 수 있다.
 
 ---
 
