@@ -149,6 +149,9 @@ pwa:
 
 paginate: 10
 
+plugins:
+  - jekyll-archives
+
 # The base URL of your site
 baseurl: ""
 
