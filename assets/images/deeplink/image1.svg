@@ -1,0 +1,54 @@
+<svg width="700" height="368" viewBox="0 0 700 368" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,1 L9,5 L0,9 Z" fill="#94A3B8"/>
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="700" height="368" fill="#F8FAFC" rx="16"/>
+
+  <!-- Title bar -->
+  <rect width="700" height="52" fill="#1E293B" rx="16"/>
+  <rect y="36" width="700" height="16" fill="#1E293B"/>
+  <text x="350" y="33" text-anchor="middle" font-size="16" font-weight="bold" fill="white">URI 스킴 — 동작 흐름</text>
+
+  <!-- Step 1: User clicks -->
+  <rect x="200" y="72" width="300" height="62" rx="10" fill="#2563EB" filter="url(#shadow)"/>
+  <text x="350" y="96" text-anchor="middle" font-size="14" font-weight="bold" fill="white">사용자가 myapp://open 링크 클릭</text>
+  <text x="350" y="117" text-anchor="middle" font-size="12" fill="#BFDBFE">웹페이지 · 메시지 · 이메일에서</text>
+
+  <!-- Arrow 1 -->
+  <line x1="350" y1="134" x2="350" y2="162" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Step 2: OS lookup -->
+  <rect x="200" y="162" width="300" height="62" rx="10" fill="#7C3AED" filter="url(#shadow)"/>
+  <text x="350" y="186" text-anchor="middle" font-size="14" font-weight="bold" fill="white">OS가 스킴 등록 앱 조회</text>
+  <text x="350" y="207" text-anchor="middle" font-size="12" fill="#DDD6FE">AndroidManifest · Info.plist 기반</text>
+
+  <!-- Fork connector -->
+  <line x1="350" y1="224" x2="350" y2="252" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="120" y1="252" x2="580" y2="252" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="120" y1="252" x2="120" y2="278" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="580" y1="252" x2="580" y2="278" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Branch labels -->
+  <rect x="165" y="240" width="84" height="20" rx="4" fill="#E2E8F0"/>
+  <text x="207" y="254" text-anchor="middle" font-size="11" fill="#475569">앱 설치됨</text>
+  <rect x="451" y="240" width="84" height="20" rx="4" fill="#E2E8F0"/>
+  <text x="493" y="254" text-anchor="middle" font-size="11" fill="#475569">앱 미설치</text>
+
+  <!-- Left: App runs -->
+  <rect x="30" y="278" width="180" height="66" rx="10" fill="#059669" filter="url(#shadow)"/>
+  <text x="120" y="305" text-anchor="middle" font-size="14" font-weight="bold" fill="white">앱 실행</text>
+  <text x="120" y="326" text-anchor="middle" font-size="12" fill="#D1FAE5">지정 화면으로 이동</text>
+
+  <!-- Right: Nothing -->
+  <rect x="490" y="278" width="180" height="66" rx="10" fill="#EF4444" filter="url(#shadow)"/>
+  <text x="580" y="299" text-anchor="middle" font-size="14" font-weight="bold" fill="white">아무 반응 없음</text>
+  <text x="580" y="318" text-anchor="middle" font-size="12" fill="#FEE2E2">Fallback</text>
+  <text x="580" y="335" text-anchor="middle" font-size="12" fill="#FEE2E2">별도 구현 필요</text>
+</svg>

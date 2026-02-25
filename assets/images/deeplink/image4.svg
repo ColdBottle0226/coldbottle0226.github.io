@@ -1,0 +1,92 @@
+<svg width="700" height="510" viewBox="0 0 700 510" xmlns="http://www.w3.org/2000/svg" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,1 L9,5 L0,9 Z" fill="#94A3B8"/>
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="700" height="510" fill="#F8FAFC" rx="16"/>
+
+  <!-- Title bar -->
+  <rect width="700" height="52" fill="#1E293B" rx="16"/>
+  <rect y="36" width="700" height="16" fill="#1E293B"/>
+  <text x="350" y="33" text-anchor="middle" font-size="16" font-weight="bold" fill="white">App Link — 동작 원리 (Android 전용)</text>
+
+  <!-- Section label: 사전 설정 -->
+  <rect x="18" y="64" width="118" height="22" rx="5" fill="#16A34A"/>
+  <text x="77" y="79" text-anchor="middle" font-size="11" font-weight="bold" fill="white">사전 설정</text>
+
+  <!-- Step ① box -->
+  <rect x="18" y="90" width="194" height="88" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5" filter="url(#shadow)"/>
+  <circle cx="44" cy="112" r="14" fill="#16A34A"/>
+  <text x="44" y="117" text-anchor="middle" font-size="13" font-weight="bold" fill="white">①</text>
+  <text x="112" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E293B">앱 설정</text>
+  <text x="112" y="130" text-anchor="middle" font-size="11" fill="#475569">AndroidManifest.xml에</text>
+  <text x="112" y="147" text-anchor="middle" font-size="11" fill="#475569">autoVerify="true" 선언</text>
+  <text x="112" y="164" text-anchor="middle" font-size="11" fill="#64748B">Intent Filter + HTTPS scheme</text>
+
+  <!-- Arrow ①→② -->
+  <line x1="212" y1="134" x2="244" y2="134" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Step ② box -->
+  <rect x="244" y="90" width="194" height="88" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5" filter="url(#shadow)"/>
+  <circle cx="270" cy="112" r="14" fill="#16A34A"/>
+  <text x="270" y="117" text-anchor="middle" font-size="13" font-weight="bold" fill="white">②</text>
+  <text x="338" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E293B">서버 파일 배포</text>
+  <text x="338" y="130" text-anchor="middle" font-size="11" fill="#475569">assetlinks.json</text>
+  <text x="338" y="147" text-anchor="middle" font-size="11" fill="#475569">(.well-known/ 경로에)</text>
+  <text x="338" y="164" text-anchor="middle" font-size="11" fill="#64748B">SHA-256 지문 포함 필수</text>
+
+  <!-- Arrow ②→③ -->
+  <line x1="438" y1="134" x2="470" y2="134" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Step ③ box -->
+  <rect x="470" y="90" width="212" height="88" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5" filter="url(#shadow)"/>
+  <circle cx="496" cy="112" r="14" fill="#16A34A"/>
+  <text x="496" y="117" text-anchor="middle" font-size="13" font-weight="bold" fill="white">③</text>
+  <text x="576" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E293B">Android 자동 검증</text>
+  <text x="576" y="130" text-anchor="middle" font-size="11" fill="#475569">앱 설치 시 assetlinks.json</text>
+  <text x="576" y="147" text-anchor="middle" font-size="11" fill="#475569">자동 조회 및 인증</text>
+  <text x="576" y="164" text-anchor="middle" font-size="11" fill="#64748B">Android 6.0+ 이상 지원</text>
+
+  <!-- Divider -->
+  <line x1="18" y1="198" x2="682" y2="198" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <rect x="270" y="190" width="160" height="20" rx="5" fill="#E2E8F0"/>
+  <text x="350" y="204" text-anchor="middle" font-size="11" fill="#64748B">앱 설치 완료 후 → 링크 클릭 시</text>
+
+  <!-- Arrow from section divider -->
+  <line x1="350" y1="210" x2="350" y2="238" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Runtime box: User clicks link -->
+  <rect x="185" y="238" width="330" height="62" rx="10" fill="#2563EB" filter="url(#shadow)"/>
+  <text x="350" y="262" text-anchor="middle" font-size="14" font-weight="bold" fill="white">사용자가 HTTPS 링크 클릭</text>
+  <text x="350" y="283" text-anchor="middle" font-size="12" fill="#BFDBFE">https://example.com/product/123</text>
+
+  <!-- Fork -->
+  <line x1="350" y1="300" x2="350" y2="328" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="120" y1="328" x2="580" y2="328" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="120" y1="328" x2="120" y2="356" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="580" y1="328" x2="580" y2="356" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Branch labels -->
+  <rect x="148" y="316" width="148" height="20" rx="4" fill="#E2E8F0"/>
+  <text x="222" y="330" text-anchor="middle" font-size="11" fill="#475569">인증 완료 + 앱 설치됨</text>
+  <rect x="414" y="316" width="132" height="20" rx="4" fill="#E2E8F0"/>
+  <text x="480" y="330" text-anchor="middle" font-size="11" fill="#475569">앱 없음 / 인증 실패</text>
+
+  <!-- Left: App runs immediately -->
+  <rect x="30" y="356" width="180" height="80" rx="10" fill="#059669" filter="url(#shadow)"/>
+  <text x="120" y="383" text-anchor="middle" font-size="14" font-weight="bold" fill="white">앱 즉시 실행</text>
+  <text x="120" y="403" text-anchor="middle" font-size="12" fill="#D1FAE5">선택 팝업 없이 바로 전환</text>
+  <text x="120" y="421" text-anchor="middle" font-size="12" fill="#D1FAE5">URL 정보 앱에 전달</text>
+
+  <!-- Right: Web opens -->
+  <rect x="490" y="356" width="180" height="80" rx="10" fill="#D97706" filter="url(#shadow)"/>
+  <text x="580" y="383" text-anchor="middle" font-size="13" font-weight="bold" fill="white">브라우저에서 웹 표시</text>
+  <text x="580" y="403" text-anchor="middle" font-size="12" fill="#FEF3C7">동일 URL의 웹페이지</text>
+  <text x="580" y="421" text-anchor="middle" font-size="12" fill="#FEF3C7">자연스러운 Fallback</text>
+</svg>
