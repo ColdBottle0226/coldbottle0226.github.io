@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" width="900" height="580">
+  <defs>
+    <style>
+      .sans { font-family: 'Noto Sans KR','Malgun Gothic',sans-serif; }
+      .mono { font-family: 'JetBrains Mono','Courier New',monospace; }
+    </style>
+    <marker id="a1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0,7 2.5,0 5" fill="#8B5CF6"/>
+    </marker>
+    <marker id="a2" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0,7 2.5,0 5" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="900" height="580" rx="12" fill="#0F172A"/>
+  <text x="450" y="34" text-anchor="middle" fill="#F1F5F9" font-size="15" font-weight="bold" class="sans">(주)넥스트커머스 네트워크 구성도 — 공인 IP 14개 + 사설 IP 서브넷팅</text>
+  <line x1="30" y1="44" x2="870" y2="44" stroke="#334155" stroke-width="1"/>
+
+  <!-- Internet -->
+  <ellipse cx="450" cy="74" rx="120" ry="28" fill="#06B6D415"/>
+  <ellipse cx="450" cy="74" rx="120" ry="28" fill="none" stroke="#06B6D4" stroke-width="1.5"/>
+  <text x="450" y="79" text-anchor="middle" fill="#06B6D4" font-size="13" font-weight="bold" class="sans">인터넷</text>
+  <line x1="450" y1="102" x2="450" y2="118" stroke="#8B5CF6" stroke-width="2" marker-end="url(#a1)"/>
+
+  <!-- Border Router -->
+  <rect x="340" y="122" width="220" height="36" rx="8" fill="#F59E0B20"/>
+  <rect x="340" y="122" width="220" height="36" rx="8" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="450" y="136" text-anchor="middle" fill="#F59E0B" font-size="11" font-weight="bold" class="sans">경계 라우터</text>
+  <text x="450" y="151" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">공인 IP: 203.0.113.1</text>
+  <line x1="450" y1="158" x2="450" y2="174" stroke="#8B5CF6" stroke-width="2" marker-end="url(#a1)"/>
+
+  <!-- Firewall -->
+  <rect x="320" y="178" width="260" height="42" rx="8" fill="#EF444420"/>
+  <rect x="320" y="178" width="260" height="42" rx="8" fill="none" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="450" y="196" text-anchor="middle" fill="#EF4444" font-size="11" font-weight="bold" class="sans">방화벽 (NAT 수행)</text>
+  <text x="450" y="213" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">공인: 203.0.113.2  /  내부: 10.10.0.1</text>
+
+  <!-- Firewall → DMZ side line -->
+  <line x1="582" y1="199" x2="698" y2="199" stroke="#334155" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a2)"/>
+
+  <!-- DMZ box -->
+  <rect x="700" y="170" width="172" height="90" rx="8" fill="#EF444415"/>
+  <rect x="700" y="170" width="172" height="90" rx="8" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="786" y="189" text-anchor="middle" fill="#EF4444" font-size="10" font-weight="bold" class="sans">DMZ 10.10.20.0/27</text>
+  <text x="786" y="207" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">웹서버:   10.10.20.1</text>
+  <text x="786" y="222" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">API서버:  10.10.20.2</text>
+  <text x="786" y="237" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">메일서버: 10.10.20.3</text>
+  <text x="786" y="254" text-anchor="middle" fill="#475569" font-size="8" class="sans">사용 30개 · 공인 IP 직접 노출</text>
+
+  <line x1="450" y1="220" x2="450" y2="238" stroke="#8B5CF6" stroke-width="2" marker-end="url(#a1)"/>
+
+  <!-- Core switch -->
+  <rect x="350" y="242" width="200" height="32" rx="8" fill="#1E293B"/>
+  <rect x="350" y="242" width="200" height="32" rx="8" fill="none" stroke="#475569" stroke-width="1.5"/>
+  <text x="450" y="258" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">코어 스위치</text>
+  <text x="450" y="272" text-anchor="middle" fill="#475569" font-size="9" class="mono">10.10.x.x 내부망</text>
+
+  <!-- Horizontal distribution line -->
+  <line x1="100" y1="310" x2="820" y2="310" stroke="#334155" stroke-width="1.5"/>
+  <line x1="450" y1="274" x2="450" y2="310" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- 5 vertical drops -->
+  <line x1="100" y1="310" x2="100" y2="328" stroke="#334155" stroke-width="1.5"/>
+  <line x1="250" y1="310" x2="250" y2="328" stroke="#334155" stroke-width="1.5"/>
+  <line x1="415" y1="310" x2="415" y2="328" stroke="#334155" stroke-width="1.5"/>
+  <line x1="580" y1="310" x2="580" y2="328" stroke="#334155" stroke-width="1.5"/>
+  <line x1="730" y1="310" x2="730" y2="328" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Dev -->
+  <rect x="28" y="328" width="144" height="80" rx="8" fill="#3B82F618"/>
+  <rect x="28" y="328" width="144" height="80" rx="8" fill="none" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="100" y="348" text-anchor="middle" fill="#3B82F6" font-size="10" font-weight="bold" class="sans">개발팀</text>
+  <text x="100" y="364" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">10.10.1.0/24</text>
+  <text x="100" y="380" text-anchor="middle" fill="#475569" font-size="8" class="sans">40대 / 254개 가능</text>
+  <text x="100" y="396" text-anchor="middle" fill="#475569" font-size="8" class="mono">.10 ~ .50</text>
+
+  <!-- Sales -->
+  <rect x="178" y="328" width="144" height="80" rx="8" fill="#06B6D418"/>
+  <rect x="178" y="328" width="144" height="80" rx="8" fill="none" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="250" y="348" text-anchor="middle" fill="#06B6D4" font-size="10" font-weight="bold" class="sans">영업팀</text>
+  <text x="250" y="364" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">10.10.2.0/24</text>
+  <text x="250" y="380" text-anchor="middle" fill="#475569" font-size="8" class="sans">30대 / 254개 가능</text>
+  <text x="250" y="396" text-anchor="middle" fill="#475569" font-size="8" class="mono">.10 ~ .40</text>
+
+  <!-- Internal server -->
+  <rect x="343" y="328" width="144" height="80" rx="8" fill="#10B98118"/>
+  <rect x="343" y="328" width="144" height="80" rx="8" fill="none" stroke="#10B981" stroke-width="1.2"/>
+  <text x="415" y="348" text-anchor="middle" fill="#10B981" font-size="10" font-weight="bold" class="sans">내부 서버</text>
+  <text x="415" y="364" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">10.10.10.0/24</text>
+  <text x="415" y="380" text-anchor="middle" fill="#475569" font-size="8" class="mono">파일서버: .10</text>
+  <text x="415" y="396" text-anchor="middle" fill="#475569" font-size="8" class="mono">그룹웨어: .20</text>
+
+  <!-- Ops + Exec -->
+  <rect x="508" y="328" width="144" height="80" rx="8" fill="#F59E0B18"/>
+  <rect x="508" y="328" width="144" height="80" rx="8" fill="none" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="580" y="348" text-anchor="middle" fill="#F59E0B" font-size="10" font-weight="bold" class="sans">운영·임원</text>
+  <text x="580" y="364" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">10.10.3.0/24</text>
+  <text x="580" y="380" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">10.10.4.0/24</text>
+  <text x="580" y="396" text-anchor="middle" fill="#475569" font-size="8" class="sans">각 254개 가능</text>
+
+  <!-- VoIP -->
+  <rect x="658" y="328" width="144" height="80" rx="8" fill="#8B5CF618"/>
+  <rect x="658" y="328" width="144" height="80" rx="8" fill="none" stroke="#8B5CF6" stroke-width="1.2"/>
+  <text x="730" y="348" text-anchor="middle" fill="#8B5CF6" font-size="10" font-weight="bold" class="sans">VoIP 전화</text>
+  <text x="730" y="364" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">10.10.200.0/24</text>
+  <text x="730" y="380" text-anchor="middle" fill="#475569" font-size="8" class="sans">IP 전화 50대</text>
+  <text x="730" y="396" text-anchor="middle" fill="#475569" font-size="8" class="sans">254개 가능</text>
+
+  <!-- VPN & Router link notes -->
+  <rect x="28" y="428" width="290" height="42" rx="8" fill="#1E293B"/>
+  <rect x="28" y="428" width="290" height="42" rx="8" fill="none" stroke="#334155" stroke-width="1"/>
+  <text x="173" y="447" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">VPN 게이트웨이</text>
+  <text x="173" y="463" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">공인: 203.0.113.6  |  재택 ↔ 10.10.5.x</text>
+
+  <rect x="338" y="428" width="394" height="42" rx="8" fill="#1E293B"/>
+  <rect x="338" y="428" width="394" height="42" rx="8" fill="none" stroke="#334155" stroke-width="1"/>
+  <text x="535" y="447" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">본사 ↔ IDC 라우터 간 링크 (/30 — 2개만 필요)</text>
+  <text x="535" y="463" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">10.10.255.0/30  →  .1(본사) ↔ .2(IDC)</text>
+
+  <!-- Footer -->
+  <line x1="28" y1="484" x2="872" y2="484" stroke="#334155" stroke-width="1"/>
+  <text x="450" y="504" text-anchor="middle" fill="#475569" font-size="10" class="sans">공인 IP 14개 (203.0.113.1~.14): 외부 접점 서비스 전용  |  사설 IP 수천 개 (10.10.x.x): 내부 기기 전체</text>
+  <text x="450" y="522" text-anchor="middle" fill="#475569" font-size="10" class="sans">서브넷팅 = 부서·용도별 분리 (/24 일반, /27 DMZ, /28 네트워크 장비, /30 라우터 링크)</text>
+  <text x="450" y="540" text-anchor="middle" fill="#475569" font-size="10" class="sans">NAT = 사설 IP 150대 전체가 공인 IP 1개(203.0.113.2)로 인터넷 사용</text>
+</svg>

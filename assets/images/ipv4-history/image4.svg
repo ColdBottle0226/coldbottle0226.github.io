@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 370" width="860" height="370">
+  <defs>
+    <style>
+      .sans { font-family: 'Noto Sans KR','Malgun Gothic',sans-serif; }
+      .mono { font-family: 'JetBrains Mono','Courier New',monospace; }
+    </style>
+    <marker id="ar" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#3B82F6"/>
+    </marker>
+    <marker id="al" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <polygon points="8 0,0 3,8 6" fill="#10B981"/>
+    </marker>
+  </defs>
+  <rect width="860" height="370" rx="12" fill="#0F172A"/>
+  <text x="430" y="34" text-anchor="middle" fill="#F1F5F9" font-size="15" font-weight="bold" class="sans">NAT 동작 방식 — 사설 IP 기기가 공인 IP 1개로 인터넷에 접속하는 과정</text>
+  <line x1="40" y1="46" x2="820" y2="46" stroke="#334155" stroke-width="1"/>
+
+  <!-- Internal network box -->
+  <rect x="28" y="58" width="242" height="238" rx="10" fill="#1E293B"/>
+  <rect x="28" y="58" width="242" height="238" rx="10" fill="none" stroke="#334155" stroke-width="1.5"/>
+  <text x="149" y="78" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">내부 네트워크 (사설 IP)</text>
+
+  <!-- PCs -->
+  <rect x="50" y="90" width="86" height="38" rx="6" fill="#3B82F620"/>
+  <rect x="50" y="90" width="86" height="38" rx="6" fill="none" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="93" y="106" text-anchor="middle" fill="#3B82F6" font-size="10" font-weight="bold" class="sans">PC 1 (요청)</text>
+  <text x="93" y="121" text-anchor="middle" fill="#94A3B8" font-size="9" class="mono">10.10.1.15</text>
+
+  <rect x="50" y="140" width="86" height="38" rx="6" fill="#1E293B"/>
+  <rect x="50" y="140" width="86" height="38" rx="6" fill="none" stroke="#475569" stroke-width="1.2"/>
+  <text x="93" y="157" text-anchor="middle" fill="#475569" font-size="10" class="sans">PC 2</text>
+  <text x="93" y="172" text-anchor="middle" fill="#475569" font-size="9" class="mono">10.10.1.20</text>
+
+  <rect x="50" y="190" width="86" height="38" rx="6" fill="#1E293B"/>
+  <rect x="50" y="190" width="86" height="38" rx="6" fill="none" stroke="#475569" stroke-width="1.2"/>
+  <text x="93" y="207" text-anchor="middle" fill="#475569" font-size="10" class="sans">PC 3</text>
+  <text x="93" y="222" text-anchor="middle" fill="#475569" font-size="9" class="mono">10.10.1.25</text>
+
+  <text x="149" y="262" text-anchor="middle" fill="#475569" font-size="9" class="sans">150대 기기 전부 사설 IP 보유</text>
+  <text x="149" y="278" text-anchor="middle" fill="#475569" font-size="9" class="sans">(공인 IP 없음)</text>
+
+  <!-- Firewall/NAT box -->
+  <rect x="322" y="88" width="210" height="158" rx="12" fill="#8B5CF620"/>
+  <rect x="322" y="88" width="210" height="158" rx="12" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="427" y="110" text-anchor="middle" fill="#8B5CF6" font-size="12" font-weight="bold" class="sans">방화벽 / 라우터</text>
+  <text x="427" y="128" text-anchor="middle" fill="#8B5CF6" font-size="10" class="sans">NAT 수행</text>
+  <text x="427" y="152" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">내부 IP:</text>
+  <text x="427" y="168" text-anchor="middle" fill="#94A3B8" font-size="10" class="mono">10.10.0.1</text>
+  <text x="427" y="192" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">공인 IP:</text>
+  <text x="427" y="210" text-anchor="middle" fill="#F59E0B" font-size="12" font-weight="bold" class="mono">203.0.113.2</text>
+  <text x="427" y="232" text-anchor="middle" fill="#475569" font-size="9" class="sans">NAT 테이블에 매핑 기록</text>
+
+  <!-- Internet circle -->
+  <circle cx="700" cy="167" r="64" fill="#06B6D415"/>
+  <circle cx="700" cy="167" r="64" fill="none" stroke="#06B6D4" stroke-width="1.5"/>
+  <text x="700" y="155" text-anchor="middle" fill="#06B6D4" font-size="13" font-weight="bold" class="sans">인터넷</text>
+  <text x="700" y="173" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">구글 서버</text>
+  <text x="700" y="190" text-anchor="middle" fill="#94A3B8" font-size="10" class="mono">8.8.8.8</text>
+
+  <!-- PC → Firewall -->
+  <line x1="138" y1="109" x2="320" y2="150" stroke="#3B82F6" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <!-- Firewall → Internet (request) -->
+  <line x1="534" y1="148" x2="634" y2="148" stroke="#3B82F6" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="584" y="140" text-anchor="middle" fill="#3B82F6" font-size="9" class="mono">203.0.113.2:49200</text>
+  <text x="584" y="132" text-anchor="middle" fill="#475569" font-size="8" class="sans">출발지 변환 →</text>
+
+  <!-- Internet → Firewall (response) -->
+  <line x1="634" y1="188" x2="534" y2="188" stroke="#10B981" stroke-width="2" marker-end="url(#al)"/>
+  <text x="584" y="206" text-anchor="middle" fill="#10B981" font-size="9" class="mono">203.0.113.2로 응답</text>
+  <text x="584" y="218" text-anchor="middle" fill="#475569" font-size="8" class="sans">← 역변환 후 전달</text>
+
+  <!-- Firewall → PC (response) -->
+  <line x1="320" y1="178" x2="138" y2="130" stroke="#10B981" stroke-width="1.5" marker-end="url(#al)"/>
+
+  <!-- Steps annotation -->
+  <rect x="28" y="312" width="804" height="44" rx="8" fill="#1E293B"/>
+  <text x="430" y="329" text-anchor="middle" fill="#94A3B8" font-size="10.5" class="sans">① PC(10.10.1.15) 요청 발생  →  ② 방화벽이 출발지를 공인 IP(203.0.113.2)로 변환 + NAT 테이블에 기록</text>
+  <text x="430" y="347" text-anchor="middle" fill="#94A3B8" font-size="10.5" class="sans">③ 인터넷 서버가 203.0.113.2로 응답  →  ④ 방화벽이 NAT 테이블 참조해 10.10.1.15로 역변환 전달</text>
+</svg>

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 460" width="860" height="460">
+  <defs>
+    <style>
+      .sans { font-family: 'Noto Sans KR','Malgun Gothic',sans-serif; }
+      .mono { font-family: 'JetBrains Mono','Courier New',monospace; }
+    </style>
+    <marker id="a1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0,7 2.5,0 5" fill="#8B5CF6"/>
+    </marker>
+    <marker id="a2" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0,7 2.5,0 5" fill="#10B981"/>
+    </marker>
+  </defs>
+  <rect width="860" height="460" rx="12" fill="#0F172A"/>
+  <text x="430" y="34" text-anchor="middle" fill="#F1F5F9" font-size="16" font-weight="bold" class="sans">공인 IP 할당 체계 — IANA → RIR → ISP → 기업</text>
+  <line x1="40" y1="46" x2="820" y2="46" stroke="#334155" stroke-width="1"/>
+
+  <!-- IANA -->
+  <rect x="280" y="58" width="300" height="52" rx="10" fill="#F59E0B20"/>
+  <rect x="280" y="58" width="300" height="52" rx="10" fill="none" stroke="#F59E0B" stroke-width="2"/>
+  <text x="430" y="80" text-anchor="middle" fill="#F59E0B" font-size="14" font-weight="bold" class="sans">IANA</text>
+  <text x="430" y="99" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">전 세계 IP 주소 공간 총괄 관리  (2011년 2월 풀 소진)</text>
+  <line x1="430" y1="110" x2="430" y2="126" stroke="#8B5CF6" stroke-width="2" marker-end="url(#a1)"/>
+  <text x="450" y="122" fill="#8B5CF6" font-size="10" class="sans">/8 단위 배분</text>
+
+  <!-- RIR label -->
+  <text x="430" y="146" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">5개 지역 RIR (Regional Internet Registry)</text>
+
+  <!-- RIR boxes -->
+  <rect x="40" y="154" width="118" height="46" rx="8" fill="#3B82F620"/>
+  <rect x="40" y="154" width="118" height="46" rx="8" fill="none" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="99" y="173" text-anchor="middle" fill="#3B82F6" font-size="11" font-weight="bold" class="sans">ARIN</text>
+  <text x="99" y="190" text-anchor="middle" fill="#94A3B8" font-size="9" class="sans">북미</text>
+
+  <rect x="172" y="154" width="118" height="46" rx="8" fill="#3B82F620"/>
+  <rect x="172" y="154" width="118" height="46" rx="8" fill="none" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="231" y="173" text-anchor="middle" fill="#3B82F6" font-size="11" font-weight="bold" class="sans">RIPE NCC</text>
+  <text x="231" y="190" text-anchor="middle" fill="#94A3B8" font-size="9" class="sans">유럽·중동</text>
+
+  <rect x="327" y="154" width="156" height="46" rx="8" fill="#F59E0B25"/>
+  <rect x="327" y="154" width="156" height="46" rx="8" fill="none" stroke="#F59E0B" stroke-width="2"/>
+  <text x="405" y="173" text-anchor="middle" fill="#F59E0B" font-size="11" font-weight="bold" class="sans">APNIC  ← 한국</text>
+  <text x="405" y="190" text-anchor="middle" fill="#94A3B8" font-size="9" class="sans">아시아·태평양  (2011.04 소진)</text>
+
+  <rect x="498" y="154" width="124" height="46" rx="8" fill="#3B82F620"/>
+  <rect x="498" y="154" width="124" height="46" rx="8" fill="none" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="560" y="173" text-anchor="middle" fill="#3B82F6" font-size="11" font-weight="bold" class="sans">LACNIC</text>
+  <text x="560" y="190" text-anchor="middle" fill="#94A3B8" font-size="9" class="sans">남미·카리브해</text>
+
+  <rect x="636" y="154" width="144" height="46" rx="8" fill="#3B82F620"/>
+  <rect x="636" y="154" width="144" height="46" rx="8" fill="none" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="708" y="173" text-anchor="middle" fill="#3B82F6" font-size="11" font-weight="bold" class="sans">AFRINIC</text>
+  <text x="708" y="190" text-anchor="middle" fill="#94A3B8" font-size="9" class="sans">아프리카</text>
+
+  <!-- APNIC → ISP line -->
+  <line x1="405" y1="200" x2="405" y2="218" stroke="#8B5CF6" stroke-width="2" marker-end="url(#a1)"/>
+  <text x="424" y="214" fill="#8B5CF6" font-size="10" class="sans">블록 할당</text>
+
+  <!-- ISP row -->
+  <text x="430" y="238" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">ISP (Internet Service Provider)</text>
+
+  <rect x="106" y="246" width="140" height="38" rx="8" fill="#06B6D420"/>
+  <rect x="106" y="246" width="140" height="38" rx="8" fill="none" stroke="#06B6D4" stroke-width="1.5"/>
+  <text x="176" y="270" text-anchor="middle" fill="#06B6D4" font-size="12" font-weight="bold" class="sans">KT</text>
+
+  <rect x="266" y="246" width="140" height="38" rx="8" fill="#06B6D420"/>
+  <rect x="266" y="246" width="140" height="38" rx="8" fill="none" stroke="#06B6D4" stroke-width="1.5"/>
+  <text x="336" y="270" text-anchor="middle" fill="#06B6D4" font-size="12" font-weight="bold" class="sans">SK텔레콤</text>
+
+  <rect x="426" y="246" width="140" height="38" rx="8" fill="#06B6D420"/>
+  <rect x="426" y="246" width="140" height="38" rx="8" fill="none" stroke="#06B6D4" stroke-width="1.5"/>
+  <text x="496" y="270" text-anchor="middle" fill="#06B6D4" font-size="12" font-weight="bold" class="sans">LG U+</text>
+
+  <rect x="586" y="246" width="174" height="38" rx="8" fill="#06B6D420"/>
+  <rect x="586" y="246" width="174" height="38" rx="8" fill="none" stroke="#06B6D4" stroke-width="1.5"/>
+  <text x="673" y="270" text-anchor="middle" fill="#06B6D4" font-size="12" font-weight="bold" class="sans">세종텔레콤 등</text>
+
+  <!-- ISP → end user line -->
+  <line x1="430" y1="284" x2="430" y2="302" stroke="#10B981" stroke-width="2" marker-end="url(#a2)"/>
+  <text x="450" y="298" fill="#10B981" font-size="10" class="sans">회선 계약 시 IP 할당</text>
+
+  <!-- End users -->
+  <rect x="40" y="310" width="210" height="76" rx="10" fill="#1E293B"/>
+  <rect x="40" y="310" width="210" height="76" rx="10" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="145" y="330" text-anchor="middle" fill="#EF4444" font-size="11" font-weight="bold" class="sans">일반 가정</text>
+  <text x="145" y="350" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">유동 공인 IP 1개</text>
+  <text x="145" y="368" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">공유기로 사설망 구성</text>
+
+  <rect x="325" y="310" width="210" height="76" rx="10" fill="#10B98115"/>
+  <rect x="325" y="310" width="210" height="76" rx="10" fill="none" stroke="#10B981" stroke-width="2"/>
+  <text x="430" y="330" text-anchor="middle" fill="#10B981" font-size="11" font-weight="bold" class="sans">중소·중견 기업 ← 이 글의 대상</text>
+  <text x="430" y="350" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">고정 IP 블록 계약 (/28 ~ /22)</text>
+  <text x="430" y="368" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">내부는 사설 IP + 서브넷팅</text>
+
+  <rect x="610" y="310" width="210" height="76" rx="10" fill="#1E293B"/>
+  <rect x="610" y="310" width="210" height="76" rx="10" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="715" y="330" text-anchor="middle" fill="#F59E0B" font-size="11" font-weight="bold" class="sans">대기업 / 데이터센터</text>
+  <text x="715" y="350" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">대규모 블록 (/22 이상)</text>
+  <text x="715" y="368" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">일부 APNIC 직접 신청</text>
+
+  <text x="430" y="416" text-anchor="middle" fill="#475569" font-size="10" class="sans">현재 신규 공인 IPv4는 사실상 소진 — 기업은 ISP 소량 구매 또는 Transfer Market(중고 거래)으로 확보</text>
+  <text x="430" y="434" text-anchor="middle" fill="#475569" font-size="10" class="sans">IPv4 중고 가격: 1개당 약 $40~60 (2024년 기준)  |  APNIC, ARIN 중개 등록 서비스 제공</text>
+</svg>

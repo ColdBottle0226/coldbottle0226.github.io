@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 320" width="820" height="320">
+  <defs>
+    <style>
+      .sans { font-family: 'Noto Sans KR','Malgun Gothic',sans-serif; }
+      .mono { font-family: 'JetBrains Mono','Courier New',monospace; }
+    </style>
+  </defs>
+  <rect width="820" height="320" rx="12" fill="#0F172A"/>
+  <text x="410" y="36" text-anchor="middle" fill="#F1F5F9" font-size="16" font-weight="bold" class="sans">IPv4 주소 구조</text>
+  <line x1="40" y1="48" x2="780" y2="48" stroke="#334155" stroke-width="1"/>
+
+  <!-- Octet 1 -->
+  <rect x="44" y="64" width="158" height="92" rx="10" fill="#3B82F620"/>
+  <rect x="44" y="64" width="158" height="92" rx="10" fill="none" stroke="#3B82F6" stroke-width="2"/>
+  <text x="123" y="116" text-anchor="middle" fill="#3B82F6" font-size="34" font-weight="bold" class="mono">192</text>
+  <text x="123" y="138" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">1번째 옥텟 (8비트)</text>
+
+  <text x="208" y="114" text-anchor="middle" fill="#F1F5F9" font-size="30" font-weight="bold">.</text>
+
+  <!-- Octet 2 -->
+  <rect x="218" y="64" width="158" height="92" rx="10" fill="#06B6D420"/>
+  <rect x="218" y="64" width="158" height="92" rx="10" fill="none" stroke="#06B6D4" stroke-width="2"/>
+  <text x="297" y="116" text-anchor="middle" fill="#06B6D4" font-size="34" font-weight="bold" class="mono">168</text>
+  <text x="297" y="138" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">2번째 옥텟 (8비트)</text>
+
+  <text x="382" y="114" text-anchor="middle" fill="#F1F5F9" font-size="30" font-weight="bold">.</text>
+
+  <!-- Octet 3 -->
+  <rect x="392" y="64" width="158" height="92" rx="10" fill="#10B98120"/>
+  <rect x="392" y="64" width="158" height="92" rx="10" fill="none" stroke="#10B981" stroke-width="2"/>
+  <text x="471" y="116" text-anchor="middle" fill="#10B981" font-size="34" font-weight="bold" class="mono">1</text>
+  <text x="471" y="138" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">3번째 옥텟 (8비트)</text>
+
+  <text x="556" y="114" text-anchor="middle" fill="#F1F5F9" font-size="30" font-weight="bold">.</text>
+
+  <!-- Octet 4 -->
+  <rect x="566" y="64" width="210" height="92" rx="10" fill="#F59E0B20"/>
+  <rect x="566" y="64" width="210" height="92" rx="10" fill="none" stroke="#F59E0B" stroke-width="2"/>
+  <text x="671" y="116" text-anchor="middle" fill="#F59E0B" font-size="34" font-weight="bold" class="mono">100</text>
+  <text x="671" y="138" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">4번째 옥텟 (8비트, 0~255)</text>
+
+  <!-- 32비트 바 -->
+  <rect x="44" y="172" width="732" height="24" rx="5" fill="#334155"/>
+  <text x="410" y="188" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">← 총 32비트 (4 × 8비트 옥텟) →</text>
+
+  <!-- /24 기준 네트워크/호스트 분리 -->
+  <rect x="44" y="208" width="540" height="40" rx="8" fill="#3B82F618"/>
+  <rect x="44" y="208" width="540" height="40" rx="8" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <rect x="590" y="208" width="186" height="40" rx="8" fill="#F59E0B18"/>
+  <rect x="590" y="208" width="186" height="40" rx="8" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="314" y="233" text-anchor="middle" fill="#3B82F6" font-size="12" font-weight="bold" class="sans">네트워크 부분 (24비트) — /24 기준</text>
+  <text x="683" y="233" text-anchor="middle" fill="#F59E0B" font-size="12" font-weight="bold" class="sans">호스트 (8비트)</text>
+
+  <!-- 연결선 -->
+  <line x1="123" y1="157" x2="123" y2="206" stroke="#3B82F6" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="297" y1="157" x2="297" y2="206" stroke="#3B82F6" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="471" y1="157" x2="471" y2="206" stroke="#3B82F6" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="671" y1="157" x2="671" y2="206" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <text x="410" y="280" text-anchor="middle" fill="#94A3B8" font-size="10.5" class="sans">서브넷 마스크(255.255.255.0)의 1 부분 = 네트워크   /   0 부분 = 호스트</text>
+  <text x="410" y="298" text-anchor="middle" fill="#475569" font-size="10" class="sans">192.168.1.100/24  —  기본 /24 서브넷 예시</text>
+</svg>

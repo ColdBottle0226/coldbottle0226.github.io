@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 440" width="860" height="440">
+  <defs>
+    <style>
+      .sans { font-family: 'Noto Sans KR','Malgun Gothic',sans-serif; }
+      .mono { font-family: 'JetBrains Mono','Courier New',monospace; }
+    </style>
+    <marker id="ad" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#8B5CF6"/>
+    </marker>
+  </defs>
+  <rect width="860" height="440" rx="12" fill="#0F172A"/>
+  <text x="430" y="34" text-anchor="middle" fill="#F1F5F9" font-size="15" font-weight="bold" class="sans">서브넷팅 원리 — 192.168.1.0/24 를 /26 으로 분할</text>
+  <line x1="40" y1="46" x2="820" y2="46" stroke="#334155" stroke-width="1"/>
+
+  <!-- Before /24 -->
+  <text x="54" y="68" fill="#94A3B8" font-size="12" class="sans">기본 /24 (서브넷팅 전)</text>
+  <rect x="54" y="76" width="526" height="36" rx="4" fill="#3B82F625"/>
+  <rect x="54" y="76" width="526" height="36" rx="4" fill="none" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="317" y="99" text-anchor="middle" fill="#3B82F6" font-size="12" font-weight="bold" class="sans">네트워크 비트 24개</text>
+  <rect x="584" y="76" width="242" height="36" rx="4" fill="#F59E0B20"/>
+  <rect x="584" y="76" width="242" height="36" rx="4" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="705" y="99" text-anchor="middle" fill="#F59E0B" font-size="12" font-weight="bold" class="sans">호스트 비트 8개</text>
+  <text x="54" y="128" fill="#94A3B8" font-size="10" class="mono">192.168.1.0/24  →  호스트 2⁸ - 2 = 254개</text>
+
+  <!-- 화살표 -->
+  <line x1="430" y1="142" x2="430" y2="162" stroke="#8B5CF6" stroke-width="2" marker-end="url(#ad)"/>
+  <text x="460" y="156" fill="#8B5CF6" font-size="11" class="sans">호스트 비트 앞 2개를 네트워크로 '빌림'</text>
+
+  <!-- After /26 -->
+  <text x="54" y="184" fill="#94A3B8" font-size="12" class="sans">/26 서브넷팅 후</text>
+  <rect x="54" y="192" width="526" height="36" rx="4" fill="#3B82F625"/>
+  <rect x="54" y="192" width="526" height="36" rx="4" fill="none" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="317" y="215" text-anchor="middle" fill="#3B82F6" font-size="12" font-weight="bold" class="sans">네트워크 비트 24개</text>
+  <rect x="584" y="192" width="82" height="36" rx="4" fill="#8B5CF625"/>
+  <rect x="584" y="192" width="82" height="36" rx="4" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="625" y="215" text-anchor="middle" fill="#8B5CF6" font-size="11" font-weight="bold" class="sans">빌린 2비트</text>
+  <rect x="670" y="192" width="156" height="36" rx="4" fill="#10B98120"/>
+  <rect x="670" y="192" width="156" height="36" rx="4" fill="none" stroke="#10B981" stroke-width="1.5"/>
+  <text x="748" y="215" text-anchor="middle" fill="#10B981" font-size="12" font-weight="bold" class="sans">호스트 6비트</text>
+
+  <text x="54" y="246" fill="#8B5CF6" font-size="10" class="sans">빌린 비트 = 26 - 24 = 2  →  서브넷 수 = 2² = 4개</text>
+  <text x="54" y="262" fill="#10B981" font-size="10" class="sans">호스트 비트 = 32 - 26 = 6  →  호스트 수 = 2⁶ - 2 = 62개   /   블록 크기 = 2⁶ = 64</text>
+
+  <!-- 4 subnets -->
+  <line x1="40" y1="278" x2="820" y2="278" stroke="#334155" stroke-width="1"/>
+  <text x="54" y="296" fill="#94A3B8" font-size="12" class="sans">분할된 4개 서브넷 (64 간격으로 시작)</text>
+
+  <rect x="54" y="304" width="772" height="26" rx="5" fill="#1E293B"/>
+  <rect x="54" y="304" width="3" height="26" rx="2" fill="#3B82F6"/>
+  <text x="74" y="321" fill="#94A3B8" font-size="10" class="sans">1번</text>
+  <text x="112" y="321" fill="#F1F5F9" font-size="11" font-weight="bold" class="mono">192.168.1.0/26</text>
+  <text x="295" y="321" fill="#94A3B8" font-size="10" class="mono">사용: .1 ~ .62  (62개)</text>
+  <text x="620" y="321" fill="#475569" font-size="10" class="mono">네트워크: .0  /  브로드캐스트: .63</text>
+
+  <rect x="54" y="334" width="772" height="26" rx="5" fill="#1E293B"/>
+  <rect x="54" y="334" width="3" height="26" rx="2" fill="#06B6D4"/>
+  <text x="74" y="351" fill="#94A3B8" font-size="10" class="sans">2번</text>
+  <text x="112" y="351" fill="#F1F5F9" font-size="11" font-weight="bold" class="mono">192.168.1.64/26</text>
+  <text x="295" y="351" fill="#94A3B8" font-size="10" class="mono">사용: .65 ~ .126  (62개)</text>
+  <text x="620" y="351" fill="#475569" font-size="10" class="mono">네트워크: .64  /  브로드캐스트: .127</text>
+
+  <rect x="54" y="364" width="772" height="26" rx="5" fill="#1E293B"/>
+  <rect x="54" y="364" width="3" height="26" rx="2" fill="#10B981"/>
+  <text x="74" y="381" fill="#94A3B8" font-size="10" class="sans">3번</text>
+  <text x="112" y="381" fill="#F1F5F9" font-size="11" font-weight="bold" class="mono">192.168.1.128/26</text>
+  <text x="295" y="381" fill="#94A3B8" font-size="10" class="mono">사용: .129 ~ .190  (62개)</text>
+  <text x="620" y="381" fill="#475569" font-size="10" class="mono">네트워크: .128  /  브로드캐스트: .191</text>
+
+  <rect x="54" y="394" width="772" height="26" rx="5" fill="#1E293B"/>
+  <rect x="54" y="394" width="3" height="26" rx="2" fill="#F59E0B"/>
+  <text x="74" y="411" fill="#94A3B8" font-size="10" class="sans">4번</text>
+  <text x="112" y="411" fill="#F1F5F9" font-size="11" font-weight="bold" class="mono">192.168.1.192/26</text>
+  <text x="295" y="411" fill="#94A3B8" font-size="10" class="mono">사용: .193 ~ .254  (62개)</text>
+  <text x="620" y="411" fill="#475569" font-size="10" class="mono">네트워크: .192  /  브로드캐스트: .255</text>
+</svg>

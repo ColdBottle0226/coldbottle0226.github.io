@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 540" width="860" height="540">
+  <defs>
+    <style>
+      .sans { font-family: 'Noto Sans KR','Malgun Gothic',sans-serif; }
+      .mono { font-family: 'JetBrains Mono','Courier New',monospace; }
+    </style>
+    <marker id="ad" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#8B5CF6"/>
+    </marker>
+  </defs>
+  <rect width="860" height="540" rx="12" fill="#0F172A"/>
+  <text x="430" y="34" text-anchor="middle" fill="#F1F5F9" font-size="16" font-weight="bold" class="sans">IPv4 부족 문제 → 해결책 등장 전체 흐름</text>
+  <line x1="40" y1="46" x2="820" y2="46" stroke="#334155" stroke-width="1"/>
+
+  <!-- Step 1 -->
+  <rect x="54" y="58" width="752" height="62" rx="10" fill="#F59E0B18"/>
+  <rect x="54" y="58" width="752" height="62" rx="10" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="108" y="78" fill="#F59E0B" font-size="10" class="sans">1981년</text>
+  <text x="168" y="78" fill="#F1F5F9" font-size="12" font-weight="bold" class="sans">IPv4 설계 — 32비트, 약 43억 개 주소</text>
+  <text x="168" y="96" fill="#94A3B8" font-size="10" class="sans">Vint Cerf: "32비트면 실험에 충분하다"  |  당시 인터넷 = ARPANET (미국 군사·연구기관 간 소규모 네트워크)</text>
+  <text x="168" y="112" fill="#475569" font-size="10" class="sans">→ 전 세계 수십억 명이 사용하는 인프라가 될 줄은 몰랐다</text>
+  <line x1="430" y1="120" x2="430" y2="136" stroke="#8B5CF6" stroke-width="2" marker-end="url(#ad)"/>
+
+  <!-- Step 2 -->
+  <rect x="54" y="140" width="752" height="62" rx="10" fill="#EF444418"/>
+  <rect x="54" y="140" width="752" height="62" rx="10" fill="none" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="108" y="160" fill="#EF4444" font-size="10" class="sans">1980년대 말</text>
+  <text x="200" y="160" fill="#F1F5F9" font-size="12" font-weight="bold" class="sans">문제 ① — 클래스 방식의 구조적 낭비</text>
+  <text x="200" y="178" fill="#94A3B8" font-size="10" class="sans">300명 기업 → 클래스 B(65,534개) 받아야 함 → 65,234개 낭비  |  MIT·Stanford·Apple은 클래스 A(/8, 1,677만 개) 독점</text>
+  <text x="200" y="194" fill="#475569" font-size="10" class="sans">→ A/B/C 세 가지 크기 외에 중간이 없는 것이 핵심 문제</text>
+  <line x1="430" y1="202" x2="430" y2="218" stroke="#8B5CF6" stroke-width="2" marker-end="url(#ad)"/>
+
+  <!-- Step 3 -->
+  <rect x="54" y="222" width="752" height="62" rx="10" fill="#10B98118"/>
+  <rect x="54" y="222" width="752" height="62" rx="10" fill="none" stroke="#10B981" stroke-width="1.5"/>
+  <text x="108" y="242" fill="#10B981" font-size="10" class="sans">1993년</text>
+  <text x="168" y="242" fill="#F1F5F9" font-size="12" font-weight="bold" class="sans">해결 ① — CIDR + 서브넷팅 (RFC 1519)</text>
+  <text x="168" y="260" fill="#94A3B8" font-size="10" class="sans">프리픽스 자유 지정 → 300명에게 /23(510개)만 줄 수 있게 됨  |  낭비 대폭 감소, IPv4 소진 수년 지연</text>
+  <text x="168" y="276" fill="#475569" font-size="10" class="sans">→ 하지만 근본 해결책은 아님. 공인 IP 절대 수량 자체가 부족한 문제는 별도로 남아있었다</text>
+  <line x1="430" y1="284" x2="430" y2="300" stroke="#8B5CF6" stroke-width="2" marker-end="url(#ad)"/>
+
+  <!-- Step 4 -->
+  <rect x="54" y="304" width="752" height="62" rx="10" fill="#EF444418"/>
+  <rect x="54" y="304" width="752" height="62" rx="10" fill="none" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="108" y="324" fill="#EF4444" font-size="10" class="sans">1990년대 중반</text>
+  <text x="210" y="324" fill="#F1F5F9" font-size="12" font-weight="bold" class="sans">문제 ② — 공인 IP 절대 부족</text>
+  <text x="210" y="342" fill="#94A3B8" font-size="10" class="sans">인터넷 폭발적 성장 + 스마트폰·IoT 등장 → 43억 개 자체가 모자람</text>
+  <text x="210" y="358" fill="#475569" font-size="10" class="sans">→ CIDR만으로는 한계. 더 근본적인 방법이 필요</text>
+  <line x1="430" y1="366" x2="430" y2="382" stroke="#8B5CF6" stroke-width="2" marker-end="url(#ad)"/>
+
+  <!-- Step 5 -->
+  <rect x="54" y="386" width="752" height="62" rx="10" fill="#3B82F618"/>
+  <rect x="54" y="386" width="752" height="62" rx="10" fill="none" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="108" y="406" fill="#3B82F6" font-size="10" class="sans">1996 ~ 2001년</text>
+  <text x="210" y="406" fill="#F1F5F9" font-size="12" font-weight="bold" class="sans">해결 ② — 사설 IP + NAT (RFC 1918 / RFC 3022)</text>
+  <text x="210" y="424" fill="#94A3B8" font-size="10" class="sans">내부 기기에 사설 IP 부여 → 공인 IP 1개로 수백 대 인터넷 사용 가능</text>
+  <text x="210" y="440" fill="#475569" font-size="10" class="sans">→ IPv4 수명을 10~15년 더 연장. NAT는 현재도 전 세계 네트워크의 핵심 기술</text>
+  <line x1="430" y1="448" x2="430" y2="464" stroke="#8B5CF6" stroke-width="2" marker-end="url(#ad)"/>
+
+  <!-- Step 6 -->
+  <rect x="54" y="468" width="752" height="60" rx="10" fill="#8B5CF618"/>
+  <rect x="54" y="468" width="752" height="60" rx="10" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="108" y="488" fill="#8B5CF6" font-size="10" class="sans">2011년 2월 3일</text>
+  <text x="218" y="488" fill="#F1F5F9" font-size="12" font-weight="bold" class="sans">IANA IPv4 풀 완전 소진</text>
+  <text x="218" y="506" fill="#94A3B8" font-size="10" class="sans">IANA가 마지막 /8 블록을 5개 RIR에 배분 → 신규 공인 IP는 이전 블록 재분배 또는 Transfer Market에서만 확보 가능</text>
+  <text x="218" y="520" fill="#475569" font-size="10" class="sans">IPv4 1개 = 약 $40~60 (중고 거래, 2024년 기준)  |  IPv6(128비트, 3.4×10³⁸개) 전환 진행 중이지만 IPv4는 여전히 현역</text>
+</svg>

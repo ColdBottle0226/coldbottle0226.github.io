@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 500" width="860" height="500">
+  <defs>
+    <style>
+      .sans { font-family: 'Noto Sans KR','Malgun Gothic',sans-serif; }
+      .mono { font-family: 'JetBrains Mono','Courier New',monospace; }
+    </style>
+    <marker id="a1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#8B5CF6"/>
+    </marker>
+  </defs>
+  <rect width="860" height="500" rx="12" fill="#0F172A"/>
+  <text x="430" y="34" text-anchor="middle" fill="#F1F5F9" font-size="16" font-weight="bold" class="sans">전체 개념 흐름 정리</text>
+  <line x1="40" y1="46" x2="820" y2="46" stroke="#334155" stroke-width="1"/>
+
+  <!-- Box 1 -->
+  <rect x="54" y="58" width="752" height="66" rx="10" fill="#1E293B"/>
+  <rect x="54" y="58" width="752" height="66" rx="10" fill="none" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="430" y="82" text-anchor="middle" fill="#3B82F6" font-size="13" font-weight="bold" class="sans">IP 주소 (32비트) = 네트워크 부분 + 호스트 부분</text>
+  <text x="430" y="102" text-anchor="middle" fill="#94A3B8" font-size="10.5" class="sans">네트워크 주소: IP AND 서브넷마스크   |   브로드캐스트: 호스트 비트 전부 1   |   사용 가능 IP: 2^(호스트비트) - 2</text>
+
+  <line x1="430" y1="124" x2="430" y2="142" stroke="#8B5CF6" stroke-width="2" marker-end="url(#a1)"/>
+  <text x="430" y="154" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">어디까지가 네트워크인지 결정하는 방식</text>
+
+  <!-- Classful (left) -->
+  <rect x="54" y="162" width="360" height="90" rx="10" fill="#1E293B"/>
+  <rect x="54" y="162" width="360" height="90" rx="10" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="234" y="184" text-anchor="middle" fill="#EF4444" font-size="12" font-weight="bold" class="sans">클래스 방식 (과거)</text>
+  <text x="234" y="204" text-anchor="middle" fill="#94A3B8" font-size="11" class="mono">A: /8  → 16,777,214개</text>
+  <text x="234" y="222" text-anchor="middle" fill="#94A3B8" font-size="11" class="mono">B: /16 →     65,534개</text>
+  <text x="234" y="240" text-anchor="middle" fill="#94A3B8" font-size="11" class="mono">C: /24 →        254개</text>
+
+  <text x="430" y="216" text-anchor="middle" fill="#475569" font-size="14" font-weight="bold">VS</text>
+
+  <!-- CIDR (right) -->
+  <rect x="446" y="162" width="360" height="90" rx="10" fill="#1E293B"/>
+  <rect x="446" y="162" width="360" height="90" rx="10" fill="none" stroke="#10B981" stroke-width="1.5"/>
+  <text x="626" y="184" text-anchor="middle" fill="#10B981" font-size="12" font-weight="bold" class="sans">CIDR 방식 (현재 표준)</text>
+  <text x="626" y="204" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">프리픽스 자유 지정 (/1 ~ /32)</text>
+  <text x="626" y="222" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">→ 필요한 크기만 정밀하게 설계</text>
+  <text x="626" y="240" text-anchor="middle" fill="#10B981" font-size="11" class="sans">→ 낭비 없는 유연한 주소 할당</text>
+
+  <line x1="430" y1="252" x2="430" y2="270" stroke="#8B5CF6" stroke-width="2" marker-end="url(#a1)"/>
+
+  <!-- 서브넷팅 box -->
+  <rect x="54" y="274" width="752" height="56" rx="10" fill="#8B5CF618"/>
+  <rect x="54" y="274" width="752" height="56" rx="10" fill="none" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="430" y="298" text-anchor="middle" fill="#8B5CF6" font-size="13" font-weight="bold" class="sans">서브넷팅: 호스트 비트를 빌려 큰 네트워크를 작게 분할</text>
+  <text x="430" y="318" text-anchor="middle" fill="#94A3B8" font-size="10.5" class="sans">서브넷 수 = 2^(빌린 비트)   |   호스트 수 = 2^(남은 호스트 비트) - 2   |   블록 크기 = 2^(호스트 비트)</text>
+
+  <line x1="430" y1="330" x2="430" y2="348" stroke="#8B5CF6" stroke-width="2" marker-end="url(#a1)"/>
+
+  <!-- 공인 IP (left) -->
+  <rect x="54" y="352" width="360" height="90" rx="10" fill="#1E293B"/>
+  <rect x="54" y="352" width="360" height="90" rx="10" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="234" y="374" text-anchor="middle" fill="#F59E0B" font-size="12" font-weight="bold" class="sans">공인 IP</text>
+  <text x="234" y="394" text-anchor="middle" fill="#94A3B8" font-size="11" class="sans">인터넷 라우팅 가능 / 전 세계 유일</text>
+  <text x="234" y="412" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">IANA → RIR → ISP → 기업 순 계층 할당</text>
+  <text x="234" y="430" text-anchor="middle" fill="#94A3B8" font-size="10" class="sans">2011년 소진 → Transfer Market에서만 확보</text>
+
+  <!-- 사설 IP (right) -->
+  <rect x="446" y="352" width="360" height="90" rx="10" fill="#1E293B"/>
+  <rect x="446" y="352" width="360" height="90" rx="10" fill="none" stroke="#06B6D4" stroke-width="1.5"/>
+  <text x="626" y="374" text-anchor="middle" fill="#06B6D4" font-size="12" font-weight="bold" class="sans">사설 IP  (RFC 1918)</text>
+  <text x="626" y="394" text-anchor="middle" fill="#94A3B8" font-size="11" class="mono">10.0.0.0/8</text>
+  <text x="626" y="412" text-anchor="middle" fill="#94A3B8" font-size="11" class="mono">172.16.0.0/12</text>
+  <text x="626" y="430" text-anchor="middle" fill="#94A3B8" font-size="11" class="mono">192.168.0.0/16</text>
+
+  <text x="430" y="468" text-anchor="middle" fill="#475569" font-size="10" class="sans">사설 IP는 NAT(Network Address Translation)를 통해 공인 IP로 변환하여 인터넷에 접속한다</text>
+  <text x="430" y="485" text-anchor="middle" fill="#475569" font-size="10" class="sans">⚠️  172.16.0.0의 사설 대역은 /12  —  172.16.x.x만이 아니라 172.31.x.x까지 전부 사설 IP</text>
+</svg>
