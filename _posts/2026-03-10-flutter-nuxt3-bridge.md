@@ -274,7 +274,6 @@ WebView의 히스토리가 없으면 Flutter 네이티브 레이어가 WebView�
 ---
 
 ## 참고 자료
-
 - Flutter InAppWebView - JavaScript Handlers: https://inappwebview.dev/docs/webview/javascript/javascript-handlers/
 - MDN - window.open noopener: https://developer.mozilla.org/en-US/docs/Web/API/Window/open#noopener
 - MDN - window.close: https://developer.mozilla.org/en-US/docs/Web/API/Window/close

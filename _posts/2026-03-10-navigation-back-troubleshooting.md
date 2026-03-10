@@ -2,7 +2,7 @@
 title: Flutter WebView + Nuxt3 뒤로가기 버그 트러블슈팅 - 플래그 방식의 실패와 position 비교 해결까지
 date: 2026-03-10 09:00:00 +0900
 categories: [Nuxt3, Flutter]
-tags: [Nuxt3, Flutter, WebView, InAppWebView, Navigation, popstate, history, 뒤로가기, 트러블슈팅]
+tags: [Nuxt3, Flutter, WebView, InAppWebView, Navigation, popstate, history, 뒤로가기]
 ---
 
 ## 📗 1. 문제 상황
