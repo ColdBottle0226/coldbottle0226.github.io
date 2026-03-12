@@ -262,8 +262,7 @@ if (!from?.name) return  // 새로고침 시 스택/position 그대로 유지
 - 컴포저블은 `use`로 시작해야 Nuxt auto-import 대상이 된다. Nuxt composable은 반드시 함수 내부에서 호출한다
 - 전역 미들웨어는 이동 전에 실행되므로 허용/차단 판단에 적합하고, sessionStorage 쓰기에는 부적합하다
 - DOM 이벤트 리스너는 Plugin에서 단 한 번 등록한다. 미들웨어에서 등록하면 중복된다
-- `router.afterEach`는 이동 완료 후 실행되므로 스택 기록, position 저장 등 부수효과에 적합하다
-- `from.name` 가드로 새로고침/하이드레이션 케이스를 분리하면 스택이 의도치 않게 초기화되는 버그를 막을 수 있다
+
 
 ---
 
