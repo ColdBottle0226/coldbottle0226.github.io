@@ -1,7 +1,7 @@
 ---
 title: 결재 시스템 구현 가이드 - 용어, 업무 흐름, 설계 포인트
 date: 2026-03-13 11:00:00 +0900
-categories: [Backend, 시스템설계]
+categories: [업무, 결재]
 tags: [결재시스템, 전자결재, 워크플로우, 결재선, 상태머신, 설계, Java, Spring, ERD]
 ---
 
