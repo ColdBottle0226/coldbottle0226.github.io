@@ -15,7 +15,7 @@ tags: [결재시스템, 전자결재, 워크플로우, 결재선, 상태머신, 
 
 ### 📌 전체 구조 한눈에 보기
 
-[![image](/assets/images/approval/approval_image.png.svg)]
+![image](/assets/images/approval/approval_image.png)
 
 <div style="overflow-x: auto; margin: 1.5rem 0;">
 <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:900px;font-family:sans-serif;">
