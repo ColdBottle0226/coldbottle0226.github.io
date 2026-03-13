@@ -1,7 +1,7 @@
 ---
 title: "딥링크 완전 정복 - URI 스킴, Intent 스킴, Universal Link, App Link"
 date: 2026-02-25 00:00:00 +0900
-categories: [Mobile, DeepLink]
+categories: [DeepLink]
 tags: [deeplink, uri-scheme, intent-scheme, universal-link, app-link, android, ios, 딥링크]
 ---
 

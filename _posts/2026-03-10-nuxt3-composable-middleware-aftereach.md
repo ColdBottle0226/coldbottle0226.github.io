@@ -1,7 +1,7 @@
 ---
 title: Nuxt3 컴포저블 / 전역 미들웨어 / router.afterEach 패턴 정리
 date: 2026-03-10 09:30:00 +0900
-categories: [Nuxt3, TypeScript]
+categories: [Nuxt3]
 tags: [Nuxt3, Composable, Middleware, afterEach, Vue Router, sessionStorage, abortNavigation]
 ---
 

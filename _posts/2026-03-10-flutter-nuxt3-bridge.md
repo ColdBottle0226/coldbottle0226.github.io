@@ -1,7 +1,7 @@
 ---
 title: Flutter InAppWebView + Nuxt3 JS 브릿지 통신 설계
 date: 2026-03-10 10:00:00 +0900
-categories: [Flutter, Nuxt3]
+categories: [Nuxt3, 브릿지]
 tags: [Flutter, InAppWebView, Nuxt3, Bridge, callHandler, JavaScript, 하이브리드앱, WebView]
 ---
 
