@@ -248,12 +248,12 @@ WebView의 히스토리가 없으면 Flutter 네이티브 레이어가 WebView�
 
 | 케이스 | popstate 발생 | JS 처리 필요 |
 |---|---|---|
-| Android 브라우저 하단 버튼 | ✅ 발생 | 스택 pop |
-| Android 네이티브 버튼 (Flutter 앱) | ✅ 발생 (히스토리 있을 때) | 스택 pop |
-| Android 네이티브 버튼 (Flutter 앱, 히스토리 없음) | ❌ 미발생 | Flutter가 WebView 닫음 |
-| iOS Safari 엣지 스와이프 (SPA) | ✅ 발생 | 스택 pop |
-| iOS window.open 탭 뒤로가기 버튼 | ❌ 미발생 | iOS가 탭 닫고 opener 복귀 |
-| iOS BFCache 복원 | ❌ 미발생 | sessionStorage 자동 복원 |
+| Android 브라우저 하단 버튼 | O 발생 | 스택 pop |
+| Android 네이티브 버튼 (Flutter 앱) | O 발생 (히스토리 있을 때) | 스택 pop |
+| Android 네이티브 버튼 (Flutter 앱, 히스토리 없음) | X 미발생 | Flutter가 WebView 닫음 |
+| iOS Safari 엣지 스와이프 (SPA) | O 발생 | 스택 pop |
+| iOS window.open 탭 뒤로가기 버튼 | X 미발생 | iOS가 탭 닫고 opener 복귀 |
+| iOS BFCache 복원 | X 미발생 | sessionStorage 자동 복원 |
 
 - SPA에서 iOS 스와이프가 popstate를 발생시키는 이유: https://github.com/w3c/csswg-drafts/issues/8333
 - BFCache 동작 원리: https://web.dev/articles/bfcache
