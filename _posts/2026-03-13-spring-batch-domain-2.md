@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "[Spring Batch] 도메인 언어 완전 정복 (2) — Step, Chunk, Tasklet"
 date: 2026-03-13 09:30:00 +0900
 categories: [Spring, Batch]
@@ -100,7 +99,6 @@ executionContext.putLong(getKey(LINES_READ_COUNT), reader.getPosition());
 if (executionContext.containsKey(getKey(LINES_READ_COUNT))) {
     long lineCount = executionContext.getLong(getKey(LINES_READ_COUNT));
     LineReader reader = getReader();
-    // lineCount 위치까지 읽어서 skip
     while (reader.getPosition() < lineCount) {
         readLine();
     }
@@ -123,7 +121,7 @@ ExecutionContext ecJob  = jobExecution.getExecutionContext();
 // ecStep != ecJob — 완전히 별개의 객체
 
 // Step 범위: 각 commit 시점마다 저장
-// Job 범위: 각 Step 실행 사이에 저장
+// Job  범위: 각 Step 실행 사이에 저장
 ```
 
 > 💡 ExecutionContext에 저장하는 모든 non-transient 항목은 반드시 `Serializable`이어야 한다. 직렬화가 불가능하면 실패한 Job을 복구할 수 없게 된다.
@@ -140,7 +138,7 @@ Spring Batch의 가장 핵심적인 처리 방식이다. 데이터를 한 건씩
 
 아래 다이어그램은 Chunk-oriented Processing의 전체 흐름을 나타낸다. ItemReader가 1건씩 읽고, ItemProcessor가 변환하며, chunk-size에 도달하면 ItemWriter가 N건을 일괄 쓰고 커밋한다.
 
-![Chunk-oriented Processing 흐름도](/assets/images/spring-batch/chunk-processing-flow.svg)
+[![image](/assets/images/spring-batch/chunk-processing-flow.svg)](/assets/images/spring-batch/chunk-processing-flow.svg)
 
 트랜잭션은 Writer의 write() + commit() 단위로 관리된다. 예를 들어 chunk-size=100이면, 100건을 읽고 처리한 후 한 번에 쓰고 커밋한다. 커밋 전에 오류가 발생하면 해당 chunk 전체가 롤백된다.
 
@@ -153,8 +151,7 @@ Spring Batch의 가장 핵심적인 처리 방식이다. 데이터를 한 건씩
  * JdbcCursorItemReader: DB 커서를 사용해 대용량 데이터를 스트리밍으로 읽는다.
  * - fetchSize: DB에서 한 번에 가져오는 행 수 (네트워크 라운드트립 최소화)
  * - rowMapper: ResultSet → 도메인 객체 변환
- * saveState = true로 설정하면 읽은 위치가 ExecutionContext에 저장돼
- * 재시작 시 중단 지점부터 이어서 읽는다.
+ * saveState = true → 읽은 위치가 ExecutionContext에 저장 → 재시작 지원
  */
 @Bean
 public JdbcCursorItemReader<Customer> customerItemReader(DataSource dataSource) {
@@ -162,9 +159,9 @@ public JdbcCursorItemReader<Customer> customerItemReader(DataSource dataSource) 
         .name("customerItemReader")
         .dataSource(dataSource)
         .sql("SELECT id, name, email FROM customers WHERE processed = false")
-        .fetchSize(1000)  // 1000건씩 DB에서 가져옴
+        .fetchSize(1000)
         .rowMapper(new BeanPropertyRowMapper<>(Customer.class))
-        .saveState(true)  // ExecutionContext에 읽은 위치 저장 → 재시작 지원
+        .saveState(true)
         .build();
 }
 ```
@@ -175,20 +172,16 @@ public JdbcCursorItemReader<Customer> customerItemReader(DataSource dataSource) 
 
 ```java
 /**
- * ItemProcessor는 단일 아이템에 대한 변환/검증 로직을 담는다.
  * null 반환 = 해당 아이템을 write하지 않음 (필터링).
  * filterCount가 StepExecution에 기록된다.
- *
  * CompositeItemProcessor를 쓰면 여러 Processor를 체이닝할 수 있다.
  */
 @Bean
 public ItemProcessor<Customer, Customer> customerItemProcessor() {
     return customer -> {
-        // 이메일이 없는 고객은 처리 대상에서 제외
         if (customer.getEmail() == null || customer.getEmail().isBlank()) {
             return null; // → filterCount 증가
         }
-        // 이름 정규화 처리
         customer.setName(customer.getName().trim().toUpperCase());
         return customer;
     };
@@ -201,9 +194,9 @@ chunk 단위로 일괄 처리하는 추상화다. 한 번의 write() 호출에 N
 
 ```java
 /**
- * JdbcBatchItemWriter: JDBC batch insert/update를 사용해 N건을 한 번에 처리한다.
- * 개별 INSERT를 N번 실행하는 것보다 훨씬 빠르다.
- * assertUpdates = true: 업데이트된 행 수가 예상과 다르면 예외 발생
+ * JdbcBatchItemWriter: JDBC batch insert/update로 N건을 한 번에 처리한다.
+ * 개별 INSERT N번보다 훨씬 빠르다.
+ * assertUpdates = true: 업데이트 행 수가 예상과 다르면 예외 발생
  */
 @Bean
 public JdbcBatchItemWriter<Customer> customerItemWriter(DataSource dataSource) {
@@ -212,7 +205,7 @@ public JdbcBatchItemWriter<Customer> customerItemWriter(DataSource dataSource) {
         .sql("INSERT INTO processed_customers (id, name, email) " +
              "VALUES (:id, :name, :email) " +
              "ON DUPLICATE KEY UPDATE name = :name, email = :email")
-        .beanMapped()      // Customer 객체의 필드를 :name 파라미터에 자동 매핑
+        .beanMapped()
         .assertUpdates(true)
         .build();
 }
@@ -222,11 +215,10 @@ public JdbcBatchItemWriter<Customer> customerItemWriter(DataSource dataSource) {
 
 ```java
 /**
- * Chunk-oriented Step 설정.
  * chunk(100): 100건마다 write + commit
  * faultTolerant(): skip/retry 기능 활성화
- * skipLimit(10): 최대 10건까지 DataFormatException을 skip 허용
- *   → skip된 아이템은 readSkipCount/processSkipCount/writeSkipCount에 기록
+ * skipLimit(10): 최대 10건까지 DataFormatException skip 허용
+ *   → skip된 아이템은 readSkipCount / writeSkipCount에 기록
  * retryLimit(3): TransientException 발생 시 최대 3회 재시도
  */
 @Bean
@@ -256,11 +248,8 @@ Tasklet은 ItemReader/ItemWriter 구조 없이 단일 로직을 실행하는 Ste
 
 ```java
 /**
- * Tasklet의 두 가지 반환값:
- * - RepeatStatus.FINISHED: Step 완료. 다음 Step으로 넘어감.
- * - RepeatStatus.CONTINUABLE: execute()를 다시 호출.
- *   → 일반적으로는 FINISHED를 반환하고,
- *      특수한 polling 작업에서만 CONTINUABLE을 사용한다.
+ * RepeatStatus.FINISHED   : Step 완료 → 다음 Step으로
+ * RepeatStatus.CONTINUABLE: execute() 다시 호출 (polling 등 특수 케이스)
  */
 @Bean
 public Step fileCleanupStep(JobRepository jobRepository,
@@ -272,7 +261,6 @@ public Step fileCleanupStep(JobRepository jobRepository,
                 .sorted(Comparator.reverseOrder())
                 .map(Path::toFile)
                 .forEach(File::delete);
-
             log.info("임시 파일 정리 완료: {}", tempDir);
             return RepeatStatus.FINISHED;
         }, transactionManager)
@@ -286,16 +274,16 @@ public Step fileCleanupStep(JobRepository jobRepository,
 
 ```java
 /**
- * 이미 잘 동작하는 Service 메서드를 배치 Step으로 재사용하고 싶을 때.
+ * 이미 잘 동작하는 Service 메서드를 배치 Step으로 재사용할 때.
  * Tasklet 코드를 새로 작성하지 않고, 기존 빈의 메서드를 위임한다.
  */
 @Bean
 public Step reportGenerationStep(JobRepository jobRepository,
                                  PlatformTransactionManager transactionManager) {
     MethodInvokingTaskletAdapter adapter = new MethodInvokingTaskletAdapter();
-    adapter.setTargetObject(reportService);       // 기존 Service 빈
-    adapter.setTargetMethod("generateDailyReport"); // 실행할 메서드
-    adapter.setArguments(new Object[]{ LocalDate.now() }); // 인자
+    adapter.setTargetObject(reportService);
+    adapter.setTargetMethod("generateDailyReport");
+    adapter.setArguments(new Object[]{ LocalDate.now() });
 
     return new StepBuilder("reportGenerationStep", jobRepository)
         .tasklet(adapter, transactionManager)
@@ -328,7 +316,7 @@ public Step reportGenerationStep(JobRepository jobRepository,
 
 Spring Batch 도메인 개념 전체를 관계로 정리하면 아래 다이어그램과 같다.
 
-![Spring Batch 도메인 관계 요약](/assets/images/spring-batch/relationship-summary.svg)
+[![image](/assets/images/spring-batch/relationship-summary.svg)](/assets/images/spring-batch/relationship-summary.svg)
 
 ```
 Job (설계도)
@@ -354,7 +342,7 @@ JobOperator:   start / stop / restart / abandon
 - `Step`은 Job 내부의 독립적인 배치 단계다. Chunk-oriented 또는 Tasklet으로 구현한다.
 - `StepExecution`은 Step 실행 시도를 추적하며, readCount/writeCount/skipCount 등 처리 통계를 저장한다.
 - `ExecutionContext`는 commit마다 DB에 저장되어 재시작 시 중단 지점 복구를 가능하게 한다.
-- Chunk-oriented는 `Read 1건 → Process 1건 → buffer 누적 → chunk-size 도달 시 Write + commit` 사이클로 동작한다.
+- Chunk-oriented는 Read 1건 → Process 1건 → buffer 누적 → chunk-size 도달 시 Write + commit 사이클로 동작한다.
 - `ItemProcessor`가 `null`을 반환하면 해당 아이템은 write되지 않고 filterCount가 증가한다.
 - `Tasklet`은 RepeatStatus.FINISHED를 반환할 때까지 execute()를 반복 호출한다.
 

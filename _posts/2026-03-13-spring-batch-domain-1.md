@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "[Spring Batch] 도메인 언어 완전 정복 (1) — Job, JobInstance, JobExecution"
 date: 2026-03-13 09:00:00 +0900
 categories: [Spring, Batch]
@@ -18,7 +17,7 @@ Spring Batch를 처음 접하면 Job, JobInstance, JobExecution이 헷갈린다.
 
 아래 다이어그램은 Spring Batch의 전체 도메인 구조를 보여준다. Job이 여러 Step을 포함하고, 실행 추적 계층(JobInstance → JobExecution → StepExecution)이 JobRepository를 통해 영속화된다.
 
-![Spring Batch 전체 아키텍처 구조](/assets/images/spring-batch/architecture-overview.svg)
+[![image](/assets/images/spring-batch/architecture-overview.svg)](/assets/images/spring-batch/architecture-overview.svg)
 
 | 개념 | 한 줄 정의 |
 |---|---|
@@ -52,8 +51,8 @@ Job은 전체 배치 프로세스를 감싸는 최상위 엔티티다. Spring Ba
 @Bean
 public Job footballJob(JobRepository jobRepository) {
     return new JobBuilder("footballJob", jobRepository)
-        .start(playerLoad())   // 첫 번째 Step
-        .next(gameLoad())      // 두 번째 Step
+        .start(playerLoad())         // 첫 번째 Step
+        .next(gameLoad())            // 두 번째 Step
         .next(playerSummarization()) // 세 번째 Step
         .build();
 }
@@ -70,8 +69,8 @@ JobInstance는 논리적인 Job 실행(run) 개념을 말한다. 예를 들어 �
 ### 📌 핵심 동작 원리
 
 - 1월 1일 실행이 처음에 실패해서 다음 날 재실행하더라도, 여전히 "1월 1일 JobInstance"다.
-- 동일한 JobInstance를 사용하면 이전 실행의 `ExecutionContext` 상태를 이어받아 **멈춘 곳부터 재시작**한다.
-- 새로운 JobInstance를 생성하면 **처음부터 다시 시작**한다.
+- 동일한 JobInstance를 사용하면 이전 실행의 `ExecutionContext` 상태를 이어받아 멈춘 곳부터 재시작한다.
+- 새로운 JobInstance를 생성하면 처음부터 다시 시작한다.
 
 > 💡 JobInstance 정의 자체는 어떤 데이터를 처리할지와 무관하다. 어떤 데이터를 읽을지는 전적으로 `ItemReader` 구현에 달려 있다. "1월 1일 데이터"를 읽는 것은 ItemReader의 결정이지, JobInstance의 속성이 아니다.
 
@@ -96,11 +95,12 @@ JobParameters 객체는 배치 Job을 시작할 때 사용하는 파라미터 �
  * 1월 1일과 1월 2일 각각에 대해 JobInstance가 생성된다.
  * 동일한 Job이지만 파라미터가 다르므로 → 다른 JobInstance.
  *
- * JobParameter 생성 시 세 번째 인자 true/false는
- * 해당 파라미터가 JobInstance 식별에 기여하는지(identifying) 여부다.
+ * 세 번째 인자 true/false: identifying 여부
+ *  - true  → JobInstance 식별에 기여
+ *  - false → 참조 데이터로만 사용 (non-identifying)
  */
 JobParameters jan1 = new JobParametersBuilder()
-    .addLocalDate("schedule.Date", LocalDate.of(2017, 1, 1), true) // identifying
+    .addLocalDate("schedule.Date", LocalDate.of(2017, 1, 1), true)
     .toJobParameters();
 
 JobParameters jan2 = new JobParametersBuilder()
@@ -118,8 +118,8 @@ jobOperator.start(endOfDayJob, jan2);
 
 ```java
 JobParameters params = new JobParametersBuilder()
-    .addLocalDate("schedule.Date", LocalDate.of(2017, 1, 1), true)  // identifying: JobInstance 구분
-    .addString("operator", "batch-admin", false)  // non-identifying: 참조 데이터로만 사용
+    .addLocalDate("schedule.Date", LocalDate.of(2017, 1, 1), true)  // identifying
+    .addString("operator", "batch-admin", false)                     // non-identifying
     .toJobParameters();
 ```
 
@@ -135,7 +135,7 @@ JobExecution은 Job을 한 번 실행하려는 시도(attempt)의 기술적 개�
 
 하나의 JobInstance에 대해 여러 개의 JobExecution이 존재할 수 있다. 아래 다이어그램은 동일한 JobInstance에서 첫 번째 실행이 실패하고, 두 번째 실행이 성공하는 흐름을 보여준다.
 
-![JobExecution 재시작 흐름](/assets/images/spring-batch/jobexecution-restart.svg)
+[![image](/assets/images/spring-batch/jobexecution-restart.svg)](/assets/images/spring-batch/jobexecution-restart.svg)
 
 - `01-01-2017` 파라미터로 실행한 Job이 실패 → JobExecution #1 생성 (FAILED)
 - 동일한 파라미터로 다시 실행 → JobExecution #2 생성 (COMPLETED)
@@ -219,9 +219,9 @@ JobOperator는 Job의 시작, 중단, 재시작, abandon을 담당하는 인터�
 ```java
 /**
  * Spring Batch 6.x에서 JobLauncher 역할이 JobOperator로 통합됐다.
- * start(): 새 JobExecution 생성 후 실행
+ * start()  : 새 JobExecution 생성 후 실행
  * restart(): 실패한 JobExecution의 마지막 상태에서 이어서 실행
- * stop(): 실행 중인 Job에 종료 신호 전송
+ * stop()   : 실행 중인 Job에 종료 신호 전송
  * abandon(): 더 이상 재시작하지 않을 JobExecution을 ABANDONED 상태로 마킹
  */
 public interface JobOperator {
@@ -241,7 +241,7 @@ public interface JobOperator {
 
 도메인 개념들 사이의 관계를 한눈에 보면 아래와 같다.
 
-![Spring Batch 도메인 관계 요약](/assets/images/spring-batch/relationship-summary.svg)
+[![image](/assets/images/spring-batch/relationship-summary.svg)](/assets/images/spring-batch/relationship-summary.svg)
 
 ---
 
