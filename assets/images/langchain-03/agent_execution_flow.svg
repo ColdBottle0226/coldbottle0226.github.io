@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" width="720" height="560" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="720" height="560" fill="#F9FAFB" rx="12"/>
+  <text x="360" y="34" text-anchor="middle" font-size="15" font-weight="600" fill="#111827">에이전트 실행 흐름 messages 리스트 구조</text>
+
+  <!-- Step 1 HumanMessage -->
+  <rect x="60" y="56" width="220" height="58" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="170" y="80" text-anchor="middle" font-size="13" font-weight="600" fill="#1D4ED8">1. HumanMessage</text>
+  <text x="170" y="100" text-anchor="middle" font-size="11" fill="#3B82F6">사용자 질문 입력</text>
+  <text x="170" y="128" text-anchor="middle" font-size="10" fill="#9CA3AF">"서울 날씨 어때요?"</text>
+  <line x1="170" y1="138" x2="170" y2="160" stroke="#3B82F6" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Step 2 LLM -->
+  <rect x="60" y="164" width="220" height="58" rx="10" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="170" y="188" text-anchor="middle" font-size="13" font-weight="600" fill="#5B21B6">2. LLM 추론</text>
+  <text x="170" y="208" text-anchor="middle" font-size="11" fill="#7C3AED">도구 필요 여부 판단</text>
+  <line x1="170" y1="226" x2="170" y2="248" stroke="#3B82F6" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Step 3 AIMessage tool_calls -->
+  <rect x="60" y="252" width="220" height="68" rx="10" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="170" y="276" text-anchor="middle" font-size="13" font-weight="600" fill="#92400E">3. AIMessage (tool_calls)</text>
+  <text x="170" y="296" text-anchor="middle" font-size="11" fill="#B45309">도구 호출 계획 생성</text>
+  <text x="170" y="314" text-anchor="middle" font-size="10" fill="#9CA3AF">content='' / tool_calls=[{name:'get_weather'...}]</text>
+  <line x1="170" y1="324" x2="170" y2="346" stroke="#3B82F6" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Step 4 ToolMessage -->
+  <rect x="60" y="350" width="220" height="68" rx="10" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.5"/>
+  <text x="170" y="374" text-anchor="middle" font-size="13" font-weight="600" fill="#0F766E">4. ToolMessage</text>
+  <text x="170" y="394" text-anchor="middle" font-size="11" fill="#0D9488">실제 파이썬 함수 실행 결과</text>
+  <text x="170" y="412" text-anchor="middle" font-size="10" fill="#9CA3AF">"서울, 맑고 영하 2도"</text>
+
+  <!-- L-arrow to Step 5 -->
+  <path d="M170 422 L170 490 L545 490 L545 440" fill="none" stroke="#3B82F6" stroke-width="1.5" marker-end="url(#arr)" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="355" y="510" text-anchor="middle" font-size="10" fill="#6B7280">ToolMessage 결과 후 최종 답변 생성</text>
+
+  <!-- Step 5 Final AIMessage -->
+  <rect x="435" y="370" width="220" height="68" rx="10" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="545" y="394" text-anchor="middle" font-size="13" font-weight="600" fill="#15803D">5. AIMessage (최종)</text>
+  <text x="545" y="414" text-anchor="middle" font-size="11" fill="#16A34A">자연어 최종 답변 생성</text>
+  <text x="545" y="432" text-anchor="middle" font-size="10" fill="#9CA3AF">"현재 서울은 맑고 영하 2도예요"</text>
+
+  <!-- Right explanation box -->
+  <rect x="410" y="50" width="280" height="296" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="550" y="74" text-anchor="middle" font-size="13" font-weight="600" fill="#374151">messages 리스트 구조</text>
+
+  <rect x="424" y="86" width="252" height="46" rx="6" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="438" y="104" font-size="11" font-weight="600" fill="#1D4ED8">1. HumanMessage</text>
+  <text x="438" y="122" font-size="10" fill="#3B82F6">사용자 질문</text>
+
+  <rect x="424" y="140" width="252" height="46" rx="6" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1"/>
+  <text x="438" y="158" font-size="11" font-weight="600" fill="#92400E">2. AIMessage (tool_calls)</text>
+  <text x="438" y="176" font-size="10" fill="#B45309">도구 호출 계획 (content 비어 있음)</text>
+
+  <rect x="424" y="194" width="252" height="46" rx="6" fill="#F0FDFA" stroke="#99F6E4" stroke-width="1"/>
+  <text x="438" y="212" font-size="11" font-weight="600" fill="#0F766E">3. ToolMessage</text>
+  <text x="438" y="230" font-size="10" fill="#0D9488">도구 실행 결과값</text>
+
+  <rect x="424" y="248" width="252" height="46" rx="6" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="438" y="266" font-size="11" font-weight="600" fill="#15803D">4. AIMessage (최종)</text>
+  <text x="438" y="284" font-size="10" fill="#16A34A">최종 자연어 답변</text>
+
+  <rect x="410" y="356" width="280" height="44" rx="8" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="1.5"/>
+  <text x="550" y="374" text-anchor="middle" font-size="11" font-weight="600" fill="#0369A1">result["messages"][-1].content</text>
+  <text x="550" y="392" text-anchor="middle" font-size="10" fill="#0284C7">마지막 메시지 = 최종 답변</text>
+</svg>

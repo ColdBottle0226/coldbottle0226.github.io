@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <rect width="720" height="400" fill="#F9FAFB" rx="12"/>
+  <text x="360" y="34" text-anchor="middle" font-size="15" font-weight="600" fill="#111827">response = agent.invoke({...}) 구조</text>
+
+  <!-- Outer response box -->
+  <rect x="36" y="52" width="648" height="322" rx="12" fill="white" stroke="#E5E7EB" stroke-width="1.5"/>
+  <text x="72" y="76" font-size="12" fill="#9CA3AF">response</text>
+
+  <!-- messages key -->
+  <rect x="52" y="86" width="286" height="264" rx="10" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1.2"/>
+  <text x="195" y="110" text-anchor="middle" font-size="13" font-weight="600" fill="#374151">"messages"</text>
+  <text x="195" y="128" text-anchor="middle" font-size="10" fill="#6B7280">에이전트의 사고/행동 과정</text>
+
+  <rect x="66" y="140" width="258" height="32" rx="6" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="195" y="160" text-anchor="middle" font-size="10" fill="#1D4ED8">HumanMessage(content="이메일 분석해줘")</text>
+
+  <rect x="66" y="180" width="258" height="32" rx="6" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1"/>
+  <text x="195" y="200" text-anchor="middle" font-size="10" fill="#92400E">AIMessage(tool_calls=[read_email...])</text>
+
+  <rect x="66" y="220" width="258" height="32" rx="6" fill="#F0FDFA" stroke="#99F6E4" stroke-width="1"/>
+  <text x="195" y="240" text-anchor="middle" font-size="10" fill="#0F766E">ToolMessage(content="이메일 조회 완료")</text>
+
+  <rect x="66" y="260" width="258" height="32" rx="6" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+  <text x="195" y="280" text-anchor="middle" font-size="10" fill="#5B21B6">AIMessage(content="[분석 처리 중...]")</text>
+
+  <rect x="66" y="306" width="258" height="32" rx="6" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="195" y="326" text-anchor="middle" font-size="10" fill="#9CA3AF">사고 과정 로그 (직접 파싱 불필요)</text>
+
+  <!-- VS divider -->
+  <line x1="350" y1="86" x2="350" y2="350" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="5 3"/>
+  <text x="350" y="228" text-anchor="middle" font-size="14" font-weight="600" fill="#D1D5DB">vs</text>
+
+  <!-- structured_response key -->
+  <rect x="362" y="86" width="306" height="264" rx="10" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1.2"/>
+  <text x="515" y="110" text-anchor="middle" font-size="13" font-weight="600" fill="#374151">"structured_response"</text>
+  <text x="515" y="128" text-anchor="middle" font-size="10" fill="#6B7280">최종 산출물 (Pydantic 객체)</text>
+
+  <rect x="376" y="140" width="278" height="128" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="515" y="162" text-anchor="middle" font-size="12" font-weight="600" fill="#5B21B6">EmailAnalysis</text>
+  <text x="390" y="184" font-size="10" fill="#7C3AED">intent = 'complaint'</text>
+  <text x="390" y="202" font-size="10" fill="#7C3AED">sentiment = 'negative'</text>
+  <text x="390" y="220" font-size="10" fill="#7C3AED">summary = '파손 제품 환불 요청'</text>
+  <text x="390" y="238" font-size="10" fill="#7C3AED">next_action = 'CS 1팀 배정'</text>
+  <text x="390" y="256" font-size="10" fill="#6B7280">model_dump() -&gt; dict 변환 가능</text>
+
+  <rect x="376" y="284" width="278" height="56" rx="8" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="1.5"/>
+  <text x="515" y="306" text-anchor="middle" font-size="11" font-weight="600" fill="#0369A1">response["structured_response"]</text>
+  <text x="515" y="324" text-anchor="middle" font-size="10" fill="#0284C7">Pydantic 객체로 즉시 접근 가능</text>
+  <text x="515" y="340" text-anchor="middle" font-size="10" fill="#0284C7">.model_dump() 로 JSON 변환</text>
+</svg>

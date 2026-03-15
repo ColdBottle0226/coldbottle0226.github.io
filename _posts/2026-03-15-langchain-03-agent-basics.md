@@ -1,7 +1,7 @@
 ---
 title: "AI 에이전트는 이렇게 만든다 - LangChain 03장 에이전트 개발 기초"
 date: 2026-03-15 14:00:00 +0900
-categories: [LangChain]
+categories: [AI, LangChain]
 tags: [LangChain, Agent, Tool, Memory, Middleware, StructuredOutput, Python, OpenAI]
 ---
 
@@ -47,7 +47,6 @@ Tool은 이 치명적인 약점을 완벽하게 보완한다. 모델이 스스�
 이렇게 정교하게 작성한 함수에 `@tool` 데코레이터를 달면, 단순한 함수를 넘어 LLM과 실행기(런타임) 사이의 명확한 계약서가 완성된다.
 
 ```python
-# 대표 코드
 from langchain.tools import tool
 
 @tool
@@ -93,8 +92,6 @@ result = agent.invoke({
         {"role": "user", "content": "서울 날씨 어때요?"}
     ]
 })
-
-# 결과 확인: 응답 메시지 리스트 중 가장 마지막(최신) 메시지의 내용 출력
 print(result["messages"][-1].content)
 ```
 
@@ -106,9 +103,7 @@ print(result["messages"][-1].content)
 
 에이전트를 실행하고 나면 결과값 안에 `messages` 리스트가 담겨 온다. 이 리스트는 단순한 대화 기록이 아니라 에이전트의 행동이 낱낱이 기록된 실행 로그다.
 
-```python
-print(result)
-```
+![에이전트 실행 흐름](/assets/images/langchain-03/agent_execution_flow.svg)
 
 ```python
 {
@@ -190,7 +185,7 @@ print(result)
     ToolMessage(content='111', name='add'),
 
     # 최종 응답
-    AIMessage(content='정답은 111입니다. \n설명: 3 * 23 = 69를 먼저 계산한 뒤, 42를 더해 111이 되었습니다.')
+    AIMessage(content='정답은 111입니다. 3 * 23 = 69를 먼저 계산한 뒤, 42를 더해 111이 되었습니다.')
   ]
 }
 ```
@@ -232,10 +227,10 @@ def fetch_aladin_bestseller_top10() -> Union[List[Dict[str, Any]], str]:
         resp = requests.get(url, params=params, timeout=10)
         resp.raise_for_status()
         data = resp.json()
-        # 모델이 핵심 정보에만 집중할 수 있도록, 전체 응답 중 도서 목록 10개만 슬라이싱하여 반환 (토큰 다이어트)
+        # 토큰 다이어트: 전체 응답 중 도서 목록 10개만 슬라이싱하여 반환
         return data.get("item", [])[:10]
     except Exception as e:
-        # 에러가 발생해도 프로그램이 종료되지 않고, 모델에게 실패 원인을 텍스트로 알려줌 (우아한 실패)
+        # 우아한 실패: 에러를 텍스트로 반환
         return f"API 호출 중 오류가 발생하여 베스트셀러 정보를 가져오지 못했습니다. 원인: {str(e)}"
 ```
 
@@ -250,8 +245,8 @@ print(response["messages"][-1].content)
 ```
 다음은 현재 알라딘 베스트셀러 Top 10(2025-11-05 기준) 목록입니다.
 1) 요츠바랑! 16 — 아즈마 키요히코
-2) 트렌드 코리아 2026 - 2026 대한민국 소비트렌드 전망 — 김난도 외
-3) 멜론은 어쩌다 (이옥토 멜론 책갈피 에디션) — 아밀
+2) 트렌드 코리아 2026 — 김난도 외
+3) 멜론은 어쩌다 — 아밀
 ```
 
 ---
@@ -282,6 +277,10 @@ print(response["messages"][-1].content)
 
 - 같은 thread_id → "아, 아까 그 사람이구나!" 기존 대화 맥락을 이어서 답변
 - 다른 thread_id → "처음 뵙겠습니다!" 완전히 새로운 대화 시작
+
+아래 다이어그램은 thread_id를 열쇠 삼아 이전 대화 상태를 불러오고, 모델과 도구를 실행한 뒤, 새롭게 추가된 답변까지 포함하여 다시 체크포인터에 덮어쓰는 과정을 보여준다.
+
+![checkpointer + thread_id 메모리 구조](/assets/images/langchain-03/checkpointer_thread_memory.svg)
 
 ### 📌 실습: 메모리 지원 기초 에이전트 구현
 
@@ -423,6 +422,8 @@ agent = create_agent(
 
 미들웨어(Middleware)는 이러한 불안정성을 해소하기 위해 존재한다. 에이전트의 실행 흐름 중간에 개입하여 다양한 통제 정책과 검증 로직을 주입하는 핵심 레이어다.
 
+![미들웨어 레이어 구조](/assets/images/langchain-03/middleware_layer.svg)
+
 사용법은 아주 직관적이다. `create_agent()` 에 원하는 미들웨어 객체들을 `middleware=[...]` 리스트 형태로 적어주면 된다.
 
 ```python
@@ -474,24 +475,6 @@ agent = create_agent(
         TodoListMiddleware(),
     ],
 )
-
-result = agent.invoke({
-    "messages": [{
-        "role": "user",
-        "content": "온 메일 다 확인한 뒤 요약해 보고해. 그 다음 답장 작성해 회신 보내줘. 마지막으로 어떻게 보냈는지 보고해.",
-    }]
-})
-```
-
-```
-1) 읽은 메일 요약 (최근 3통)
-- 박민수 <minspark@example.com> - 제목: 팀 회의 안건 공유드립니다
-
-2) 답장 초안 작성 및 발송 내용
-- 발신자 1: minspark@example.com - 회의 시작 시 주요 안건과 예상 소요 시간을 미리 공유해 달라.
-
-3) 실제 발송 로그 요약
-- minspark@example.com - MSG-20251106-ABC123, delivery_status: delivered.
 ```
 
 ### 📌 3) HumanInTheLoopMiddleware: 사람의 승인 요청
@@ -565,7 +548,7 @@ print(response["messages"][-1].content)
 | strategy | 처리 방식 | 적합한 상황 |
 | --- | --- | --- |
 | redact | [REDACTED_EMAIL]처럼 완전히 가림 | 가장 안전 |
-| mask | ****-****-****-4321처럼 마지막 일부만 남김 | 고객 응대 시 유용 |
+| mask | `****-****-****-4321`처럼 마지막 일부만 남김 | 고객 응대 시 유용 |
 | hash | 일관된 해시값으로 변환 | 식별자는 유지하되 원본 가림 |
 | block | 민감 정보 감지 시 에이전트 실행 중단 | API 키 등 절대 유출 불가 정보 |
 
@@ -596,8 +579,6 @@ print(response["messages"][0].content)
 사용자의 프롬프트가 외부 LLM 서버로 날아가기 직전에 미들웨어가 먼저 문장을 가로채어 필터링한다.
 
 **커스텀 PII 규칙 만들기 (정규식/함수 활용)**
-
-주민등록번호, 휴대폰 번호처럼 내장 기능만으로 커버되지 않는 포맷은 `detector` 파라미터에 정규표현식이나 커스텀 파이썬 함수를 넘겨주면 된다.
 
 ```python
 # 예시 1: 정규식을 이용한 휴대폰 번호 마스킹
@@ -748,24 +729,9 @@ EmailAnalysis(
 )
 ```
 
-`response_format`을 적용했을 때 반환되는 `response` 딕셔너리의 구조는 두 가지 키로 나뉜다.
+`response_format`을 적용했을 때 반환되는 `response` 딕셔너리는 두 가지 키로 나뉜다.
 
-```python
-{
-  "messages": [
-    HumanMessage(content="최근 온 메일을 읽고..."),
-    AIMessage(tool_calls=[...]),
-    ToolMessage(content="✅ 이메일이 성공적으로 조회되었습니다."),
-    # ... 에이전트가 도구를 고민하고 실행한 '과정' ...
-  ],
-  "structured_response": EmailAnalysis(
-      intent='complaint',
-      sentiment='negative',
-      summary='...',
-      next_action='...'
-  )
-}
-```
+![구조화된 출력 response 구조](/assets/images/langchain-03/structured_output_response.svg)
 
 - `response["messages"]`: 에이전트의 사고 및 행동 과정이 순서대로 기록
 - `response["structured_response"]`: 우리가 지시한 스키마 규격에 맞춰 뽑아낸 최종 산출물(Pydantic 객체)

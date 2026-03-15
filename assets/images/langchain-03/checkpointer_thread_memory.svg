@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="720" height="480" fill="#F9FAFB" rx="12"/>
+  <text x="360" y="34" text-anchor="middle" font-size="15" font-weight="600" fill="#111827">checkpointer + thread_id 메모리 구조</text>
+
+  <!-- User -->
+  <rect x="36" y="68" width="110" height="48" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="91" y="90" text-anchor="middle" font-size="13" font-weight="600" fill="#1D4ED8">사용자</text>
+  <text x="91" y="108" text-anchor="middle" font-size="10" fill="#3B82F6">질문 전송</text>
+
+  <!-- Arrow user to agent -->
+  <line x1="148" y1="92" x2="222" y2="92" stroke="#3B82F6" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="184" y="84" text-anchor="middle" font-size="10" fill="#6B7280">thread_id="1"</text>
+
+  <!-- Agent -->
+  <rect x="226" y="58" width="160" height="68" rx="10" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="306" y="84" text-anchor="middle" font-size="13" font-weight="600" fill="#5B21B6">Agent</text>
+  <text x="306" y="104" text-anchor="middle" font-size="11" fill="#7C3AED">model + tools</text>
+
+  <!-- Agent to Checkpointer -->
+  <line x1="388" y1="86" x2="462" y2="86" stroke="#3B82F6" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="425" y="78" text-anchor="middle" font-size="10" fill="#6B7280">상태 조회</text>
+
+  <!-- Checkpointer -->
+  <rect x="466" y="52" width="148" height="80" rx="10" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="540" y="84" text-anchor="middle" font-size="13" font-weight="600" fill="#92400E">Checkpointer</text>
+  <text x="540" y="104" text-anchor="middle" font-size="11" fill="#B45309">메모리 저장소</text>
+
+  <!-- Checkpointer back to Agent (dashed) -->
+  <line x1="466" y1="114" x2="388" y2="114" stroke="#9CA3AF" stroke-width="1.5" marker-end="url(#arrD)" stroke-dasharray="4 3"/>
+  <text x="427" y="132" text-anchor="middle" font-size="10" fill="#9CA3AF">과거 messages 복원</text>
+
+  <!-- Agent save state (dashed) -->
+  <path d="M388 100 Q427 148 466 126" fill="none" stroke="#9CA3AF" stroke-width="1.2" marker-end="url(#arrD)" stroke-dasharray="4 3"/>
+  <text x="427" y="158" text-anchor="middle" font-size="10" fill="#9CA3AF">새 상태 저장</text>
+
+  <!-- Agent to User response -->
+  <line x1="224" y1="108" x2="148" y2="108" stroke="#3B82F6" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="186" y="124" text-anchor="middle" font-size="10" fill="#6B7280">응답</text>
+
+  <!-- Divider -->
+  <line x1="36" y1="178" x2="684" y2="178" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="5 3"/>
+  <text x="360" y="198" text-anchor="middle" font-size="11" fill="#6B7280">같은 thread_id → 대화 이어가기 / 다른 thread_id → 새 대화 시작</text>
+
+  <!-- Thread 1 box -->
+  <rect x="36" y="210" width="298" height="196" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1.5"/>
+  <text x="185" y="234" text-anchor="middle" font-size="13" font-weight="600" fill="#374151">서랍 #1 (thread_id="1")</text>
+
+  <rect x="52" y="248" width="266" height="34" rx="6" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="185" y="270" text-anchor="middle" font-size="10" fill="#1D4ED8">[human] 안녕하세요! 저는 Jay입니다.</text>
+
+  <rect x="52" y="290" width="266" height="34" rx="6" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+  <text x="185" y="312" text-anchor="middle" font-size="10" fill="#5B21B6">[ai] 안녕하세요 Jay님! 반갑습니다.</text>
+
+  <rect x="52" y="332" width="266" height="34" rx="6" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1"/>
+  <text x="185" y="354" text-anchor="middle" font-size="10" font-weight="600" fill="#1E40AF">[human] 제 이름이 뭐였죠? (현재 질문)</text>
+
+  <rect x="52" y="374" width="266" height="26" rx="6" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="185" y="391" text-anchor="middle" font-size="10" fill="#15803D">[ai] Bloom AI의 Jay라고 알려주셨습니다.</text>
+
+  <!-- Thread 2 box -->
+  <rect x="386" y="210" width="298" height="196" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1.5"/>
+  <text x="535" y="234" text-anchor="middle" font-size="13" font-weight="600" fill="#374151">서랍 #2 (thread_id="2")</text>
+
+  <rect x="402" y="248" width="266" height="60" rx="6" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="535" y="276" text-anchor="middle" font-size="11" fill="#9CA3AF">(비어 있음)</text>
+  <text x="535" y="298" text-anchor="middle" font-size="10" fill="#9CA3AF">새 세션 시작</text>
+
+  <rect x="402" y="318" width="266" height="76" rx="6" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1"/>
+  <text x="535" y="340" text-anchor="middle" font-size="11" font-weight="600" fill="#C2410C">InMemorySaver 한계</text>
+  <text x="535" y="358" text-anchor="middle" font-size="10" fill="#EA580C">서버 재시작 시 모든 기억 초기화</text>
+  <text x="535" y="374" text-anchor="middle" font-size="10" fill="#EA580C">Scale-out 시 서버 간 공유 불가</text>
+  <text x="535" y="392" text-anchor="middle" font-size="10" font-weight="600" fill="#92400E">프로덕션: PostgresSaver 사용</text>
+</svg>
