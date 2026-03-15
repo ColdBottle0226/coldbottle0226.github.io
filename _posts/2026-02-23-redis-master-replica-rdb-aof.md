@@ -1,8 +1,8 @@
 ---
-title: 주니어 개발자를 위한 이커머스 MSA 프로젝트 시작하기 - 3편. Redis Master-Replica 구성과 RDB/AOF 완벽 이해
-date: 2026-02-23 17:08:00 +0900
+title: Redis Master-Replica 구성과 RDB/AOF
+date: 2026-03-15 17:08:00 +0900
 categories: [Redis, Basic]
-tags: [redis, master-replica, rdb, aof, 캐시, 주니어개발자]
+tags: [redis, master-replica, rdb, aof, 캐시]
 ---
 
 ## Redis란 무엇인가
