@@ -25,22 +25,7 @@ NestJS를 처음 배울 때 가장 먼저 만나는 개념이 Controller, Provid
 
 ### 📌 모듈 구조 한눈에 보기
 
-```mermaid
-flowchart LR
-    REQ([요청]) --> MW
-
-    MW["Middleware\nroute handler 이전 실행"]
-
-    MW --> CTL
-
-    subgraph MOD["@Module()"]
-        CTL["Controller\n@Get · @Post · 라우팅"]
-        PVD["Provider\n@Injectable · 비즈니스 로직"]
-        CTL -- "DI 주입" --> PVD
-    end
-
-    PVD --> RES([응답])
-```
+![NestJS 모듈 구조](/assets/images/nestjs-core-concepts/nestjs-module-structure.svg)
 
 ---
 
@@ -429,23 +414,7 @@ export class AppModule implements NestModule {
 
 ---
 
-```mermaid
-flowchart TD
-    C([Client HTTP 요청])
-    C --> MW
-
-    MW["Middleware\nroute handler 이전 실행 · next 필수"]
-
-    MW --> MOD
-
-    subgraph MOD["Module 범위"]
-        CTL["Controller\n라우팅 · HTTP 요청/응답"]
-        PVD["Provider - Service\n비즈니스 로직 · DI 자동 주입"]
-        CTL --> PVD
-    end
-
-    PVD --> RES([Response 반환])
-```
+![NestJS 요청 처리 흐름](/assets/images/nestjs-core-concepts/nestjs-request-lifecycle.svg)
 
 - Controller는 HTTP 요청을 받아 라우팅하고, 실제 로직은 Provider에 위임한다.
 - Provider는 `@Injectable()`로 등록되며, DI를 통해 자동으로 주입된다. 기본 싱글톤.
