@@ -1,7 +1,7 @@
 ---
-title: "NestJS 핵심 개념 정리 - Controller, Provider, Module, Middleware"
+title: "NestJS 개념 정리 - Controller, Provider, Module, Middleware"
 date: 2026-03-17 22:00:00 +0900
-categories: [NestJS, Backend]
+categories: [NestJS, Basic]
 tags: [NestJS, TypeScript, Controller, Provider, Module, Middleware, DI, IoC]
 ---
 
