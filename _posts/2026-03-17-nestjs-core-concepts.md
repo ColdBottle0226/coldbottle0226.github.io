@@ -1,7 +1,7 @@
 ---
-title: "NestJS 핵심 개념 정리 - Controller, Provider, Module, Middleware"
-date: 2026-03-17 22:00:00 +0900
-categories: [NestJS, Backend]
+title: "NestJS 개념 정리 - Controller, Provider, Module, Middleware"
+date: 2026-03-17 09:00:00 +0900
+categories: [NestJS, Basic]
 tags: [NestJS, TypeScript, Controller, Provider, Module, Middleware, DI, IoC]
 ---
 
@@ -25,32 +25,22 @@ NestJS를 처음 배울 때 가장 먼저 만나는 개념이 Controller, Provid
 
 ### 📌 모듈 구조 한눈에 보기
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 180" width="100%" style="max-width:820px;display:block;margin:1rem 0">
-  <defs>
-    <marker id="arr-struct" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M2 1L8 5L2 9" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </marker>
-  </defs>
-  <rect width="820" height="180" fill="#ffffff" rx="12"/>
-  <text x="14" y="97" font-size="13" fill="#6b7280" font-weight="500">요청</text>
-  <line x1="44" y1="94" x2="70" y2="94" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-struct)"/>
-  <rect x="74" y="62" width="186" height="64" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="167" y="86" text-anchor="middle" font-size="14" font-weight="600" fill="#b45309">Middleware</text>
-  <text x="167" y="106" text-anchor="middle" font-size="11" fill="#92400e">route handler 이전 실행</text>
-  <line x1="260" y1="94" x2="292" y2="94" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-struct)"/>
-  <rect x="296" y="20" width="456" height="144" rx="12" fill="#f8faff" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="8 4"/>
-  <text x="314" y="40" font-size="11" fill="#6366f1" font-weight="600">@Module()</text>
-  <rect x="316" y="52" width="188" height="68" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="410" y="79" text-anchor="middle" font-size="14" font-weight="600" fill="#1d4ed8">Controller</text>
-  <text x="410" y="100" text-anchor="middle" font-size="11" fill="#1e40af">@Get · @Post · 라우팅</text>
-  <text x="511" y="79" text-anchor="middle" font-size="10" fill="#6b7280">DI 주입</text>
-  <line x1="504" y1="86" x2="530" y2="86" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-struct)"/>
-  <rect x="534" y="52" width="190" height="68" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-  <text x="629" y="79" text-anchor="middle" font-size="14" font-weight="600" fill="#065f46">Provider</text>
-  <text x="629" y="100" text-anchor="middle" font-size="11" fill="#064e3b">@Injectable · 비즈니스 로직</text>
-  <line x1="752" y1="94" x2="780" y2="94" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-struct)"/>
-  <text x="786" y="97" font-size="13" fill="#6b7280" font-weight="500">응답</text>
-</svg>
+```mermaid
+flowchart LR
+    REQ([요청]) --> MW
+
+    MW["Middleware\nroute handler 이전 실행"]
+
+    MW --> CTL
+
+    subgraph MOD["@Module()"]
+        CTL["Controller\n@Get · @Post · 라우팅"]
+        PVD["Provider\n@Injectable · 비즈니스 로직"]
+        CTL -- "DI 주입" --> PVD
+    end
+
+    PVD --> RES([응답])
+```
 
 ---
 
@@ -439,45 +429,23 @@ export class AppModule implements NestModule {
 
 ---
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 480" width="100%" style="max-width:820px;display:block;margin:1rem 0">
-  <defs>
-    <marker id="arr-lifecycle" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M2 1L8 5L2 9" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </marker>
-  </defs>
-  <rect width="820" height="480" fill="#ffffff" rx="12"/>
-  <rect x="250" y="18" width="200" height="44" rx="22" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.5"/>
-  <text x="350" y="45" text-anchor="middle" font-size="14" font-weight="600" fill="#374151">Client (HTTP 요청)</text>
-  <line x1="350" y1="62" x2="350" y2="88" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-lifecycle)"/>
-  <rect x="200" y="92" width="300" height="68" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="350" y="118" text-anchor="middle" font-size="14" font-weight="600" fill="#b45309">Middleware</text>
-  <text x="350" y="138" text-anchor="middle" font-size="11" fill="#92400e">route handler 이전 실행 · next() 필수</text>
-  <line x1="500" y1="116" x2="528" y2="116" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="534" y="109" font-size="11" fill="#9ca3af">임의 코드 실행</text>
-  <text x="534" y="123" font-size="11" fill="#9ca3af">req · res 객체 변경</text>
-  <text x="534" y="137" font-size="11" fill="#9ca3af">next() 반드시 호출</text>
-  <line x1="350" y1="160" x2="350" y2="188" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-lifecycle)"/>
-  <rect x="140" y="192" width="420" height="216" rx="12" fill="#f8faff" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="8 4"/>
-  <text x="158" y="212" font-size="11" fill="#6366f1" font-weight="600">Module 범위</text>
-  <rect x="200" y="220" width="300" height="68" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="350" y="246" text-anchor="middle" font-size="14" font-weight="600" fill="#1d4ed8">Controller</text>
-  <text x="350" y="266" text-anchor="middle" font-size="11" fill="#1e40af">라우팅 · HTTP 요청/응답</text>
-  <line x1="500" y1="244" x2="528" y2="244" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="534" y="237" font-size="11" fill="#9ca3af">@Get, @Post 등 매핑</text>
-  <text x="534" y="251" font-size="11" fill="#9ca3af">DTO로 요청 파싱</text>
-  <text x="534" y="265" font-size="11" fill="#9ca3af">Provider에 위임</text>
-  <line x1="350" y1="288" x2="350" y2="316" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-lifecycle)"/>
-  <rect x="200" y="320" width="300" height="68" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-  <text x="350" y="346" text-anchor="middle" font-size="14" font-weight="600" fill="#065f46">Provider (Service)</text>
-  <text x="350" y="366" text-anchor="middle" font-size="11" fill="#064e3b">비즈니스 로직 · DI 자동 주입</text>
-  <line x1="500" y1="344" x2="528" y2="344" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="534" y="337" font-size="11" fill="#9ca3af">@Injectable() 클래스</text>
-  <text x="534" y="351" font-size="11" fill="#9ca3af">constructor DI</text>
-  <text x="534" y="365" font-size="11" fill="#9ca3af">싱글톤으로 관리</text>
-  <line x1="350" y1="408" x2="350" y2="434" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr-lifecycle)"/>
-  <rect x="250" y="438" width="200" height="44" rx="22" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.5"/>
-  <text x="350" y="465" text-anchor="middle" font-size="14" font-weight="600" fill="#374151">Response 반환</text>
-</svg>
+```mermaid
+flowchart TD
+    C([Client HTTP 요청])
+    C --> MW
+
+    MW["Middleware\nroute handler 이전 실행 · next 필수"]
+
+    MW --> MOD
+
+    subgraph MOD["Module 범위"]
+        CTL["Controller\n라우팅 · HTTP 요청/응답"]
+        PVD["Provider - Service\n비즈니스 로직 · DI 자동 주입"]
+        CTL --> PVD
+    end
+
+    PVD --> RES([Response 반환])
+```
 
 - Controller는 HTTP 요청을 받아 라우팅하고, 실제 로직은 Provider에 위임한다.
 - Provider는 `@Injectable()`로 등록되며, DI를 통해 자동으로 주입된다. 기본 싱글톤.
