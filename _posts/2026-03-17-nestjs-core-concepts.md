@@ -1,8 +1,8 @@
 ---
 title: "NestJS 핵심 개념 정리 - Controller, Provider, Module, Middleware"
 date: 2026-03-17 22:00:00 +0900
-categories: [NestJS, Basic]
-tags: [NestJS, Controller, Provider, Module, Middleware, DI, IoC]
+categories: [NestJS, Backend]
+tags: [NestJS, TypeScript, Controller, Provider, Module, Middleware, DI, IoC]
 ---
 
 ## 📗 1. 개요
@@ -22,6 +22,10 @@ NestJS를 처음 배울 때 가장 먼저 만나는 개념이 Controller, Provid
 
 > 💡 요청이 들어오면 `Middleware → Controller → Provider` 순서로 처리된다.
 > Module은 이 전체를 조직하는 컨테이너다.
+
+### 📌 모듈 구조 한눈에 보기
+
+![NestJS 모듈 구조](/assets/images/nestjs-core-concepts/nestjs-module-structure.svg)
 
 ---
 
@@ -409,6 +413,8 @@ export class AppModule implements NestModule {
 ## 📗 6. 정리
 
 ---
+
+![NestJS 요청 처리 흐름](/assets/images/nestjs-core-concepts/nestjs-request-lifecycle.svg)
 
 - Controller는 HTTP 요청을 받아 라우팅하고, 실제 로직은 Provider에 위임한다.
 - Provider는 `@Injectable()`로 등록되며, DI를 통해 자동으로 주입된다. 기본 싱글톤.
