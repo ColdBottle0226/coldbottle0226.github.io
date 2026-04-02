@@ -388,5 +388,5 @@ public class JpaStudyApplication {
 
 - 공식문서 - Spring Initializr: <https://start.spring.io>
 - 공식문서 - Spring Data JPA: <https://docs.spring.io/spring-data/jpa/docs/current/reference/html/>
-- 공식문서 - QueryDSL: <http://querydsl.com/static/querydsl/5.0.0/reference/html_single/>
+- 공식문서 - QueryDSL: <https://querydsl.com/static/querydsl/5.0.0/reference/html_single/>
 - 공식문서 - Hibernate 6 Migration Guide: <https://docs.jboss.org/hibernate/orm/6.0/migration-guide/migration-guide.html>
