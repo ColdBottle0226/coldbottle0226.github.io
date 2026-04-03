@@ -1,7 +1,7 @@
 ---
 title: "Nuxt3 특정 IP 대역만 접근 허용하기 - Plugin, Middleware, Spring Boot 연동"
 date: 2026-03-15 00:00:00 +0900
-categories: [Nuxt3, 활용]
+categories: [Nuxt3]
 tags: [Nuxt3,Middleware, Plugin, IP, 접근제어]
 ---
 

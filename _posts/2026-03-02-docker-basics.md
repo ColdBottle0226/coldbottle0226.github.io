@@ -1,7 +1,7 @@
 ---
 title: Docker 기초 — VM과의 차이부터 Compose까지
 date: 2026-03-02 00:00:00 +0900
-categories: [Docker, Infra]
+categories: [Docker]
 tags: [Docker, DockerCompose, Dockerfile, MSA, 인프라]
 ---
 

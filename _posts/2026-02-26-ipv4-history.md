@@ -1,7 +1,7 @@
 ---
 title: "왜 사설 IP와 NAT가 필요해졌나 - IPv4 부족의 역사와 기업 네트워크 설계 실전"
 date: 2026-02-26 01:00:00 +0900
-categories: [Network, Basics]
+categories: [Network]
 tags: [network, ip, ipv4, nat, cidr, 사설ip, 공인ip, 기업네트워크, 서브넷팅, ipv4소진]
 ---
 

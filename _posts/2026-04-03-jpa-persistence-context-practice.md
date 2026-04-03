@@ -1,7 +1,7 @@
 ---
-title: 영속성 컨텍스트 실습 — 도서 대출 시스템
+title: 2. 영속성 컨텍스트 실습 — 도서 대출 시스템
 date: 2026-04-03 10:00:00 +0900
-categories: [JPA, 영속성 컨텍스트]
+categories: [JPA, 실습]
 tags: [JPA, 영속성 컨텍스트, 실습, 더티체킹, 1차캐시, 쓰기지연, OSIV, EntityManager]
 ---
 

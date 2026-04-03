@@ -1,7 +1,7 @@
 ---
 title: SwiftUI 핵심 UI - 레이아웃 컨테이너와 상태 관리
 date: 2026-03-19 01:00:00 +0900
-categories: [Swift, SwiftUI]
+categories: [Swift]
 tags: [Swift, Basic]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "네트워크 기초 다지기 - IP 주소, 서브넷마스크, CIDR, 공인/사설 IP 한 번에 정리"
 date: 2026-02-26 00:00:00 +0900
-categories: [Network, Basics]
+categories: [Network]
 tags: [network, ip, subnet, cidr, 사설ip, 공인ip, 서브넷마스크, 네트워크기초]
 ---
 
