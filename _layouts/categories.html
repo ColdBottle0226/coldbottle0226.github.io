@@ -36,6 +36,20 @@ layout: page
 
     {% assign sub_categories = sub_categories | sort %}
     {% assign sub_categories_size = sub_categories | size %}
+
+    {% assign ordered_top = '' | split: '' %}
+    {% assign unordered_top = '' | split: '' %}
+    {% for p in top_posts %}
+      {% if p.order != nil %}
+        {% assign ordered_top = ordered_top | push: p %}
+      {% else %}
+        {% assign unordered_top = unordered_top | push: p %}
+      {% endif %}
+    {% endfor %}
+    {% assign ordered_top = ordered_top | sort: "order" %}
+    {% assign unordered_top = unordered_top | sort: "date" %}
+    {% assign top_posts = ordered_top | concat: unordered_top %}
+
     {% assign top_posts_size = top_posts | size %}
     {% assign total_items = sub_categories_size | plus: top_posts_size %}
 
@@ -110,6 +124,20 @@ layout: page
                         {% assign sub_posts = sub_posts | push: post %}
                       {% endif %}
                     {% endfor %}
+
+                    {% assign ordered_sub = '' | split: '' %}
+                    {% assign unordered_sub = '' | split: '' %}
+                    {% for p in sub_posts %}
+                      {% if p.order != nil %}
+                        {% assign ordered_sub = ordered_sub | push: p %}
+                      {% else %}
+                        {% assign unordered_sub = unordered_sub | push: p %}
+                      {% endif %}
+                    {% endfor %}
+                    {% assign ordered_sub = ordered_sub | sort: "order" %}
+                    {% assign unordered_sub = unordered_sub | sort: "date" %}
+                    {% assign sub_posts = ordered_sub | concat: unordered_sub %}
+
                     {% assign posts_size = sub_posts | size %}
                     <span class="text-muted small font-weight-light">
                       {{ posts_size }}
