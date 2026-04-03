@@ -1,5 +1,5 @@
 ---
-title: 1. JPA 실습 프로젝트 생성 및 환경 설정
+title: 01. JPA 실습 프로젝트 생성 및 환경 설정
 date: 2026-04-02 09:00:00 +0900
 categories: [JPA, 실습]
 tags: [JPA, 실습 프로젝트 생성 및 환경설정, Spring Boot, Hibernate, QueryDSL, Docker, MySQL, H2]

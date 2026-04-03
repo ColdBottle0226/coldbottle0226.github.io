@@ -1,7 +1,7 @@
 ---
-title: 연관관계 매핑 실습 — 도서 대출 시스템 확장
+title: 03. 연관관계 매핑 실습 — 도서 대출 시스템 확장
 date: 2026-04-03 12:00:00 +0900
-categories: [JPA, 연관관계 매핑]
+categories: [JPA, 실습]
 tags: [JPA, 연관관계 매핑, 실습, ManyToOne, OneToMany, cascade, orphanRemoval, 편의메서드]
 ---
 
