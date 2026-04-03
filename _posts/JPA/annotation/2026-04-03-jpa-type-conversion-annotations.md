@@ -2,6 +2,7 @@
 title: 타입 변환 어노테이션
 date: 2026-04-03 09:20:00 +0900
 categories: [JPA, 엔티티 어노테이션]
+order: 1
 tags: [JPA, 엔티티 어노테이션, Enumerated, Temporal, Lob, Convert, Converter]
 ---
 

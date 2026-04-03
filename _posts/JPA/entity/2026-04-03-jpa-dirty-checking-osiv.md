@@ -2,6 +2,7 @@
 title: 더티 체킹과 OSIV
 date: 2026-04-03 09:00:00 +0900
 categories: [JPA, 영속성 컨텍스트]
+order: 3
 tags: [JPA, 영속성 컨텍스트, 더티체킹, DirtyChecking, OSIV, OpenSessionInView, LazyInitializationException]
 ---
 

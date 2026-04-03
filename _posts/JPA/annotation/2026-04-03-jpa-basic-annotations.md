@@ -2,6 +2,7 @@
 title: 기본 어노테이션
 date: 2026-04-03 09:10:00 +0900
 categories: [JPA, 엔티티 어노테이션]
+order: 0
 tags: [JPA, 엔티티 어노테이션, Entity, Table, Id, GeneratedValue, Column, Transient]
 ---
 

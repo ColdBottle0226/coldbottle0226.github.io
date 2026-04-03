@@ -2,6 +2,7 @@
 title: 상속 매핑과 공통 필드
 date: 2026-04-03 09:40:00 +0900
 categories: [JPA, 엔티티 어노테이션]
+order: 3
 tags: [JPA, 엔티티 어노테이션, Inheritance, MappedSuperclass, DiscriminatorColumn, SingleTable, Joined]
 ---
 

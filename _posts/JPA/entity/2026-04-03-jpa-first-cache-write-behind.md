@@ -2,6 +2,7 @@
 title: 1차 캐시와 쓰기 지연
 date: 2026-04-03 09:00:00 +0900
 categories: [JPA, 영속성 컨텍스트]
+order: 2
 tags: [JPA, 영속성 컨텍스트, 1차캐시, 쓰기지연, flush, JPQL, BatchInsert]
 ---
 

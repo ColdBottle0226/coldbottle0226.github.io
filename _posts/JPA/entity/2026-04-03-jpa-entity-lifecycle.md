@@ -2,6 +2,7 @@
 title: 엔티티 생명주기
 date: 2026-04-03 09:00:00 +0900
 categories: [JPA, 영속성 컨텍스트]
+order: 1
 tags: [JPA, 영속성 컨텍스트, 엔티티생명주기, 비영속, 영속, 준영속, LazyInitializationException]
 ---
 

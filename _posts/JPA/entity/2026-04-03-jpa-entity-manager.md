@@ -2,6 +2,7 @@
 title: EntityManager
 date: 2026-04-03 09:00:00 +0900
 categories: [JPA, 영속성 컨텍스트]
+order: 0
 tags: [JPA, 영속성 컨텍스트, EntityManager, EntityManagerFactory, ThreadLocal, PersistenceContext]
 ---
 

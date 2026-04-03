@@ -2,6 +2,7 @@
 title: 임베디드 타입
 date: 2026-04-03 09:30:00 +0900
 categories: [JPA, 엔티티 어노테이션]
+order: 2
 tags: [JPA, 엔티티 어노테이션, Embeddable, Embedded, AttributeOverride, 값타입]
 ---
 

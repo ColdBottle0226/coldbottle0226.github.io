@@ -2,6 +2,7 @@
 title: Auditing 어노테이션
 date: 2026-04-03 09:50:00 +0900
 categories: [JPA, 엔티티 어노테이션]
+order: 4
 tags: [JPA, 엔티티 어노테이션, Auditing, CreatedDate, LastModifiedDate, CreatedBy, EnableJpaAuditing, AuditorAware]
 ---
 
