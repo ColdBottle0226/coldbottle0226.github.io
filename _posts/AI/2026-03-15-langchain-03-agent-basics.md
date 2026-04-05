@@ -1,7 +1,7 @@
 ---
 title: "AI 에이전트는 이렇게 만든다 - LangChain 03장 에이전트 개발 기초"
 date: 2026-03-15 14:00:00 +0900
-categories: [AI, LangChain]
+categories: [LangChain]
 tags: [LangChain, Agent, Tool, Memory, Middleware, StructuredOutput, Python, OpenAI]
 ---
 
