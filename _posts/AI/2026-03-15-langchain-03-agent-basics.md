@@ -30,6 +30,20 @@ tags: [LangChain, Agent, Tool, Memory, Middleware, StructuredOutput, Python, Ope
 
 에이전트의 진정한 가치는 유창한 언어 구사력이 아닌, 목적을 달성하는 실행력(Action)에 있다. 기존의 챗봇이 그럴듯한 문장을 생성하는 데 그쳤다면, 에이전트는 실제 도구를 호출하여 객관적인 데이터에 기반한 답변을 도출한다.
 
+### 📌 LLM 기반 애플리케이션 vs 에이전트
+
+에이전트를 이해하기 전에 기존 LLM 기반 애플리케이션과의 근본적인 차이를 짚고 넘어가야 한다.
+
+| 구분 | LLM 기반 애플리케이션 | LLM 기반 에이전트 |
+| --- | --- | --- |
+| 파이프라인 설계 주체 | **개발자** (사전에 고정) | **언어 모델** (실행 시 동적 결정) |
+| 동작 방식 | 입력 키워드 → 사전 정의된 분기 → LLM | 입력 → LLM 자체 추론 → 도구 선택 → 결과 종합 |
+| 키워드 누락 시 | 매칭 실패, 처리 불가 | LLM이 문맥으로 추론하여 처리 |
+| 외부 API 호출 | 개발자 코드로 미리 정의된 경우에만 | LLM이 필요하다고 판단할 때 자율 호출 |
+| 대표 예시 | FAQ 챗봇, 텍스트 요약기 | 날씨 에이전트, 베스트셀러 추천 에이전트 |
+
+> 💡 가장 핵심적인 차이는 "누가 흐름을 결정하는가"다. 애플리케이션은 개발자가 미리 작성해 둔 코드가 조건문으로 흐름을 결정한다. 에이전트에서는 언어 모델이 사용자의 의도를 추론해 스스로 다음 행동을 결정한다.
+
 ### 📌 왜 Tool이 필요한가
 
 LLM은 학습이 완료된 시점(Knowledge Cut-off) 과거의 지식만 가지고 있다. 회사 내부 DB나 실시간으로 변하는 주식, 날씨 같은 외부 API 응답은 당연히 알지 못한다. "현재 날씨", "오늘의 베스트셀러" 같은 질문을 받으면 대답을 회피하거나 할루시네이션을 지어낸다.
@@ -615,6 +629,36 @@ api_key_blocker = PIIMiddleware(
 
 > 💡 커스텀 함수를 짤 때는 단순히 일치 여부(True/False)를 반환하는 것이 아니라, `match.start()`, `match.end()`처럼 민감 정보가 위치한 정확한 인덱스 구간을 반환해야 한다. 그래야 미들웨어가 해당 텍스트 부분을 핀포인트로 도려낼 수 있기 때문이다.
 
+### 📌 5) SummarizationMiddleware: 대화가 길어질 때 토큰 자동 절약
+
+다중 턴 에이전트 시스템은 대화가 길어질수록 `messages` 배열이 누적되어 컨텍스트 윈도우 한계에 빠르게 다가간다. GPT-5 기준 128,000 토큰이 한도인데, 도구를 자주 호출하는 에이전트라면 수십 턴만 지나도 한계를 넘길 수 있다.
+
+`SummarizationMiddleware`는 지정한 임계값(토큰 수 또는 메시지 개수)에 도달하면 오래된 대화를 자동으로 요약해 압축한다. 압축된 요약문만 남기고 원본 메시지들을 지워버리는 방식이다.
+
+```python
+from langchain.agents.middleware import SummarizationMiddleware
+
+agent = create_agent(
+    model,
+    tools=[...],
+    checkpointer=InMemorySaver(),  # 메모리 관리와 함께 사용
+    middleware=[
+        SummarizationMiddleware(
+            model=init_chat_model("gpt-5-nano"),  # 요약 전담 경량 모델
+            max_tokens=3000,      # 3,000 토큰 초과 시 요약 트리거
+            keep_last=3,          # 가장 최근 3개 메시지는 원본 유지
+            summary_prompt="핵심 정보(사용자 목적, 도구 실행 결과, 의사결정 근거)를 중심으로 간결하게 요약하라.",
+        )
+    ],
+)
+```
+
+핵심 설정 3가지를 잘 조율하는 것이 중요하다.
+
+- `max_tokens`: 너무 낮으면 잦은 요약으로 문맥이 손실되고, 너무 높으면 효과가 없다. 전체 컨텍스트 윈도우의 30~40% 선을 기준점으로 삼는 것을 권장한다.
+- `keep_last`: 요약 직전 몇 개의 메시지는 원본을 보존할지 결정한다. 직전 대화의 구체적인 맥락이 중요한 경우 3~5개를 권장한다.
+- `summary_prompt`: 기본 요약 품질이 낮다면 이 프롬프트에 "도구 실행 결과와 그 판단 이유를 반드시 포함해라" 같은 지시사항을 명시적으로 추가한다.
+
 ### 📌 그 밖의 Built-in 미들웨어
 
 | 목적 | 미들웨어 | 설명 |
@@ -623,9 +667,22 @@ api_key_blocker = PIIMiddleware(
 | 비용 통제 | ToolCallLimitMiddleware | 특정 도구 실행 횟수 한도 설정 |
 | 안정성 | ModelFallbackMiddleware | 메인 모델 장애 시 대체 모델로 우회 |
 | 안정성 | ToolRetryMiddleware | 도구 실행 실패 시 자동 재시도 |
-| 최적화 | SummarizationMiddleware | 오래된 대화를 자동으로 요약 압축 |
 | 최적화 | LLMToolSelectorMiddleware | 많은 도구 중 현재 질문에 필요한 것만 필터링 |
 | 권한 확장 | FilesystemMiddleware | 에이전트에게 파일 시스템 권한 부여 |
+
+### 📌 미들웨어 선택 가이드
+
+어떤 미들웨어를 조합할지 판단하기 위한 기준을 정리한다.
+
+| 상황 | 적합한 미들웨어 | 이유 |
+| --- | --- | --- |
+| API 아직 개발 중 또는 비용이 비쌈 | LLMToolEmulator | 실제 호출 없이 동작 검증 가능 |
+| 이메일 전송·결제처럼 되돌리기 어려운 작업이 있음 | HumanInTheLoopMiddleware | 사람이 최종 승인 전까지 도구 실행 차단 |
+| 사용자가 민감 정보를 입력할 가능성이 있음 | PIIMiddleware | LLM 서버 전송 전 마스킹·차단 |
+| 복수의 독립적인 과업이 섞인 지시를 자주 받음 | TodoListMiddleware | 단계 쪼개기로 누락 방지, 진행 상태 추적 |
+| 긴 대화가 이어지는 서비스 (CS, 튜터링 등) | SummarizationMiddleware | 컨텍스트 윈도우 절약, 비용 통제 |
+
+> 💡 미들웨어는 리스트로 중첩이 가능하다. 보안이 우선인 서비스라면 `PIIMiddleware`를 가장 앞에 두고, 그 다음에 `HumanInTheLoopMiddleware`를 배치하는 것이 일반적이다. 순서가 실행 우선순위이기 때문에 입력 필터를 항상 앞에 두는 것을 권장한다.
 
 ---
 
@@ -768,7 +825,8 @@ elif data_for_db["intent"] == "inquiry":
 - 에이전트 실행 흐름은 HumanMessage → AIMessage(tool_calls) → ToolMessage → AIMessage(최종) 순서로 쌓이며, `result["messages"][-1].content`가 최종 답변이다.
 - 시스템 프롬프트로 "추측하지 말고 tool을 사용하라"고 강제하면 모델의 임의 추측을 막을 수 있다.
 - 메모리는 `checkpointer=InMemorySaver()`와 `config={"configurable": {"thread_id": "..."}}` 조합으로 구현된다. 프로덕션에서는 `PostgresSaver`를 사용한다.
-- 미들웨어 4종(PII, TodoList, HITL, Emulator)은 `middleware=[...]` 리스트에 순서대로 꽂으면 된다. HITL은 checkpointer를 반드시 함께 주입해야 한다.
+- 미들웨어 5종(PII, TodoList, HITL, Emulator, Summarization)은 `middleware=[...]` 리스트에 순서대로 꽂으면 된다. HITL과 Summarization은 checkpointer를 반드시 함께 주입해야 한다.
+- 입력 필터 역할의 미들웨어(PII 등)는 리스트 앞쪽에 배치해야 실행 우선순위가 보장된다.
 - 에이전트 단위 구조화된 출력은 `response_format=ToolStrategy(Schema)`로 설정하고, 결과는 `response["structured_response"]`로 꺼낸다.
 
 ---
