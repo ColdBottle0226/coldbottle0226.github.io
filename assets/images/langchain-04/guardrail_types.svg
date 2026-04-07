@@ -1,0 +1,73 @@
+<svg viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="760" height="310" fill="#0f1117" rx="12"/>
+  <text x="380" y="28" fill="#e2e8f0" font-size="13" font-weight="700" text-anchor="middle">가드레일 종류별 비교 — Before-agent vs After-agent vs Combined</text>
+
+  <!-- Before-agent (deterministic) -->
+  <rect x="20" y="45" width="225" height="245" rx="10" fill="#161b27" stroke="#4f9eff" stroke-width="1.5"/>
+  <text x="133" y="66" fill="#4f9eff" font-size="11" font-weight="700" text-anchor="middle">① Before-agent (결정론적)</text>
+  <rect x="35" y="76" width="195" height="20" rx="4" fill="rgba(79,158,255,0.1)" stroke="#4f9eff" stroke-width="0.8"/>
+  <text x="133" y="90" fill="#4f9eff" font-size="9" text-anchor="middle">@before_agent + can_jump_to="end"</text>
+  <text x="35" y="113" fill="#8892a4" font-size="9">입력이 들어오자마자 키워드/</text>
+  <text x="35" y="126" fill="#8892a4" font-size="9">정규식과 매칭하여 즉시 차단</text>
+  <line x1="35" y1="138" x2="215" y2="138" stroke="#2a3348" stroke-width="0.8"/>
+  <text x="35" y="153" fill="#3ecf8e" font-size="9" font-weight="700">장점</text>
+  <text x="35" y="166" fill="#8892a4" font-size="9">• LLM 호출 없음 → 매우 빠름</text>
+  <text x="35" y="179" fill="#8892a4" font-size="9">• 비용 없음</text>
+  <text x="35" y="200" fill="#f87171" font-size="9" font-weight="700">단점</text>
+  <text x="35" y="213" fill="#8892a4" font-size="9">• 키워드 미등록 시 통과</text>
+  <text x="35" y="226" fill="#8892a4" font-size="9">• 미묘한 우회 표현 탐지 불가</text>
+  <text x="35" y="247" fill="#fbbf24" font-size="9" font-weight="700">적합한 상황</text>
+  <text x="35" y="260" fill="#8892a4" font-size="9">욕설·정답 직접 요청 등</text>
+  <text x="35" y="273" fill="#8892a4" font-size="9">명확한 금지 패턴 차단</text>
+
+  <!-- Flow arrow -->
+  <line x1="247" y1="167" x2="267" y2="167" stroke="#2a3348" stroke-width="1.5" marker-end="url(#arrowG)"/>
+  <defs>
+    <marker id="arrowG" markerWidth="7" markerHeight="5" refX="5" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#2a3348"/>
+    </marker>
+  </defs>
+
+  <!-- After-agent (model-based) -->
+  <rect x="268" y="45" width="225" height="245" rx="10" fill="#161b27" stroke="#7c5cfc" stroke-width="1.5"/>
+  <text x="381" y="66" fill="#7c5cfc" font-size="11" font-weight="700" text-anchor="middle">② After-agent (모델 기반)</text>
+  <rect x="283" y="76" width="195" height="20" rx="4" fill="rgba(124,92,252,0.1)" stroke="#7c5cfc" stroke-width="0.8"/>
+  <text x="381" y="90" fill="#7c5cfc" font-size="9" text-anchor="middle">@after_agent + safety_model.invoke()</text>
+  <text x="283" y="113" fill="#8892a4" font-size="9">에이전트 최종 답변을 LLM으로</text>
+  <text x="283" y="126" fill="#8892a4" font-size="9">평가 후 교정 또는 통과</text>
+  <line x1="283" y1="138" x2="463" y2="138" stroke="#2a3348" stroke-width="0.8"/>
+  <text x="283" y="153" fill="#3ecf8e" font-size="9" font-weight="700">장점</text>
+  <text x="283" y="166" fill="#8892a4" font-size="9">• 미묘한 표현도 감지 가능</text>
+  <text x="283" y="179" fill="#8892a4" font-size="9">• 답변 자동 교정 가능</text>
+  <text x="283" y="200" fill="#f87171" font-size="9" font-weight="700">단점</text>
+  <text x="283" y="213" fill="#8892a4" font-size="9">• LLM 추가 호출 → 비용 발생</text>
+  <text x="283" y="226" fill="#8892a4" font-size="9">• 응답 시간 증가</text>
+  <text x="283" y="247" fill="#fbbf24" font-size="9" font-weight="700">적합한 상황</text>
+  <text x="283" y="260" fill="#8892a4" font-size="9">정답 유출 방지, 품질 보증</text>
+  <text x="283" y="273" fill="#8892a4" font-size="9">교육·의료 등 고신뢰 서비스</text>
+
+  <!-- Flow arrow -->
+  <line x1="495" y1="167" x2="515" y2="167" stroke="#2a3348" stroke-width="1.5" marker-end="url(#arrowG)"/>
+
+  <!-- Combined multi-layer -->
+  <rect x="516" y="45" width="225" height="245" rx="10" fill="#161b27" stroke="#f97316" stroke-width="1.5"/>
+  <text x="629" y="66" fill="#f97316" font-size="11" font-weight="700" text-anchor="middle">③ Combined (다중 레이어)</text>
+  <rect x="531" y="76" width="195" height="20" rx="4" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="0.8"/>
+  <text x="629" y="90" fill="#f97316" font-size="9" text-anchor="middle">middleware=[가드레일1, 가드레일2, ...]</text>
+  <text x="531" y="113" fill="#8892a4" font-size="9">①과 ②를 순서대로 쌓아</text>
+  <text x="531" y="126" fill="#8892a4" font-size="9">다층 방어막 구성</text>
+  <line x1="531" y1="138" x2="711" y2="138" stroke="#2a3348" stroke-width="0.8"/>
+  <text x="531" y="153" fill="#3ecf8e" font-size="9" font-weight="700">구성 예시 (교육 에이전트)</text>
+  <rect x="531" y="160" width="195" height="18" rx="4" fill="#1e2535" stroke="#4f9eff" stroke-width="0.8"/>
+  <text x="629" y="172" fill="#4f9eff" font-size="8.5" text-anchor="middle">레이어 1: 욕설·치팅 키워드 차단</text>
+  <rect x="531" y="182" width="195" height="18" rx="4" fill="#1e2535" stroke="#ec4899" stroke-width="0.8"/>
+  <text x="629" y="194" fill="#ec4899" font-size="8.5" text-anchor="middle">레이어 2: 개인정보 마스킹 (PII)</text>
+  <rect x="531" y="204" width="195" height="18" rx="4" fill="#1e2535" stroke="#3ecf8e" stroke-width="0.8"/>
+  <text x="629" y="216" fill="#3ecf8e" font-size="8.5" text-anchor="middle">레이어 3: 왕따·위기 키워드 상담 연결</text>
+  <rect x="531" y="226" width="195" height="18" rx="4" fill="#1e2535" stroke="#7c5cfc" stroke-width="0.8"/>
+  <text x="629" y="238" fill="#7c5cfc" font-size="8.5" text-anchor="middle">레이어 4: 정답 직접 유출 교정</text>
+  <text x="531" y="265" fill="#fbbf24" font-size="9" font-weight="700">핵심 원칙</text>
+  <text x="531" y="278" fill="#8892a4" font-size="9">입력 필터를 항상 앞에 배치</text>
+
+  <text x="380" y="301" fill="#3a4459" font-size="9" text-anchor="middle">비용·속도 → 결정론적 우선 / 품질·교정 → 모델 기반 추가</text>
+</svg>

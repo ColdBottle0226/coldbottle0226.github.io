@@ -1,0 +1,51 @@
+<svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="760" height="260" fill="#0f1117" rx="12"/>
+  <text x="380" y="28" fill="#e2e8f0" font-size="13" font-weight="700" text-anchor="middle">Node-style vs Wrap-style 훅 비교</text>
+
+  <!-- Node-style box -->
+  <rect x="30" y="45" width="330" height="195" rx="10" fill="#161b27" stroke="#4f9eff" stroke-width="1.5"/>
+  <text x="195" y="68" fill="#4f9eff" font-size="12" font-weight="700" text-anchor="middle">Node-style 훅</text>
+  <text x="195" y="84" fill="#5a6478" font-size="10" text-anchor="middle">특정 실행 시점에 끼어들기</text>
+
+  <!-- decorators -->
+  <rect x="50" y="95" width="290" height="22" rx="5" fill="#1e2535" stroke="#2a3348"/>
+  <text x="195" y="110" fill="#3ecf8e" font-size="10" font-weight="700" text-anchor="middle">@before_agent  @before_model  @after_model  @after_agent</text>
+
+  <!-- params -->
+  <rect x="50" y="126" width="290" height="28" rx="5" fill="#1e2535" stroke="#2a3348"/>
+  <text x="195" y="138" fill="#8892a4" font-size="9" text-anchor="middle">파라미터: state, runtime</text>
+  <text x="195" y="150" fill="#8892a4" font-size="9" text-anchor="middle">(실행 시점의 스냅숏 접근)</text>
+
+  <!-- use cases -->
+  <text x="50" y="172" fill="#e2e8f0" font-size="10" font-weight="700">용도</text>
+  <text x="50" y="187" fill="#8892a4" font-size="9">• 로깅 &amp; 모니터링</text>
+  <text x="50" y="200" fill="#8892a4" font-size="9">• 유효성 검사 (읽기 전용)</text>
+  <text x="50" y="213" fill="#8892a4" font-size="9">• can_jump_to="end" 로 실행 차단</text>
+  <text x="50" y="226" fill="#8892a4" font-size="9">• before_agent: 단 1회 실행</text>
+
+  <!-- Wrap-style box -->
+  <rect x="400" y="45" width="330" height="195" rx="10" fill="#161b27" stroke="#7c5cfc" stroke-width="1.5"/>
+  <text x="565" y="68" fill="#7c5cfc" font-size="12" font-weight="700" text-anchor="middle">Wrap-style 훅</text>
+  <text x="565" y="84" fill="#5a6478" font-size="10" text-anchor="middle">모델·도구 호출 자체를 감싸서 조작</text>
+
+  <!-- decorators -->
+  <rect x="420" y="95" width="290" height="22" rx="5" fill="#1e2535" stroke="#2a3348"/>
+  <text x="565" y="110" fill="#ec4899" font-size="10" font-weight="700" text-anchor="middle">@wrap_model_call  @wrap_tool_call</text>
+
+  <!-- params -->
+  <rect x="420" y="126" width="290" height="28" rx="5" fill="#1e2535" stroke="#2a3348"/>
+  <text x="565" y="138" fill="#8892a4" font-size="9" text-anchor="middle">파라미터: request, handler</text>
+  <text x="565" y="150" fill="#8892a4" font-size="9" text-anchor="middle">(request 수정 → handler(new_req) 전달)</text>
+
+  <!-- use cases -->
+  <text x="420" y="172" fill="#e2e8f0" font-size="10" font-weight="700">용도</text>
+  <text x="420" y="187" fill="#8892a4" font-size="9">• system_prompt에 런타임 정보 주입</text>
+  <text x="420" y="200" fill="#8892a4" font-size="9">• 사용자 등급에 따라 모델 동적 교체</text>
+  <text x="420" y="213" fill="#8892a4" font-size="9">• 메시지 길이별 모델 자동 선택</text>
+  <text x="420" y="226" fill="#8892a4" font-size="9">• before_model: 도구 호출마다 실행</text>
+
+  <!-- Center divider -->
+  <line x1="380" y1="55" x2="380" y2="235" stroke="#2a3348" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <text x="380" y="252" fill="#3a4459" font-size="9" text-anchor="middle">로깅·차단 → Node-style  /  데이터 주입·모델 교체 → Wrap-style</text>
+</svg>

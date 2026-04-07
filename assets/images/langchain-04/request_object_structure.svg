@@ -1,0 +1,50 @@
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="760" height="300" fill="#0f1117" rx="12"/>
+  <text x="380" y="28" fill="#e2e8f0" font-size="13" font-weight="700" text-anchor="middle">Request 객체 내부 구조 — wrap_model_call 인터셉트 시점</text>
+
+  <!-- Main request box -->
+  <rect x="30" y="45" width="700" height="235" rx="10" fill="#161b27" stroke="#7c5cfc" stroke-width="1.5"/>
+  <text x="380" y="68" fill="#7c5cfc" font-size="12" font-weight="700" text-anchor="middle">ModelRequest 객체 (request)</text>
+
+  <!-- Row 1 -->
+  <rect x="50" y="78" width="150" height="36" rx="6" fill="#1e2535" stroke="#4f9eff" stroke-width="1"/>
+  <text x="125" y="93" fill="#4f9eff" font-size="10" font-weight="700" text-anchor="middle">model</text>
+  <text x="125" y="107" fill="#8892a4" font-size="9" text-anchor="middle">ChatOpenAI 객체</text>
+
+  <rect x="215" y="78" width="200" height="36" rx="6" fill="#1e2535" stroke="#4f9eff" stroke-width="1"/>
+  <text x="315" y="93" fill="#4f9eff" font-size="10" font-weight="700" text-anchor="middle">system_prompt</text>
+  <text x="315" y="107" fill="#8892a4" font-size="9" text-anchor="middle">개발자가 주입한 시스템 메시지</text>
+
+  <rect x="430" y="78" width="280" height="36" rx="6" fill="#1e2535" stroke="#4f9eff" stroke-width="1"/>
+  <text x="570" y="93" fill="#4f9eff" font-size="10" font-weight="700" text-anchor="middle">messages</text>
+  <text x="570" y="107" fill="#8892a4" font-size="9" text-anchor="middle">HumanMessage, AIMessage, ToolMessage 목록</text>
+
+  <!-- Row 2 -->
+  <rect x="50" y="126" width="150" height="36" rx="6" fill="#1e2535" stroke="#3ecf8e" stroke-width="1"/>
+  <text x="125" y="141" fill="#3ecf8e" font-size="10" font-weight="700" text-anchor="middle">tools</text>
+  <text x="125" y="155" fill="#8892a4" font-size="9" text-anchor="middle">연결된 도구 목록</text>
+
+  <rect x="215" y="126" width="200" height="36" rx="6" fill="#1e2535" stroke="#3ecf8e" stroke-width="1"/>
+  <text x="315" y="141" fill="#3ecf8e" font-size="10" font-weight="700" text-anchor="middle">tool_choice</text>
+  <text x="315" y="155" fill="#8892a4" font-size="9" text-anchor="middle">도구 선택 전략</text>
+
+  <rect x="430" y="126" width="280" height="36" rx="6" fill="#1e2535" stroke="#3ecf8e" stroke-width="1"/>
+  <text x="570" y="141" fill="#3ecf8e" font-size="10" font-weight="700" text-anchor="middle">response_format</text>
+  <text x="570" y="155" fill="#8892a4" font-size="9" text-anchor="middle">ToolStrategy(Schema) 등 출력 형식</text>
+
+  <!-- Row 3 — Runtime & State highlight -->
+  <rect x="50" y="174" width="310" height="42" rx="6" fill="rgba(124,92,252,0.12)" stroke="#7c5cfc" stroke-width="1.2"/>
+  <text x="205" y="191" fill="#7c5cfc" font-size="10" font-weight="700" text-anchor="middle">runtime</text>
+  <text x="205" y="207" fill="#8892a4" font-size="9" text-anchor="middle">context(user_id…) + store + streamwriter 포함</text>
+
+  <rect x="375" y="174" width="335" height="42" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" stroke-width="1.2"/>
+  <text x="542" y="191" fill="#f97316" font-size="10" font-weight="700" text-anchor="middle">state</text>
+  <text x="542" y="207" fill="#8892a4" font-size="9" text-anchor="middle">지금까지 쌓인 messages + tool_results</text>
+
+  <!-- Row 4 -->
+  <rect x="50" y="228" width="660" height="28" rx="6" fill="#1e2535" stroke="#2a3348"/>
+  <text x="380" y="246" fill="#5a6478" font-size="9" text-anchor="middle">model_settings  (temperature, max_tokens …)</text>
+
+  <!-- Override arrow annotation -->
+  <text x="380" y="285" fill="#3a4459" font-size="10" text-anchor="middle">request.override(system_prompt=...) 로 값을 덮어써서 handler(new_request) 에 전달</text>
+</svg>

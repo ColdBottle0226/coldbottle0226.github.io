@@ -1,0 +1,44 @@
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="760" height="300" fill="#0f1117" rx="12"/>
+  <text x="380" y="28" fill="#e2e8f0" font-size="13" font-weight="700" text-anchor="middle">Store 구조 — Namespace(폴더) + Key(파일) 기반 장기 메모리</text>
+
+  <!-- InMemoryStore box -->
+  <rect x="30" y="45" width="700" height="230" rx="10" fill="#161b27" stroke="#3ecf8e" stroke-width="1.5"/>
+  <text x="380" y="66" fill="#3ecf8e" font-size="12" font-weight="700" text-anchor="middle">InMemoryStore  (실무: PostgreSQL / MySQL 교체)</text>
+
+  <!-- Namespace A -->
+  <rect x="50" y="80" width="300" height="175" rx="8" fill="#1e2535" stroke="#4f9eff" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="200" y="98" fill="#4f9eff" font-size="10" font-weight="700" text-anchor="middle">Namespace: ("user_001", "personal_assistant")</text>
+  <text x="70" y="98" fill="#4f9eff" font-size="14">📁</text>
+
+  <!-- Key 001 -->
+  <rect x="65" y="106" width="270" height="44" rx="6" fill="#111827" stroke="#2a3348"/>
+  <text x="80" y="121" fill="#fbbf24" font-size="9" font-weight="700">key: "memory_001"</text>
+  <text x="80" y="135" fill="#8892a4" font-size="8.5">{"personal_info": "커피보다 차 선호, 매일 6시 기상",</text>
+  <text x="80" y="147" fill="#8892a4" font-size="8.5"> "language": "Korean"}</text>
+
+  <!-- Key 002 -->
+  <rect x="65" y="157" width="270" height="44" rx="6" fill="#111827" stroke="#2a3348"/>
+  <text x="80" y="172" fill="#fbbf24" font-size="9" font-weight="700">key: "memory_002"</text>
+  <text x="80" y="186" fill="#8892a4" font-size="8.5">{"preferences": "Python 선호, 랭체인 공부 중",</text>
+  <text x="80" y="198" fill="#8892a4" font-size="8.5"> "interest": "에이전트 개발"}</text>
+
+  <!-- Methods label -->
+  <text x="200" y="228" fill="#5a6478" font-size="9" text-anchor="middle">put(namespace, key, dict) / get(namespace, key) / search(namespace)</text>
+  <text x="200" y="242" fill="#5a6478" font-size="9" text-anchor="middle">저장: put  |  단건 조회: get  |  전체 조회: search</text>
+
+  <!-- Namespace B (different user) -->
+  <rect x="390" y="80" width="320" height="175" rx="8" fill="#1e2535" stroke="#5a6478" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="550" y="98" fill="#5a6478" font-size="10" font-weight="700" text-anchor="middle">Namespace: ("user_002", "personal_assistant")</text>
+  <text x="410" y="98" fill="#5a6478" font-size="14">📁</text>
+
+  <rect x="405" y="106" width="290" height="100" rx="6" fill="#111827" stroke="#2a3348"/>
+  <text x="550" y="145" fill="#3a4459" font-size="11" text-anchor="middle">데이터 없음</text>
+  <text x="550" y="162" fill="#3a4459" font-size="9" text-anchor="middle">search() → 빈 리스트 반환</text>
+  <text x="550" y="179" fill="#3a4459" font-size="9" text-anchor="middle">→ 모델에 주입되는 기억 없음</text>
+
+  <text x="550" y="228" fill="#5a6478" font-size="9" text-anchor="middle">user_id가 달라지면 완전히 다른 Namespace</text>
+  <text x="550" y="242" fill="#5a6478" font-size="9" text-anchor="middle">→ 다른 사용자의 기억에 접근 불가</text>
+
+  <text x="380" y="287" fill="#3a4459" font-size="9" text-anchor="middle">Namespace = 폴더(튜플, 고유 식별자)  /  Key = 파일명  /  Value = 저장 데이터(dict)</text>
+</svg>
