@@ -6,7 +6,7 @@ order: 3
 tags: [JPA, 엔티티 어노테이션, Inheritance, MappedSuperclass, DiscriminatorColumn, SingleTable, Joined]
 ---
 
-## 📗 1. 왜 상속 매핑이 필요한가
+##  1. 왜 상속 매핑이 필요한가
 
 ---
 
@@ -24,7 +24,7 @@ class Book extends Item { String author; }
 
 ---
 
-## 📗 2. SINGLE_TABLE — 단일 테이블 전략
+##  2. SINGLE_TABLE — 단일 테이블 전략
 
 ---
 
@@ -110,7 +110,7 @@ CREATE TABLE item (
 
 ---
 
-## 📗 3. JOINED — 조인 테이블 전략
+##  3. JOINED — 조인 테이블 전략
 
 ---
 
@@ -181,7 +181,7 @@ WHERE i.item_id = 1;
 
 ---
 
-## 📗 4. TABLE_PER_CLASS — 구체 테이블 전략
+##  4. TABLE_PER_CLASS — 구체 테이블 전략
 
 ---
 
@@ -215,7 +215,7 @@ SELECT * FROM book;
 
 ---
 
-## 📗 5. @MappedSuperclass — 공통 필드 상속
+##  5. @MappedSuperclass — 공통 필드 상속
 
 ---
 
@@ -261,7 +261,7 @@ public class Order extends BaseEntity {
 
 ---
 
-## 📗 6. 전략 선택 가이드
+##  6. 전략 선택 가이드
 
 ---
 

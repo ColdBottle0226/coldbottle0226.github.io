@@ -5,7 +5,7 @@ categories: [Spring, MSA]
 tags: [SpringCloud, MSA, APIGateway, SpringCloudGateway, Zuul, WebFlux, Predicate, Filter]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -51,7 +51,7 @@ Client 요청
 
 ---
 
-## 📗 2. 핵심 개념 3가지: Route, Predicate, Filter
+##  2. 핵심 개념 3가지: Route, Predicate, Filter
 
 ---
 
@@ -103,7 +103,7 @@ HTTP 요청의 어떤 속성을 기준으로 라우트를 매칭할지 결정한
 
 ---
 
-## 📗 3. 기초 설정
+##  3. 기초 설정
 
 ---
 
@@ -301,7 +301,7 @@ public KeyResolver ipKeyResolver() {
 
 ---
 
-## 📗 4. 트러블슈팅
+##  4. 트러블슈팅
 
 ---
 
@@ -341,7 +341,7 @@ spring:
 
 ---
 
-## 📗 5. 정리
+##  5. 정리
 
 ---
 

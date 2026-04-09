@@ -6,7 +6,7 @@ order: 2
 tags: [JPA, 엔티티 어노테이션, Embeddable, Embedded, AttributeOverride, 값타입]
 ---
 
-## 📗 1. 왜 임베디드 타입이 필요한가
+##  1. 왜 임베디드 타입이 필요한가
 
 ---
 
@@ -42,7 +42,7 @@ public class Member extends BaseEntity {
 
 ---
 
-## 📗 2. @Embeddable / @Embedded
+##  2. @Embeddable / @Embedded
 
 ---
 
@@ -106,7 +106,7 @@ CREATE TABLE member (
 
 ---
 
-## 📗 3. @AttributeOverride — 같은 임베디드 타입을 두 번 쓸 때
+##  3. @AttributeOverride — 같은 임베디드 타입을 두 번 쓸 때
 
 ---
 
@@ -147,7 +147,7 @@ CREATE TABLE member (
 
 ---
 
-## 📗 4. 임베디드 타입의 특성과 주의사항
+##  4. 임베디드 타입의 특성과 주의사항
 
 ---
 
@@ -218,7 +218,7 @@ member.setHomeAddress(null);
 
 ---
 
-## 📗 5. 임베디드 타입의 장점
+##  5. 임베디드 타입의 장점
 
 ---
 

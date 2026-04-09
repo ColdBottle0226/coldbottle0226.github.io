@@ -5,7 +5,7 @@ categories: [NestJS]
 tags: [NestJS, TypeScript, Controller, Provider, Module, Middleware, DI, IoC]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -29,7 +29,7 @@ NestJS를 처음 배울 때 가장 먼저 만나는 개념이 Controller, Provid
 
 ---
 
-## 📗 2. Controller
+##  2. Controller
 
 ---
 
@@ -119,7 +119,7 @@ findAll(@Res({ passthrough: true }) res: Response) {
 
 ---
 
-## 📗 3. Provider
+##  3. Provider
 
 ---
 
@@ -204,7 +204,7 @@ export class HttpService<T> {
 
 ---
 
-## 📗 4. Module
+##  4. Module
 
 ---
 
@@ -327,7 +327,7 @@ export class AppModule {}
 
 ---
 
-## 📗 5. Middleware
+##  5. Middleware
 
 ---
 
@@ -410,7 +410,7 @@ export class AppModule implements NestModule {
 
 ---
 
-## 📗 6. 정리
+##  6. 정리
 
 ---
 

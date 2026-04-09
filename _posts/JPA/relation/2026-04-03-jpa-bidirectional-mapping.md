@@ -5,7 +5,7 @@ categories: [JPA, 연관관계 매핑]
 tags: [JPA, 연관관계 매핑, 양방향, 연관관계주인, mappedBy, 편의메서드, toString]
 ---
 
-## 📗 1. 연관관계 주인 개념
+##  1. 연관관계 주인 개념
 
 ---
 
@@ -20,7 +20,7 @@ tags: [JPA, 연관관계 매핑, 양방향, 연관관계주인, mappedBy, 편의
 
 ---
 
-## 📗 2. 양방향 매핑 코드
+##  2. 양방향 매핑 코드
 
 ---
 
@@ -59,7 +59,7 @@ public class Member extends BaseEntity {
 
 ---
 
-## 📗 3. 양방향 편의 메서드 — 반드시 필요한 이유
+##  3. 양방향 편의 메서드 — 반드시 필요한 이유
 
 ---
 
@@ -114,7 +114,7 @@ public void addLoanRecord(LoanRecord record) {
 
 ---
 
-## 📗 4. toString / equals / hashCode 주의점
+##  4. toString / equals / hashCode 주의점
 
 ---
 
@@ -154,7 +154,7 @@ public class LoanRecord { ... }
 
 ---
 
-## 📗 5. 비주인에서 값 변경 시 반영 안 되는 실수
+##  5. 비주인에서 값 변경 시 반영 안 되는 실수
 
 ---
 

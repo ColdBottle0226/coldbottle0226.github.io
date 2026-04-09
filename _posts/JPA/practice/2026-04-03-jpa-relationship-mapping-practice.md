@@ -6,7 +6,7 @@ order: 2
 tags: [JPA, 연관관계 매핑, 실습, ManyToOne, OneToMany, cascade, orphanRemoval, 편의메서드]
 ---
 
-## 📗 1. 실습 구조
+##  1. 실습 구조
 
 ---
 
@@ -27,7 +27,7 @@ Step 5. 테스트로 각 개념 확인
 
 ---
 
-## 📗 2. Step 1 — Book 양방향 추가
+##  2. Step 1 — Book 양방향 추가
 
 ---
 
@@ -95,7 +95,7 @@ public class Book extends BaseEntity {
 
 ---
 
-## 📗 3. Step 2 — Member 양방향 + cascade + orphanRemoval
+##  3. Step 2 — Member 양방향 + cascade + orphanRemoval
 
 ---
 
@@ -149,7 +149,7 @@ public class Member extends BaseEntity {
 
 ---
 
-## 📗 4. Step 3 — LoanRecord 엔티티 (연관관계 주인)
+##  4. Step 3 — LoanRecord 엔티티 (연관관계 주인)
 
 ---
 
@@ -247,7 +247,7 @@ public interface LoanRepository extends JpaRepository<LoanRecord, Long> {
 
 ---
 
-## 📗 5. Step 4 — LoanService
+##  5. Step 4 — LoanService
 
 ---
 
@@ -308,7 +308,7 @@ public class LoanService {
 
 ---
 
-## 📗 6. Step 5 — 연관관계 실습 테스트
+##  6. Step 5 — 연관관계 실습 테스트
 
 ---
 
@@ -443,7 +443,7 @@ class RelationshipTest {
 
 ---
 
-## 📗 7. 최종 패키지 구조
+##  7. 최종 패키지 구조
 
 ---
 
@@ -473,7 +473,7 @@ src/main/java/com/study/jpa/
 
 ---
 
-## 📗 8. 실습 확인 체크리스트
+##  8. 실습 확인 체크리스트
 
 ---
 

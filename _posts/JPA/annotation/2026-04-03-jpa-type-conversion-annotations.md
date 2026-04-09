@@ -6,7 +6,7 @@ order: 1
 tags: [JPA, 엔티티 어노테이션, Enumerated, Temporal, Lob, Convert, Converter]
 ---
 
-## 📗 1. @Enumerated
+##  1. @Enumerated
 
 ---
 
@@ -41,7 +41,7 @@ private MemberStatus status;
 
 ---
 
-## 📗 2. @Temporal
+##  2. @Temporal
 
 ---
 
@@ -73,7 +73,7 @@ private Instant eventAt;           // DB: TIMESTAMP (타임존 정보 포함)
 
 ---
 
-## 📗 3. @Lob
+##  3. @Lob
 
 ---
 
@@ -94,7 +94,7 @@ private byte[] thumbnailImage; // byte[] → BLOB (바이너리 데이터)
 
 ---
 
-## 📗 4. @Convert / @Converter
+##  4. @Convert / @Converter
 
 ---
 
@@ -127,7 +127,7 @@ private Boolean isActive; // DB에는 "Y"/"N"으로 저장됨
 
 ---
 
-## 📗 5. 전체 적용 예시
+##  5. 전체 적용 예시
 
 ---
 

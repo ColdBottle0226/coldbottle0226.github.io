@@ -5,7 +5,7 @@ categories: [Spring, MSA]
 tags: [SpringCloud, MSA, ServiceRegistry, Eureka, EurekaServer, NetflixOSS, ServiceDiscovery]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -44,7 +44,7 @@ recommendation-service ──── 조회 (Fetch) ──▶ Eureka Server
 
 ---
 
-## 📗 2. 핵심 개념
+##  2. 핵심 개념
 
 ---
 
@@ -104,7 +104,7 @@ eureka:
 
 ---
 
-## 📗 3. 서비스 생성 및 기초 설정
+##  3. 서비스 생성 및 기초 설정
 
 ---
 
@@ -270,7 +270,7 @@ logging:
 
 ---
 
-## 📗 4. 대시보드 확인
+##  4. 대시보드 확인
 
 ---
 
@@ -289,7 +289,7 @@ RECOMMENDATION...    n/a    (1)                  UP (1) - 172.17.0.6:recommendat
 
 ---
 
-## 📗 5. 트러블슈팅
+##  5. 트러블슈팅
 
 ---
 
@@ -317,7 +317,7 @@ eureka:
 
 ---
 
-## 📗 6. 정리
+##  6. 정리
 
 ---
 

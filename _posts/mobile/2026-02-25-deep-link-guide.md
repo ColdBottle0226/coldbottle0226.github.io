@@ -5,7 +5,7 @@ categories: [Mobile, DeepLink]
 tags: [deeplink, uri-scheme, intent-scheme, universal-link, app-link, android, ios, 딥링크]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -36,7 +36,7 @@ tags: [deeplink, uri-scheme, intent-scheme, universal-link, app-link, android, i
 
 ---
 
-## 📗 2. URI 스킴 (URI Scheme)
+##  2. URI 스킴 (URI Scheme)
 
 ---
 
@@ -149,7 +149,7 @@ function openMyApp() {
 
 ---
 
-## 📗 3. Intent 스킴 (Intent Scheme)
+##  3. Intent 스킴 (Intent Scheme)
 
 ---
 
@@ -207,7 +207,7 @@ end;
 
 ---
 
-## 📗 4. 유니버셜 링크 (Universal Link)
+##  4. 유니버셜 링크 (Universal Link)
 
 ---
 
@@ -291,7 +291,7 @@ Xcode > [Target] > Signing & Capabilities > + Associated Domains 추가
 
 ---
 
-## 📗 5. 앱 링크 (App Link)
+##  5. 앱 링크 (App Link)
 
 ---
 
@@ -357,7 +357,7 @@ iOS의 Universal Link와 완전히 동일한 개념이다. HTTPS 도메인 기�
 
 ---
 
-## 📗 6. 앱 미설치 시 스토어 유도 전략
+##  6. 앱 미설치 시 스토어 유도 전략
 
 ---
 
@@ -395,7 +395,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 ---
 
-## 📗 7. 브라우저/앱별 동작 현황
+##  7. 브라우저/앱별 동작 현황
 
 ---
 
@@ -415,7 +415,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 ---
 
-## 📗 8. 어떤 방식을 써야 하나?
+##  8. 어떤 방식을 써야 하나?
 
 ---
 
@@ -425,7 +425,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 ---
 
-## 📗 9. 정리
+##  9. 정리
 
 ---
 

@@ -6,7 +6,7 @@ order: 1
 tags: [JPA, 영속성 컨텍스트, 실습, 더티체킹, 1차캐시, 쓰기지연, OSIV, EntityManager]
 ---
 
-## 📗 1. 실습 도메인 소개
+##  1. 실습 도메인 소개
 
 ---
 
@@ -23,7 +23,7 @@ Step 6. OSIV OFF DTO 변환 패턴    ← Service에서 DTO 변환 후 반환
 
 ---
 
-## 📗 2. Book 엔티티
+##  2. Book 엔티티
 
 ---
 
@@ -95,7 +95,7 @@ public enum BookStatus {
 
 ---
 
-## 📗 3. Step 2 — 생명주기 상태 확인
+##  3. Step 2 — 생명주기 상태 확인
 
 ---
 
@@ -148,7 +148,7 @@ class PersistenceContextBasicTest {
 
 ---
 
-## 📗 4. Step 3 — 1차 캐시와 동일성 보장
+##  4. Step 3 — 1차 캐시와 동일성 보장
 
 ---
 
@@ -180,7 +180,7 @@ void firstLevelCacheTest() {
 
 ---
 
-## 📗 5. Step 4 — 더티 체킹 확인
+##  5. Step 4 — 더티 체킹 확인
 
 ---
 
@@ -245,7 +245,7 @@ void stockExhaustAndReturnTest() {
 
 ---
 
-## 📗 6. Step 5 — JPQL 실행 전 자동 flush
+##  6. Step 5 — JPQL 실행 전 자동 flush
 
 ---
 
@@ -278,7 +278,7 @@ void jpqlAutoFlushTest() {
 
 ---
 
-## 📗 7. Step 6 — OSIV OFF DTO 변환 패턴
+##  7. Step 6 — OSIV OFF DTO 변환 패턴
 
 ---
 
@@ -349,7 +349,7 @@ public class BookService {
 
 ---
 
-## 📗 8. 실습 확인 체크리스트
+##  8. 실습 확인 체크리스트
 
 ---
 

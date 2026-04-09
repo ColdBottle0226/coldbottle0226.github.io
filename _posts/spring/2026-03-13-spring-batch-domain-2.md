@@ -5,7 +5,7 @@ categories: [Spring, Batch]
 tags: [SpringBatch, Step, StepExecution, ExecutionContext, Chunk, Tasklet, ItemReader, ItemWriter]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -26,7 +26,7 @@ tags: [SpringBatch, Step, StepExecution, ExecutionContext, Chunk, Tasklet, ItemR
 
 ---
 
-## 📗 2. Step
+##  2. Step
 
 ---
 
@@ -44,7 +44,7 @@ Step
 
 ---
 
-## 📗 3. StepExecution
+##  3. StepExecution
 
 ---
 
@@ -71,7 +71,7 @@ StepExecution은 Step을 한 번 실행하려는 시도를 나타낸다. Step이
 
 ---
 
-## 📗 4. ExecutionContext — 재시작의 핵심
+##  4. ExecutionContext — 재시작의 핵심
 
 ---
 
@@ -128,7 +128,7 @@ ExecutionContext ecJob  = jobExecution.getExecutionContext();
 
 ---
 
-## 📗 5. Chunk-oriented Processing
+##  5. Chunk-oriented Processing
 
 ---
 
@@ -240,7 +240,7 @@ public Step chunkStep(JobRepository jobRepository,
 
 ---
 
-## 📗 6. Tasklet
+##  6. Tasklet
 
 ---
 
@@ -293,7 +293,7 @@ public Step reportGenerationStep(JobRepository jobRepository,
 
 ---
 
-## 📗 7. Chunk vs Tasklet 선택 기준
+##  7. Chunk vs Tasklet 선택 기준
 
 ---
 
@@ -310,7 +310,7 @@ public Step reportGenerationStep(JobRepository jobRepository,
 
 ---
 
-## 📗 8. 전체 흐름 정리
+##  8. 전체 흐름 정리
 
 ---
 
@@ -335,7 +335,7 @@ JobOperator:   start / stop / restart / abandon
 
 ---
 
-## 📗 9. 정리
+##  9. 정리
 
 ---
 

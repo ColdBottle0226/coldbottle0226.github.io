@@ -6,7 +6,7 @@ order: 0
 tags: [JPA, 엔티티 어노테이션, Entity, Table, Id, GeneratedValue, Column, Transient]
 ---
 
-## 📗 1. @Entity
+##  1. @Entity
 
 ---
 
@@ -42,7 +42,7 @@ Hibernate가 프록시 객체를 만들기 위해 엔티티를 상속하는데, 
 
 ---
 
-## 📗 2. @Table
+##  2. @Table
 
 ---
 
@@ -75,7 +75,7 @@ public class Member extends BaseEntity { ... }
 
 ---
 
-## 📗 3. @Id와 @GeneratedValue
+##  3. @Id와 @GeneratedValue
 
 ---
 
@@ -123,7 +123,7 @@ public class Member {
 
 ---
 
-## 📗 4. @Column
+##  4. @Column
 
 ---
 
@@ -148,7 +148,7 @@ private String name;
 
 ---
 
-## 📗 5. @Transient
+##  5. @Transient
 
 ---
 
@@ -166,7 +166,7 @@ private boolean isSelected;     // 화면 표시용 임시 상태
 
 ---
 
-## 📗 6. 전체 적용 예시
+##  6. 전체 적용 예시
 
 ---
 

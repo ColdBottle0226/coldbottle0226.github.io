@@ -5,7 +5,7 @@ categories: [JPA, 연관관계 매핑]
 tags: [JPA, 연관관계 매핑, ManyToOne, OneToOne, JoinColumn, FetchType, LAZY]
 ---
 
-## 📗 1. 연관관계 매핑이 필요한 이유
+##  1. 연관관계 매핑이 필요한 이유
 
 ---
 
@@ -19,7 +19,7 @@ Phase 1에서 다뤘던 JDBC의 패러다임 불일치 중 하나가 연관관�
 
 ---
 
-## 📗 2. @ManyToOne — 다대일 단방향
+##  2. @ManyToOne — 다대일 단방향
 
 ---
 
@@ -57,7 +57,7 @@ public class LoanRecord extends BaseEntity {
 
 ---
 
-## 📗 3. @JoinColumn 상세 옵션
+##  3. @JoinColumn 상세 옵션
 
 ---
 
@@ -80,7 +80,7 @@ FK 이름을 `@ForeignKey(name = "...")`로 명시하면 DB에서 관리할 때 
 
 ---
 
-## 📗 4. @OneToOne — 일대일 단방향
+##  4. @OneToOne — 일대일 단방향
 
 ---
 
@@ -110,7 +110,7 @@ public class MemberProfile extends BaseEntity {
 
 ---
 
-## 📗 5. 단방향 @OneToMany — 사용하지 않는 것을 권장
+##  5. 단방향 @OneToMany — 사용하지 않는 것을 권장
 
 ---
 

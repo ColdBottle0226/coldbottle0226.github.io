@@ -5,7 +5,7 @@ categories: [JPA]
 tags: [JPA, ORM, Hibernate, JDBC, SpringDataJPA, Dialect, 패러다임불일치]
 ---
 
-## 📗 1. JDBC의 한계
+##  1. JDBC의 한계
 
 ---
 
@@ -175,7 +175,7 @@ JDBC는 조회할 때마다 `new Member()`로 새 인스턴스를 만들기 때�
 
 ---
 
-## 📗 2. ORM이란
+##  2. ORM이란
 
 ---
 
@@ -251,7 +251,7 @@ ORM이 만능은 아니다. 아래 단점들을 모르고 쓰면 오히려 성�
 
 ---
 
-## 📗 3. JPA 명세와 구현체
+##  3. JPA 명세와 구현체
 
 ---
 
@@ -327,7 +327,7 @@ Database
 
 ---
 
-## 📗 4. Hibernate 아키텍처
+##  4. Hibernate 아키텍처
 
 ---
 
@@ -416,7 +416,7 @@ Spring Boot 3.x 환경에서 레퍼런스나 구글 검색 결과를 볼 때 버
 
 ---
 
-## 📗 5. 정리
+##  5. 정리
 
 ---
 

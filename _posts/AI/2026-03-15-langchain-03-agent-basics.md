@@ -5,7 +5,7 @@ categories: [LangChain]
 tags: [LangChain, Agent, Tool, Memory, Middleware, StructuredOutput, Python, OpenAI]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -24,7 +24,7 @@ tags: [LangChain, Agent, Tool, Memory, Middleware, StructuredOutput, Python, Ope
 
 ---
 
-## 📗 2. 에이전트 기초 (3-1)
+##  2. 에이전트 기초 (3-1)
 
 ---
 
@@ -265,7 +265,7 @@ print(response["messages"][-1].content)
 
 ---
 
-## 📗 3. 메모리 기반 에이전트 (3-2)
+##  3. 메모리 기반 에이전트 (3-2)
 
 ---
 
@@ -428,7 +428,7 @@ agent = create_agent(
 
 ---
 
-## 📗 4. Built-in 미들웨어 (3-3)
+##  4. Built-in 미들웨어 (3-3)
 
 ---
 
@@ -686,7 +686,7 @@ agent = create_agent(
 
 ---
 
-## 📗 5. 구조화된 답변 생성 (3-4)
+##  5. 구조화된 답변 생성 (3-4)
 
 ---
 
@@ -815,7 +815,7 @@ elif data_for_db["intent"] == "inquiry":
 
 ---
 
-## 📗 6. 정리
+##  6. 정리
 
 ---
 

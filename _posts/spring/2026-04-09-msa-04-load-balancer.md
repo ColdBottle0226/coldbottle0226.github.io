@@ -5,7 +5,7 @@ categories: [Spring, MSA]
 tags: [SpringCloud, MSA, LoadBalancer, SpringCloudLoadBalancer, Ribbon, FeignClient, ClientSideLB]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -40,7 +40,7 @@ Spring Cloud는 **Client-Side LB**를 사용한다. Eureka에서 조회한 인�
 
 ---
 
-## 📗 2. 핵심 개념
+##  2. 핵심 개념
 
 ---
 
@@ -81,7 +81,7 @@ Spring Cloud LoadBalancer가 제공하는 기본 알고리즘은 두 가지다.
 
 ---
 
-## 📗 3. 설정
+##  3. 설정
 
 ---
 
@@ -199,7 +199,7 @@ public class SomeService {
 
 ---
 
-## 📗 4. 커스텀 로드 밸런싱 알고리즘
+##  4. 커스텀 로드 밸런싱 알고리즘
 
 ---
 
@@ -232,7 +232,7 @@ public class PlaceLBConfig {
 
 ---
 
-## 📗 5. 트러블슈팅
+##  5. 트러블슈팅
 
 ---
 
@@ -260,7 +260,7 @@ spring:
 
 ---
 
-## 📗 6. 정리
+##  6. 정리
 
 ---
 

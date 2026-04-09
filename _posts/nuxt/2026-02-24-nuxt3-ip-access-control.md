@@ -5,7 +5,7 @@ categories: [Nuxt3]
 tags: [Nuxt3,Middleware, Plugin, IP, 접근제어]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -29,7 +29,7 @@ Nginx에서 1차로 처리하고, Nuxt 레벨에서 2차로 처리하는 이중 
 
 ---
 
-## 📗 2. Plugin vs Middleware
+##  2. Plugin vs Middleware
 
 ---
 
@@ -80,7 +80,7 @@ IP 접근 제어는 모든 페이지에 적용되어야 하므로 **Global Middl
 
 ---
 
-## 📗 3. 클라이언트 IP 추출
+##  3. 클라이언트 IP 추출
 
 ---
 
@@ -132,7 +132,7 @@ X-Forwarded-For: "203.0.113.5, 10.0.0.1, 172.16.0.1"
 
 ---
 
-## 📗 4. CIDR 기반 IP 대역 체크
+##  4. CIDR 기반 IP 대역 체크
 
 ---
 
@@ -146,7 +146,7 @@ CIDR 포함 여부 체크는 **비트마스크 연산**으로 수행한다. IP �
 
 ---
 
-## 📗 5. Redis에서 IP 정책 관리
+##  5. Redis에서 IP 정책 관리
 
 ---
 
@@ -177,7 +177,7 @@ value: JSON 배열 문자열
 
 ---
 
-## 📗 6. Spring Boot 구현
+##  6. Spring Boot 구현
 
 ---
 
@@ -328,7 +328,7 @@ public class IpPolicyController {
 
 ---
 
-## 📗 7. Nuxt3 구현
+##  7. Nuxt3 구현
 
 ---
 
@@ -623,7 +623,7 @@ h1     { font-size: 24px; font-weight: 700; color: #1a1a2e; margin-bottom: 16px;
 
 ---
 
-## 📗 8. 전체 흐름
+##  8. 전체 흐름
 
 ---
 
@@ -646,7 +646,7 @@ navigateTo('/maintenance') → 점검 페이지 렌더링
 
 ---
 
-## 📗 9. 주요 트러블슈팅
+##  9. 주요 트러블슈팅
 
 ---
 
@@ -680,7 +680,7 @@ Global Middleware의 `EXCLUDED_PATHS`에 `/maintenance`를 추가하지 않으�
 
 ---
 
-## 📗 10. 정리
+##  10. 정리
 
 ---
 

@@ -5,7 +5,7 @@ categories: [Nuxt3, 브릿지]
 tags: [Flutter, InAppWebView, Nuxt3, Bridge, callHandler, JavaScript, 하이브리드앱, WebView]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -22,7 +22,7 @@ Flutter 앱 안에 Nuxt3 웹을 WebView로 띄우는 하이브리드 앱을 만�
 
 ---
 
-## 📗 2. Flutter InAppWebView 기본 원리
+##  2. Flutter InAppWebView 기본 원리
 
 ---
 
@@ -81,7 +81,7 @@ window.receiveFromNative = (type: string, data: any) => {
 
 ---
 
-## 📗 3. useNativeBridge 설계
+##  3. useNativeBridge 설계
 
 ---
 
@@ -150,7 +150,7 @@ const gotoHome   = async () => await callFlutter('gotoHome')
 
 ---
 
-## 📗 4. window.open의 noopener와 sessionStorage 격리
+##  4. window.open의 noopener와 sessionStorage 격리
 
 ---
 
@@ -185,7 +185,7 @@ window.close()
 
 ---
 
-## 📗 5. Plugin에서 브릿지 초기화
+##  5. Plugin에서 브릿지 초기화
 
 ---
 
@@ -220,7 +220,7 @@ const { handleBack, handleHome } = useNavigationStack()
 
 ---
 
-## 📗 6. Android 네이티브 뒤로가기와 WebView
+##  6. Android 네이티브 뒤로가기와 WebView
 
 ---
 
@@ -242,7 +242,7 @@ WebView의 히스토리가 없으면 Flutter 네이티브 레이어가 WebView�
 
 ---
 
-## 📗 7. 플랫폼별 뒤로가기 동작 비교
+##  7. 플랫폼별 뒤로가기 동작 비교
 
 ---
 
@@ -260,7 +260,7 @@ WebView의 히스토리가 없으면 Flutter 네이티브 레이어가 WebView�
 
 ---
 
-## 📗 8. 정리
+##  8. 정리
 
 ---
 

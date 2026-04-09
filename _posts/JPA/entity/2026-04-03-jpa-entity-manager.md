@@ -6,7 +6,7 @@ order: 0
 tags: [JPA, 영속성 컨텍스트, EntityManager, EntityManagerFactory, ThreadLocal, PersistenceContext]
 ---
 
-## 📗 1. 영속성 컨텍스트란
+##  1. 영속성 컨텍스트란
 
 ---
 
@@ -36,7 +36,7 @@ DB에 직접 요청한다면 같은 데이터를 여러 번 조회하는 중복 
 
 ---
 
-## 📗 2. EntityManagerFactory와 EntityManager
+##  2. EntityManagerFactory와 EntityManager
 
 ---
 
@@ -69,7 +69,7 @@ EntityManager (N개, 가벼운 객체)
 
 ---
 
-## 📗 3. Spring에서 EntityManager 주입 원리
+##  3. Spring에서 EntityManager 주입 원리
 
 ---
 
@@ -119,7 +119,7 @@ public class MemberService {
 
 ---
 
-## 📗 4. EntityManager 핵심 메서드
+##  4. EntityManager 핵심 메서드
 
 ---
 

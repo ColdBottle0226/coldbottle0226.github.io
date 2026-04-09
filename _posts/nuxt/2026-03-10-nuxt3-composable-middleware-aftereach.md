@@ -5,7 +5,7 @@ categories: [Nuxt3]
 tags: [Nuxt3, Composable, Middleware, afterEach, Vue Router, sessionStorage, abortNavigation]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -23,7 +23,7 @@ Nuxt3에서 네비게이션 제어 코드를 작성하다 보면 어디에 어�
 
 ---
 
-## 📗 2. 컴포저블 (Composable)
+##  2. 컴포저블 (Composable)
 
 ---
 
@@ -94,7 +94,7 @@ export const useNavigationStack = () => {
 
 ---
 
-## 📗 3. 전역 미들웨어 (Global Middleware)
+##  3. 전역 미들웨어 (Global Middleware)
 
 ---
 
@@ -175,7 +175,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
 ---
 
-## 📗 4. Plugin과 router.afterEach
+##  4. Plugin과 router.afterEach
 
 ---
 
@@ -237,7 +237,7 @@ if (!from?.name) return  // 새로고침 시 스택/position 그대로 유지
 
 ---
 
-## 📗 5. sessionStorage 선택 이유
+##  5. sessionStorage 선택 이유
 
 ---
 
@@ -255,7 +255,7 @@ if (!from?.name) return  // 새로고침 시 스택/position 그대로 유지
 
 ---
 
-## 📗 6. 정리
+##  6. 정리
 
 ---
 

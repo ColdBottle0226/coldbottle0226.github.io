@@ -5,7 +5,7 @@ categories: [LangChain]
 tags: [LangChain, LangSmith, Python, AI에이전트, OpenAI, StructuredOutput, Memory]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -25,7 +25,7 @@ AI 에이전트를 처음 공부하려면 어디서 시작해야 할지 막막�
 
 ---
 
-## 📗 2. AI 에이전트란 무엇인가
+##  2. AI 에이전트란 무엇인가
 
 ---
 
@@ -74,7 +74,7 @@ AI 에이전트를 처음 공부하려면 어디서 시작해야 할지 막막�
 
 ---
 
-## 📗 3. 사전 준비 (1-1)
+##  3. 사전 준비 (1-1)
 
 ---
 
@@ -185,7 +185,7 @@ print(response.output_text)
 
 ---
 
-## 📗 4. 랭체인 시작하기 (2-1)
+##  4. 랭체인 시작하기 (2-1)
 
 ---
 
@@ -262,7 +262,7 @@ print(response.usage_metadata)
 
 ---
 
-## 📗 5. Model (2-2)
+##  5. Model (2-2)
 
 ---
 
@@ -385,7 +385,7 @@ responses = model.batch(inputs, config={"max_concurrency": 5})
 
 ---
 
-## 📗 6. 구조화된 답변 (2-3)
+##  6. 구조화된 답변 (2-3)
 
 ---
 
@@ -554,7 +554,7 @@ print(response['director']) # 크리스토퍼 놀란
 
 ---
 
-## 📗 7. Memory (2-4)
+##  7. Memory (2-4)
 
 ---
 
@@ -690,7 +690,7 @@ response = model.invoke(trimmed_messages)
 
 ---
 
-## 📗 8. 랭스미스 (2-5)
+##  8. 랭스미스 (2-5)
 
 ---
 
@@ -756,7 +756,7 @@ LangSmith 대시보드의 프로젝트 화면으로 이동하면 방금 실행�
 
 ---
 
-## 📗 9. 정리
+##  9. 정리
 
 ---
 

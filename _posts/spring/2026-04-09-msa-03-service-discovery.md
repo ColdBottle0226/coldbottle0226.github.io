@@ -5,7 +5,7 @@ categories: [Spring, MSA]
 tags: [SpringCloud, MSA, ServiceDiscovery, EurekaClient, DiscoveryClient, Heartbeat, Registration]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -44,7 +44,7 @@ Spring Cloud는 **Client-Side Discovery** 방식을 사용한다.
 
 ---
 
-## 📗 2. 핵심 개념
+##  2. 핵심 개념
 
 ---
 
@@ -92,7 +92,7 @@ recommendation-service (로컬 캐시)
 
 ---
 
-## 📗 3. 각 서비스에 Eureka Client 추가
+##  3. 각 서비스에 Eureka Client 추가
 
 ---
 
@@ -214,7 +214,7 @@ spring:
 
 ---
 
-## 📗 4. DiscoveryClient로 직접 서비스 조회하기
+##  4. DiscoveryClient로 직접 서비스 조회하기
 
 ---
 
@@ -250,7 +250,7 @@ public class DiscoveryController {
 
 ---
 
-## 📗 5. 기동 순서와 의존성 처리
+##  5. 기동 순서와 의존성 처리
 
 ---
 
@@ -287,7 +287,7 @@ eureka:
 
 ---
 
-## 📗 6. 트러블슈팅
+##  6. 트러블슈팅
 
 ---
 
@@ -313,7 +313,7 @@ eureka:
 
 ---
 
-## 📗 7. 정리
+##  7. 정리
 
 ---
 

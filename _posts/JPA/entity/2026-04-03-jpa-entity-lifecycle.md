@@ -6,7 +6,7 @@ order: 1
 tags: [JPA, 영속성 컨텍스트, 엔티티생명주기, 비영속, 영속, 준영속, LazyInitializationException]
 ---
 
-## 📗 1. 4가지 상태 개요
+##  1. 4가지 상태 개요
 
 ---
 
@@ -21,7 +21,7 @@ tags: [JPA, 영속성 컨텍스트, 엔티티생명주기, 비영속, 영속, �
 
 ---
 
-## 📗 2. 비영속 (New / Transient)
+##  2. 비영속 (New / Transient)
 
 ---
 
@@ -35,7 +35,7 @@ System.out.println(em.contains(member)); // false
 
 ---
 
-## 📗 3. 영속 (Managed)
+##  3. 영속 (Managed)
 
 ---
 
@@ -73,7 +73,7 @@ public void updateMemberName(Long id, String newName) {
 
 ---
 
-## 📗 4. 준영속 (Detached)
+##  4. 준영속 (Detached)
 
 ---
 
@@ -141,7 +141,7 @@ Member managed = em.merge(detached);
 
 ---
 
-## 📗 5. 삭제 (Removed)
+##  5. 삭제 (Removed)
 
 ---
 
@@ -155,7 +155,7 @@ em.remove(member); // 삭제 예약 → 쓰기 지연 SQL 저장소에 DELETE �
 
 ---
 
-## 📗 6. 실습 — 생명주기 상태 직접 확인
+##  6. 실습 — 생명주기 상태 직접 확인
 
 ---
 

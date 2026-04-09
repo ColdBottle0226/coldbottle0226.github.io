@@ -6,7 +6,7 @@ order: 3
 tags: [JPA, 영속성 컨텍스트, 더티체킹, DirtyChecking, OSIV, OpenSessionInView, LazyInitializationException]
 ---
 
-## 📗 1. 더티 체킹 (Dirty Checking)
+##  1. 더티 체킹 (Dirty Checking)
 
 ---
 
@@ -144,7 +144,7 @@ class DirtyCheckingTest {
 
 ---
 
-## 📗 2. OSIV (Open Session In View)
+##  2. OSIV (Open Session In View)
 
 ---
 
@@ -241,7 +241,7 @@ public MemberWithOrdersResponse findWithOrders(Long id) {
 
 ---
 
-## 📗 3. 정리
+##  3. 정리
 
 ---
 

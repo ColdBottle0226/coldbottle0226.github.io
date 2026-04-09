@@ -5,7 +5,7 @@ categories: [업무, 결재]
 tags: [결재시스템, 전자결재, 워크플로우, 결재선, 상태머신, 설계, Java, Spring, ERD]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -236,7 +236,7 @@ tags: [결재시스템, 전자결재, 워크플로우, 결재선, 상태머신, 
 
 ---
 
-## 📗 2. 핵심 도메인 용어 정리
+##  2. 핵심 도메인 용어 정리
 
 ---
 
@@ -294,7 +294,7 @@ Document
 
 ---
 
-## 📗 3. 문서 상태 머신 설계
+##  3. 문서 상태 머신 설계
 
 ---
 
@@ -380,7 +380,7 @@ public void activateNextStep(Document doc) {
 
 ---
 
-## 📗 4. ERD 설계 포인트
+##  4. ERD 설계 포인트
 
 ---
 
@@ -460,7 +460,7 @@ CREATE TABLE approval_delegation (
 
 ---
 
-## 📗 5. 특수 결재 구현 포인트
+##  5. 특수 결재 구현 포인트
 
 ---
 
@@ -596,7 +596,7 @@ public void forceReject(Long documentId, Long adminId, String reason) {
 
 ---
 
-## 📗 6. 문서번호 채번 설계
+##  6. 문서번호 채번 설계
 
 ---
 
@@ -646,7 +646,7 @@ public String generateDocumentNumber(String formCode) {
 
 ---
 
-## 📗 7. 알림 설계 포인트
+##  7. 알림 설계 포인트
 
 ---
 
@@ -699,7 +699,7 @@ public void onApprovalProcessed(ApprovalProcessedEvent event) {
 
 ---
 
-## 📗 8. 문서함(Archive) 설계
+##  8. 문서함(Archive) 설계
 
 ---
 
@@ -742,7 +742,7 @@ public Page<Document> getDeptDocuments(Long deptId, Long currentUserId) {
 
 ---
 
-## 📗 9. 정리
+##  9. 정리
 
 ---
 

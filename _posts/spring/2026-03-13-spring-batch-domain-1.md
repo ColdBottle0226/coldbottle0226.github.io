@@ -5,7 +5,7 @@ categories: [Spring, Batch]
 tags: [SpringBatch, Job, JobInstance, JobExecution, JobParameters, BatchDomain]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -30,7 +30,7 @@ Spring Batch를 처음 접하면 Job, JobInstance, JobExecution이 헷갈린다.
 
 ---
 
-## 📗 2. Job
+##  2. Job
 
 ---
 
@@ -60,7 +60,7 @@ public Job footballJob(JobRepository jobRepository) {
 
 ---
 
-## 📗 3. JobInstance
+##  3. JobInstance
 
 ---
 
@@ -84,7 +84,7 @@ JobInstance = Job + 식별 JobParameters
 
 ---
 
-## 📗 4. JobParameters
+##  4. JobParameters
 
 ---
 
@@ -125,7 +125,7 @@ JobParameters params = new JobParametersBuilder()
 
 ---
 
-## 📗 5. JobExecution
+##  5. JobExecution
 
 ---
 
@@ -157,7 +157,7 @@ JobExecution은 Job을 한 번 실행하려는 시도(attempt)의 기술적 개�
 
 ---
 
-## 📗 6. 메타데이터 테이블로 이해하기
+##  6. 메타데이터 테이블로 이해하기
 
 ---
 
@@ -202,7 +202,7 @@ JOB_INST_ID 1에 대해 JOB_EXEC_ID 1(실패)과 2(성공) 두 개의 JobExecuti
 
 ---
 
-## 📗 7. JobRepository와 JobOperator
+##  7. JobRepository와 JobOperator
 
 ---
 
@@ -235,7 +235,7 @@ public interface JobOperator {
 
 ---
 
-## 📗 8. 전체 개념 관계 정리
+##  8. 전체 개념 관계 정리
 
 ---
 
@@ -245,7 +245,7 @@ public interface JobOperator {
 
 ---
 
-## 📗 9. 정리
+##  9. 정리
 
 ---
 

@@ -5,7 +5,7 @@ categories: [Docker]
 tags: [Docker, DockerCompose, Dockerfile, MSA, 인프라]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -24,7 +24,7 @@ tags: [Docker, DockerCompose, Dockerfile, MSA, 인프라]
 
 ---
 
-## 📗 2. 왜 Docker가 필요한가
+##  2. 왜 Docker가 필요한가
 
 ---
 
@@ -58,7 +58,7 @@ MySQL 8.0 + Redis 7.0 + MongoDB 6.0 동일하게 실행
 
 ---
 
-## 📗 3. VM vs Docker
+##  3. VM vs Docker
 
 ---
 
@@ -108,7 +108,7 @@ Docker 컨테이너는 Linux 커널이 필요하다. macOS와 Linux 커널은 �
 
 ---
 
-## 📗 4. 핵심 개념 4가지
+##  4. 핵심 개념 4가지
 
 ---
 
@@ -241,7 +241,7 @@ ecommerce-network (Docker 가상 네트워크)
 
 ---
 
-## 📗 5. Dockerfile
+##  5. Dockerfile
 
 ---
 
@@ -291,7 +291,7 @@ docker build --no-cache -t member-service:1.0 . # 캐시 없이 빌드
 
 ---
 
-## 📗 6. Docker Compose
+##  6. Docker Compose
 
 ---
 
@@ -391,7 +391,7 @@ docker compose config             # 설정 파일 유효성 검사
 
 ---
 
-## 📗 7. 명령어 치트시트
+##  7. 명령어 치트시트
 
 ---
 
@@ -420,7 +420,7 @@ docker system df                 # 디스크 사용량 확인
 
 ---
 
-## 📗 8. 정리
+##  8. 정리
 
 ---
 

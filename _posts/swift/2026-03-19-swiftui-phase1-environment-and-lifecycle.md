@@ -5,7 +5,7 @@ categories: [Swift]
 tags: [Swift, Basic]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -24,7 +24,7 @@ App → Scene → View로 이어지는 계층 구조, 그리고 Android 개발�
 
 ---
 
-## 📗 2. Xcode 프로젝트 구조
+##  2. Xcode 프로젝트 구조
 
 ---
 
@@ -106,7 +106,7 @@ struct ContentView: View {           // View 프로토콜 채택 — 화면에 �
 
 ---
 
-## 📗 3. App → Scene → View 계층 구조
+##  3. App → Scene → View 계층 구조
 
 ---
 
@@ -134,7 +134,7 @@ struct MyApp: App {          // App 계층 — 진입점
 
 ---
 
-## 📗 4. 앱 생명주기 & 뷰 생명주기
+##  4. 앱 생명주기 & 뷰 생명주기
 
 ---
 
@@ -272,7 +272,7 @@ struct WebContainerView: View {
 
 ---
 
-## 📗 5. 정리
+##  5. 정리
 
 ---
 

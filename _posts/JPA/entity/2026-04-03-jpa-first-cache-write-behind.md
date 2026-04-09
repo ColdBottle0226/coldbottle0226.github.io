@@ -6,7 +6,7 @@ order: 2
 tags: [JPA, 영속성 컨텍스트, 1차캐시, 쓰기지연, flush, JPQL, BatchInsert]
 ---
 
-## 📗 1. 1차 캐시 (First-Level Cache)
+##  1. 1차 캐시 (First-Level Cache)
 
 ---
 
@@ -59,7 +59,7 @@ Phase 1에서 다뤘던 JDBC의 동일성 불일치 문제가 여기서 해결�
 
 ---
 
-## 📗 2. 쓰기 지연 (Transactional Write-Behind)
+##  2. 쓰기 지연 (Transactional Write-Behind)
 
 ---
 
@@ -96,7 +96,7 @@ spring:
 
 ---
 
-## 📗 3. flush — 영속성 컨텍스트와 DB 동기화
+##  3. flush — 영속성 컨텍스트와 DB 동기화
 
 ---
 
@@ -136,7 +136,7 @@ public void jpqlAutoFlushTest() {
 
 ---
 
-## 📗 4. 실습
+##  4. 실습
 
 ---
 

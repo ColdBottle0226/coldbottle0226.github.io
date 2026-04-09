@@ -5,7 +5,7 @@ categories: [JPA, 연관관계 매핑]
 tags: [JPA, 연관관계 매핑, ManyToMany, 중간엔티티, JoinTable]
 ---
 
-## 📗 1. @ManyToMany를 사용하면 안 되는 이유
+##  1. @ManyToMany를 사용하면 안 되는 이유
 
 ---
 
@@ -41,7 +41,7 @@ CREATE TABLE member_book (
 
 ---
 
-## 📗 2. 중간 엔티티로 대체 (권장)
+##  2. 중간 엔티티로 대체 (권장)
 
 ---
 
@@ -87,7 +87,7 @@ public class LoanRecord extends BaseEntity {
 
 ---
 
-## 📗 3. @ManyToMany가 허용되는 유일한 경우
+##  3. @ManyToMany가 허용되는 유일한 경우
 
 ---
 

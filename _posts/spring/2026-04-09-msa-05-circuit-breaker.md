@@ -5,7 +5,7 @@ categories: [Spring, MSA]
 tags: [SpringCloud, MSA, CircuitBreaker, Resilience4j, Fallback, CascadeFailure, FeignClient]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -36,7 +36,7 @@ Spring Cloud는 Circuit Breaker의 공식 추상화 레이어로 **Spring Cloud 
 
 ---
 
-## 📗 2. 핵심 개념 — 상태 전이
+##  2. 핵심 개념 — 상태 전이
 
 ---
 
@@ -75,7 +75,7 @@ Circuit Breaker가 실패율을 계산하는 방식이다. 두 가지 타입이 
 
 ---
 
-## 📗 3. 설정
+##  3. 설정
 
 ---
 
@@ -243,7 +243,7 @@ public class PlaceServiceClientFallbackFactory
 
 ---
 
-## 📗 4. Circuit Breaker 상태 모니터링
+##  4. Circuit Breaker 상태 모니터링
 
 ---
 
@@ -284,7 +284,7 @@ Actuator와 연동하면 `/actuator/health` 엔드포인트에서 각 Circuit Br
 
 ---
 
-## 📗 5. Resilience4j Aspect 실행 순서
+##  5. Resilience4j Aspect 실행 순서
 
 ---
 
@@ -313,7 +313,7 @@ resilience4j:
 
 ---
 
-## 📗 6. 트러블슈팅
+##  6. 트러블슈팅
 
 ---
 
@@ -342,7 +342,7 @@ resilience4j:
 
 ---
 
-## 📗 7. 정리
+##  7. 정리
 
 ---
 

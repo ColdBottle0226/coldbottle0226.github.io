@@ -5,7 +5,7 @@ categories: [JPA, 연관관계 매핑]
 tags: [JPA, 연관관계 매핑, CascadeType, orphanRemoval, 영속성전이, 고아객체]
 ---
 
-## 📗 1. 영속성 전이 (Cascade)
+##  1. 영속성 전이 (Cascade)
 
 ---
 
@@ -61,7 +61,7 @@ private List<LoanRecord> loanRecords = new ArrayList<>();
 
 ---
 
-## 📗 2. 고아 객체 제거 (orphanRemoval)
+##  2. 고아 객체 제거 (orphanRemoval)
 
 ---
 
@@ -93,7 +93,7 @@ member.getLoanRecords().remove(record); // 컬렉션에서 제거
 
 ---
 
-## 📗 3. cascade + orphanRemoval 조합
+##  3. cascade + orphanRemoval 조합
 
 ---
 
@@ -122,7 +122,7 @@ em.remove(member);            // loanRecords 전체 DELETE
 
 ---
 
-## 📗 4. cascade 잘못 사용하는 흔한 실수
+##  4. cascade 잘못 사용하는 흔한 실수
 
 ---
 

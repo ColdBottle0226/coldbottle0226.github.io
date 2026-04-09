@@ -6,7 +6,7 @@ order: 4
 tags: [JPA, 엔티티 어노테이션, Auditing, CreatedDate, LastModifiedDate, CreatedBy, EnableJpaAuditing, AuditorAware]
 ---
 
-## 📗 1. Auditing이란
+##  1. Auditing이란
 
 ---
 
@@ -14,7 +14,7 @@ tags: [JPA, 엔티티 어노테이션, Auditing, CreatedDate, LastModifiedDate, 
 
 ---
 
-## 📗 2. 기본 설정
+##  2. 기본 설정
 
 ---
 
@@ -65,7 +65,7 @@ public abstract class BaseEntity {
 
 ---
 
-## 📗 3. @CreatedDate / @LastModifiedDate 동작 원리
+##  3. @CreatedDate / @LastModifiedDate 동작 원리
 
 ---
 
@@ -78,7 +78,7 @@ Spring Data JPA의 `AuditingEntityListener`가 JPA의 콜백 어노테이션(`@P
 
 ---
 
-## 📗 4. @CreatedBy / @LastModifiedBy
+##  4. @CreatedBy / @LastModifiedBy
 
 ---
 
@@ -155,7 +155,7 @@ public abstract class BaseEntity {
 
 ---
 
-## 📗 5. JPA 콜백 어노테이션 — @PrePersist, @PostLoad 등
+##  5. JPA 콜백 어노테이션 — @PrePersist, @PostLoad 등
 
 ---
 
@@ -196,7 +196,7 @@ public class Member extends BaseEntity {
 
 ---
 
-## 📗 6. Auditing 적용 확인
+##  6. Auditing 적용 확인
 
 ---
 

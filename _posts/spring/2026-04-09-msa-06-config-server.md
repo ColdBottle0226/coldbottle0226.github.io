@@ -5,7 +5,7 @@ categories: [Spring, MSA]
 tags: [SpringCloud, MSA, ConfigServer, ExternalizedConfiguration, SpringCloudConfig, RefreshScope, GitBackend]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -44,7 +44,7 @@ Git 백엔드를 쓰면 설정 변경 내역이 커밋 히스토리로 남아 **
 
 ---
 
-## 📗 2. 핵심 개념
+##  2. 핵심 개념
 
 ---
 
@@ -97,7 +97,7 @@ curl -X POST http://recommendation-service:8083/actuator/refresh
 
 ---
 
-## 📗 3. 서비스 생성 및 기초 설정
+##  3. 서비스 생성 및 기초 설정
 
 ---
 
@@ -240,7 +240,7 @@ management:
 
 ---
 
-## 📗 4. 설정 레포지토리 구조
+##  4. 설정 레포지토리 구조
 
 ---
 
@@ -310,7 +310,7 @@ logging:
 
 ---
 
-## 📗 5. 각 서비스에서 Config Server 연동
+##  5. 각 서비스에서 Config Server 연동
 
 ---
 
@@ -357,7 +357,7 @@ spring:
 
 ---
 
-## 📗 6. 설정 조회 테스트
+##  6. 설정 조회 테스트
 
 ---
 
@@ -393,7 +393,7 @@ curl http://localhost:8888/user-service/local
 
 ---
 
-## 📗 7. Docker Compose 추가
+##  7. Docker Compose 추가
 
 ---
 
@@ -430,7 +430,7 @@ curl http://localhost:8888/user-service/local
 
 ---
 
-## 📗 8. 트러블슈팅
+##  8. 트러블슈팅
 
 ---
 
@@ -468,7 +468,7 @@ spring:
 
 ---
 
-## 📗 9. 정리
+##  9. 정리
 
 ---
 

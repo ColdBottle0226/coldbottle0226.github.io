@@ -5,7 +5,7 @@ categories: [LangChain]
 tags: [LangChain, Agent, Runtime, State, Context, Store, Middleware, Guardrail, LongTermMemory, ContextEngineering, Python]
 ---
 
-## 📗 1. 개요
+##  1. 개요
 
 ---
 
@@ -24,7 +24,7 @@ tags: [LangChain, Agent, Runtime, State, Context, Store, Middleware, Guardrail, 
 
 ---
 
-## 📗 2. Runtime & State (4-1)
+##  2. Runtime & State (4-1)
 
 ---
 
@@ -126,7 +126,7 @@ def inject_user_context(request, handler):
 
 ---
 
-## 📗 3. Custom 미들웨어 (4-2)
+##  3. Custom 미들웨어 (4-2)
 
 ---
 
@@ -264,7 +264,7 @@ print(result["messages"][-1].content)
 
 ---
 
-## 📗 4. 가드레일 (4-3)
+##  4. 가드레일 (4-3)
 
 ---
 
@@ -440,7 +440,7 @@ agent = create_agent(
 
 ---
 
-## 📗 5. 장기 메모리 (4-4)
+##  5. 장기 메모리 (4-4)
 
 ---
 
@@ -677,7 +677,7 @@ agent = create_agent(
 
 ---
 
-## 📗 6. 정리
+##  6. 정리
 
 ---
 

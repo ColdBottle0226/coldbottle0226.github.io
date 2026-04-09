@@ -5,7 +5,7 @@ categories: [Nuxt3, Flutter]
 tags: [Nuxt3, Flutter, WebView, InAppWebView, Navigation, popstate, history, 뒤로가기]
 ---
 
-## 📗 1. 문제 상황
+##  1. 문제 상황
 
 ---
 
@@ -26,7 +26,7 @@ Flutter InAppWebView + Nuxt3 하이브리드 앱을 만들다 보면, 특정 페
 
 ---
 
-## 📗 2. 새 탭 전환 규칙 구현
+##  2. 새 탭 전환 규칙 구현
 
 ---
 
@@ -74,7 +74,7 @@ PD-0001F에서 뒤로가기
 
 ---
 
-## 📗 3. 1차 시도 - _isGoingBack 플래그
+##  3. 1차 시도 - _isGoingBack 플래그
 
 ---
 
@@ -129,7 +129,7 @@ popstate보다 먼저 실행되는 표준 DOM 이벤트는 존재하지 않는�
 
 ---
 
-## 📗 4. 2차 시도 - capture: true
+##  4. 2차 시도 - capture: true
 
 ---
 
@@ -152,7 +152,7 @@ window.addEventListener('popstate', () => {
 
 ---
 
-## 📗 5. 최종 해결 - history.state.position 비교
+##  5. 최종 해결 - history.state.position 비교
 
 ---
 
@@ -266,7 +266,7 @@ const recordNavigation = (fromPath: string): void => {
 
 ---
 
-## 📗 6. 전체 흐름 정리
+##  6. 전체 흐름 정리
 
 ---
 
@@ -301,7 +301,7 @@ iOS BFCache 복원               → popstate 미발생, sessionStorage 자동 �
 
 ---
 
-## 📗 7. 정리
+##  7. 정리
 
 ---
 
