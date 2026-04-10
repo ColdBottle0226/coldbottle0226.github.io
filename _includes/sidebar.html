@@ -7,7 +7,7 @@
         {%- capture avatar_url -%}
           {% include media-url.html src=site.avatar %}
         {%- endcapture -%}
-        <img src="{{- avatar_url -}}" width="112" height="112" alt="avatar" onerror="this.style.display='none'">
+        <img src="{{- avatar_url -}}" width="112" height="112" alt="avatar" onerror="this.style.display='none'" style="object-fit: cover; object-position: center;">
       {%- endif -%}
     </a>
 
@@ -58,9 +58,9 @@
           
           <li class="nav-item d-flex flex-column" style="position: relative;">
             <div class="d-flex w-100 align-items-center">
-              <a href="{{ _category_url | relative_url }}" class="nav-link flex-grow-1 pe-0{% if page.url == _category_url %}{{ " active" }}{% endif %}">
+              <a href="{{ _category_url | relative_url }}" class="nav-link flex-grow-1 pe-0{% if page.url == _category_url %}{{ " active fw-bold" }}{% endif %}">
                 <i class="fa-fw far fa-folder{% if sub_categories_size > 0 %}-open{% endif %}"></i>
-                <span style="font-size: 0.85rem;">{{ category_name }} <span class="text-muted" style="font-size: 0.75rem;">({{ posts_of_category.size }})</span></span>
+                <span style="font-size: 0.95rem;">{{ category_name }} <span class="text-muted" style="font-size: 0.8rem;">({{ posts_of_category.size }})</span></span>
               </a>
               {% if sub_categories_size > 0 %}
                 <a href="#collapse-{{ group_index }}" data-bs-toggle="collapse" class="nav-link px-3 d-flex align-items-center justify-content-center" style="width: auto; flex-grow: 0; outline: none; box-shadow: none;">
@@ -81,8 +81,8 @@
                     {% endfor %}
                     {% capture _sub_ctg_url %}/categories/{{ sub_category | slugify | url_encode }}/{% endcapture %}
                     <li class="nav-item w-100">
-                      <a href="{{ _sub_ctg_url | relative_url }}" class="nav-link py-1 py-md-2{% if page.url == _sub_ctg_url %}{{ " active" }}{% endif %}" style="padding-left: 1rem;">
-                        <span style="font-size: 0.8rem; opacity: 0.8;">- {{ sub_category }} ({{ sub_posts_size }})</span>
+                      <a href="{{ _sub_ctg_url | relative_url }}" class="nav-link py-1{% if page.url == _sub_ctg_url %}{{ " active fw-bold" }}{% endif %}" style="padding-left: 1rem;">
+                        <span style="font-size: 0.85rem; opacity: 0.8;">- {{ sub_category }} ({{ sub_posts_size }})</span>
                       </a>
                     </li>
                   {% endfor %}
