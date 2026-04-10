@@ -2,6 +2,7 @@
 title: "스프링 클라우드 기반 MSA 구성 - Config Server"
 date: 2026-04-09 09:50:00 +0900
 categories: [Spring, MSA]
+order: 5
 tags: [SpringCloud, MSA, ConfigServer, ExternalizedConfiguration, SpringCloudConfig, RefreshScope, GitBackend]
 ---
 

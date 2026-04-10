@@ -2,6 +2,7 @@
 title: "스프링 클라우드 기반 MSA 구성 - Service Discovery"
 date: 2026-04-09 09:20:00 +0900
 categories: [Spring, MSA]
+order: 2
 tags: [SpringCloud, MSA, ServiceDiscovery, EurekaClient, DiscoveryClient, Heartbeat, Registration]
 ---
 

@@ -2,6 +2,7 @@
 title: "스프링 클라우드 기반 MSA 구성 - Circuit Breaker"
 date: 2026-04-09 09:40:00 +0900
 categories: [Spring, MSA]
+order: 4
 tags: [SpringCloud, MSA, CircuitBreaker, Resilience4j, Fallback, CascadeFailure, FeignClient]
 ---
 

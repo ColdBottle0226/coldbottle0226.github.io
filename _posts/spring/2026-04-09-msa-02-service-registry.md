@@ -2,6 +2,7 @@
 title: "스프링 클라우드 기반 MSA 구성 - Service Registry"
 date: 2026-04-09 09:10:00 +0900
 categories: [Spring, MSA]
+order: 1
 tags: [SpringCloud, MSA, ServiceRegistry, Eureka, EurekaServer, NetflixOSS, ServiceDiscovery]
 ---
 

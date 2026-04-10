@@ -2,6 +2,7 @@
 title: "스프링 클라우드 기반 MSA 구성 - Load Balancer"
 date: 2026-04-09 09:30:00 +0900
 categories: [Spring, MSA]
+order: 3
 tags: [SpringCloud, MSA, LoadBalancer, SpringCloudLoadBalancer, Ribbon, FeignClient, ClientSideLB]
 ---
 

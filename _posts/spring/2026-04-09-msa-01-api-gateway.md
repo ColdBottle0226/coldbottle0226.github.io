@@ -2,6 +2,7 @@
 title: "스프링 클라우드 기반 MSA 구성 - API Gateway"
 date: 2026-04-09 09:00:00 +0900
 categories: [Spring, MSA]
+order: 0
 tags: [SpringCloud, MSA, APIGateway, SpringCloudGateway, Zuul, WebFlux, Predicate, Filter]
 ---
 

@@ -1,13 +1,13 @@
 <!-- The Side Bar -->
 
 <aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
-  <header class="profile-wrapper">
-    <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
+  <header class="profile-wrapper" style="width: 100%; text-align: center;">
+    <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle" style="width: 112px; height: 112px; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 0; margin-left: auto; margin-right: auto;">
       {%- if site.avatar != empty and site.avatar -%}
         {%- capture avatar_url -%}
           {% include media-url.html src=site.avatar %}
         {%- endcapture -%}
-        <img src="{{- avatar_url -}}" width="112" height="112" alt="avatar" onerror="this.style.display='none'" style="object-fit: cover; object-position: center;">
+        <img src="{{- avatar_url -}}" alt="avatar" onerror="this.style.display='none'" style="width: 100%; height: 100%; object-fit: cover; display: block;">
       {%- endif -%}
     </a>
 
