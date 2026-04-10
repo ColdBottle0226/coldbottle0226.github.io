@@ -1,7 +1,7 @@
 <!-- The Side Bar -->
 
 <aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
-  <header class="profile-wrapper" style="width: 100%; text-align: center;">
+  <header class="profile-wrapper" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
     <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle" style="width: 112px; height: 112px; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 0; margin-left: auto; margin-right: auto;">
       {%- if site.avatar != empty and site.avatar -%}
         {%- capture avatar_url -%}
@@ -71,7 +71,7 @@
             
             {% if sub_categories_size > 0 %}
               <div id="collapse-{{ group_index }}" class="collapse w-100">
-                <ul class="nav flex-column mb-2" style="margin-left: 2.5rem; border-left: 1px solid rgba(128,128,128, 0.2);">
+                <ul class="nav flex-column mb-2" style="margin-left: 1.25rem; border-left: 1px solid rgba(128,128,128, 0.2);">
                   {% for sub_category in sub_categories %}
                     {% assign sub_posts_size = 0 %}
                     {% for post in posts_of_category %}
@@ -81,7 +81,7 @@
                     {% endfor %}
                     {% capture _sub_ctg_url %}/categories/{{ sub_category | slugify | url_encode }}/{% endcapture %}
                     <li class="nav-item w-100">
-                      <a href="{{ _sub_ctg_url | relative_url }}" class="nav-link py-1{% if page.url == _sub_ctg_url %}{{ " active fw-bold" }}{% endif %}" style="padding-left: 1rem;">
+                      <a href="{{ _sub_ctg_url | relative_url }}" class="nav-link py-1{% if page.url == _sub_ctg_url %}{{ " active fw-bold" }}{% endif %}" style="padding-left: 1.25rem;">
                         <span style="font-size: 0.85rem; opacity: 0.8;">- {{ sub_category }} ({{ sub_posts_size }})</span>
                       </a>
                     </li>
