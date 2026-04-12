@@ -1,0 +1,109 @@
+<svg width="680" height="560" viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="680" height="560" fill="#FAFAF8"/>
+
+  <!-- 섹션 라벨 -->
+  <text font-size="11" fill="#888780" x="40" y="32">① 설정 소스</text>
+
+  <!-- application.yml -->
+  <rect x="40" y="42" width="150" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="115" y="63" text-anchor="middle">application.yml</text>
+  <text font-size="12" fill="#444441" x="115" y="81" text-anchor="middle">/ .properties</text>
+
+  <!-- 환경 변수 -->
+  <rect x="210" y="42" width="130" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="275" y="63" text-anchor="middle">환경 변수</text>
+  <text font-size="12" fill="#444441" x="275" y="81" text-anchor="middle">OS / Docker / K8s</text>
+
+  <!-- 커맨드라인 -->
+  <rect x="360" y="42" width="130" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="425" y="63" text-anchor="middle">커맨드라인</text>
+  <text font-size="12" fill="#444441" x="425" y="81" text-anchor="middle">--key=value</text>
+
+  <!-- @PropertySource -->
+  <rect x="510" y="42" width="130" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="575" y="60" text-anchor="middle">@PropertySource</text>
+  <text font-size="12" fill="#444441" x="575" y="81" text-anchor="middle">커스텀 .properties</text>
+
+  <!-- 화살표 소스 → Environment -->
+  <line x1="115" y1="92" x2="230" y2="148" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="275" y1="92" x2="275" y2="148" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="425" y1="92" x2="340" y2="148" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="545" y1="92" x2="380" y2="148" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ② Environment -->
+  <text font-size="11" fill="#888780" x="40" y="138">② Spring Environment (PropertySource 통합)</text>
+  <rect x="150" y="148" width="380" height="54" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="340" y="170" text-anchor="middle">Environment</text>
+  <text font-size="12" fill="#444441" x="340" y="189" text-anchor="middle">모든 소스의 프로퍼티를 우선순위 순으로 통합</text>
+
+  <!-- 화살표 Environment → 주입 방식 -->
+  <line x1="260" y1="202" x2="140" y2="250" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="320" y1="202" x2="340" y2="250" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="410" y1="202" x2="545" y2="250" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ③ 주입 방식 -->
+  <text font-size="11" fill="#888780" x="40" y="240">③ 주입 방식 (빈 생성 시 사용)</text>
+
+  <!-- @Value -->
+  <rect x="40" y="250" width="175" height="62" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="127" y="273" text-anchor="middle">@Value</text>
+  <text font-size="12" fill="#444441" x="127" y="293" text-anchor="middle">단일 값 직접 주입</text>
+  <text font-size="12" fill="#444441" x="127" y="308" text-anchor="middle">SpEL 표현식 지원</text>
+
+  <!-- @ConfigurationProperties -->
+  <rect x="235" y="250" width="210" height="62" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="340" y="270" text-anchor="middle">@ConfigurationProperties</text>
+  <text font-size="12" fill="#444441" x="340" y="289" text-anchor="middle">그룹 바인딩 · 타입 안전</text>
+  <text font-size="12" fill="#444441" x="340" y="308" text-anchor="middle">불변 지원 (Record)</text>
+
+  <!-- Environment API -->
+  <rect x="465" y="250" width="175" height="62" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="552" y="273" text-anchor="middle">Environment API</text>
+  <text font-size="12" fill="#444441" x="552" y="293" text-anchor="middle">env.getProperty()</text>
+  <text font-size="12" fill="#444441" x="552" y="308" text-anchor="middle">런타임 직접 조회</text>
+
+  <!-- 화살표 주입 방식 → @Configuration -->
+  <line x1="127" y1="312" x2="200" y2="360" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="340" y1="312" x2="340" y2="360" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="552" y1="312" x2="480" y2="360" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ④ @Configuration 영역 -->
+  <text font-size="11" fill="#888780" x="40" y="350">④ 빈 정의 레이어</text>
+  <rect x="40" y="360" width="600" height="148" rx="12" fill="#FAECE7" stroke="#993C1D" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="340" y="382" text-anchor="middle">@Configuration</text>
+  <text font-size="12" fill="#444441" x="340" y="400" text-anchor="middle">빈 정의를 담는 컨테이너 클래스. ③의 방식으로 설정 값을 받아 빈을 생성·조합한다.</text>
+
+  <!-- @Bean + @Value -->
+  <rect x="60" y="412" width="165" height="82" rx="6" fill="#FAFAF8" stroke="#B4B2A9" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="142" y="433" text-anchor="middle">@Bean + @Value</text>
+  <text font-size="12" fill="#444441" x="142" y="452" text-anchor="middle">단순 값으로</text>
+  <text font-size="12" fill="#444441" x="142" y="468" text-anchor="middle">빈 초기화</text>
+  <text font-size="12" fill="#444441" x="142" y="486" text-anchor="middle">ex) url, port 주입</text>
+
+  <!-- @Bean + @ConfigurationProperties -->
+  <rect x="247" y="412" width="186" height="82" rx="6" fill="#FAFAF8" stroke="#B4B2A9" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="340" y="433" text-anchor="middle">@Bean +</text>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="340" y="449" text-anchor="middle">@ConfigurationProperties</text>
+  <text font-size="12" fill="#444441" x="340" y="468" text-anchor="middle">3rd-party 빈에</text>
+  <text font-size="12" fill="#444441" x="340" y="484" text-anchor="middle">설정 값 바인딩</text>
+
+  <!-- @Profile + @Bean -->
+  <rect x="455" y="412" width="165" height="82" rx="6" fill="#FAFAF8" stroke="#B4B2A9" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="537" y="433" text-anchor="middle">@Profile + @Bean</text>
+  <text font-size="12" fill="#444441" x="537" y="452" text-anchor="middle">프로파일 조건부</text>
+  <text font-size="12" fill="#444441" x="537" y="468" text-anchor="middle">빈 등록</text>
+  <text font-size="12" fill="#444441" x="537" y="486" text-anchor="middle">ex) dev / prod 분리</text>
+
+  <!-- 화살표 @Configuration → ApplicationContext -->
+  <line x1="340" y1="508" x2="340" y2="528" stroke="#888780" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ⑤ ApplicationContext -->
+  <text font-size="11" fill="#888780" x="40" y="522">⑤ 결과</text>
+  <rect x="150" y="530" width="380" height="22" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
+  <text font-size="13" font-weight="600" fill="#2C2C2A" x="340" y="546" text-anchor="middle">ApplicationContext (등록된 빈들)</text>
+</svg>
