@@ -1,7 +1,7 @@
 ---
 title: "Phase 1 — ORM / JPA / Hibernate 이론"
 date: 2026-04-02 09:00:00 +0900
-categories: [JPA, ORM / JPA / Hibernate 이론]
+categories: [JPA, ORM 이론]
 tags: [JPA, ORM, Hibernate, JDBC, SpringDataJPA, Dialect, 패러다임불일치, MyBatis]
 ---
 
