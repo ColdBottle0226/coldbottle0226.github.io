@@ -1,7 +1,7 @@
 ---
 title: "반응성과 템플릿 문법"
 date: 2026-04-20 10:30:00 +0900
-categories: [Vue3]
+categories: [Vue.js]
 tags: [Vue3, ref, reactive, computed, 템플릿문법, v-bind, v-for, v-model]
 ---
 
