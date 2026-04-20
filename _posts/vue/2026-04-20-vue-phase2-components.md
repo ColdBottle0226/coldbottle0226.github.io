@@ -2,6 +2,7 @@
 title: "컴포넌트 심화(Props, Emit, v-model, Slot, Provide/Inject, 비동기 컴포넌트)"
 date: 2026-04-20 13:00:00 +0900
 categories: [Vue.js]
+order: 2
 tags: [Vue3, Components, Props, Emit, Slots, ProvideInject, defineModel, 비동기컴포넌트]
 ---
 

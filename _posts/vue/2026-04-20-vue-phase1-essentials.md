@@ -2,6 +2,7 @@
 title: "컴포넌트 기초"
 date: 2026-04-20 11:00:00 +0900
 categories: [Vue.js]
+order: 1
 tags: [Vue3, Essentials, CompositionAPI, Reactivity, 템플릿문법, 생명주기, 컴포넌트]
 ---
 
