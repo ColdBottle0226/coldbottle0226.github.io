@@ -96,10 +96,10 @@ app2.mount('#container-2')
 
 Vue 템플릿은 문법적으로 유효한 HTML이다. 내부적으로 고도로 최적화된 JS 코드로 컴파일된다.
 
-**텍스트 보간 — Mustache `{{ }}`**
+**텍스트 보간 — Mustache `'{{ }}'`**
 
 ```html
-<span>메시지: {{ msg }}</span>
+<span>메시지: '{{ msg }}'</span>
 ```
 
 `msg`가 바뀌면 자동으로 업데이트된다. HTML을 직접 렌더링하려면 `v-html`을 사용한다(XSS 위험 있으므로 신뢰된 콘텐츠에만 사용).
