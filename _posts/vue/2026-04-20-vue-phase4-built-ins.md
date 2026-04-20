@@ -1,6 +1,6 @@
 ---
 title: "내장 컴포넌트(Transition, TransitionGroup, KeepAlive, Teleport, Suspense)"
-date: 2026-04-20 17:00:00 +0900
+date: 2026-04-20 13:15:00 +0900
 categories: [Vue.js]
 tags: [Vue3, Transition, KeepAlive, Teleport, Suspense, 내장컴포넌트, 애니메이션]
 ---

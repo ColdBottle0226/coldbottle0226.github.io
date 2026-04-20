@@ -1,6 +1,6 @@
 ---
 title: "재사용성(Composable, 커스텀 디렉티브, 플러그인)"
-date: 2026-04-20 15:00:00 +0900
+date: 2026-04-20 13:10:00 +0900
 categories: [Vue.js]
 tags: [Vue3, Composable, CustomDirective, Plugin, 재사용성, use함수, toValue]
 ---
