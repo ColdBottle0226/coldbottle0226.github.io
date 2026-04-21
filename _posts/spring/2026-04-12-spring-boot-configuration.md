@@ -2,7 +2,7 @@
 title: Spring Boot 설정 값 주입 완전 정리
 date: 2026-04-12 09:00:00 +0900
 categories: [Spring, SpringBoot]
-order: 3
+order: 4
 tags: [SpringBoot, Configuration, ConfigurationProperties, Value, YAML, 설정주입]
 ---
 
