@@ -2,6 +2,7 @@
 title: "확장하기 SFC, 라우팅, 상태관리(Pinia), 테스트, SSR)"
 date: 2026-04-20 16:00:00 +0900
 categories: [Vue.js]
+order: 5
 tags: [Vue3, SFC, VueRouter, Pinia, Vitest, SSR, 상태관리, 테스트]
 ---
 
