@@ -1,7 +1,7 @@
 ---
 title: Spring 기초 개념 (IoC, DI, AOP, Bean 생명주기)
 date: 2026-04-21 09:00:00 +0900
-categories: [Spring]
+categories: [Spring, SpringBoot]
 tags: [SpringBoot, IoC, DI, AOP, Bean, 스프링기초]
 ---
 
