@@ -2,6 +2,7 @@
 title: "[Spring Batch] 도메인 언어 완전 정복 (2) — Step, Chunk, Tasklet"
 date: 2026-03-13 09:30:00 +0900
 categories: [Spring, Batch]
+order: 2
 tags: [SpringBatch, Step, StepExecution, ExecutionContext, Chunk, Tasklet, ItemReader, ItemWriter]
 ---
 

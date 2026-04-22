@@ -2,6 +2,7 @@
 title: "[Spring Batch] 도메인 언어 완전 정복 (1) — Job, JobInstance, JobExecution"
 date: 2026-03-13 09:00:00 +0900
 categories: [Spring, Batch]
+order: 1
 tags: [SpringBatch, Job, JobInstance, JobExecution, JobParameters, BatchDomain]
 ---
 
