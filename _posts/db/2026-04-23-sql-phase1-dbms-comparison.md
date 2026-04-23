@@ -1,7 +1,8 @@
 ---
-title: DBMS별 SQL 문법 완전 정리 — Oracle, MySQL, PostgreSQL 비교 (PHASE 1 기초)
+title: SQL 문법 기초(DBMS 차이)
 date: 2026-04-23 00:00:00 +0900
 categories: [DB, 이론]
+order: 1
 tags: [SQL, Oracle, MySQL, PostgreSQL, DatabaseKeys, 집계함수, 조건식]
 ---
 
