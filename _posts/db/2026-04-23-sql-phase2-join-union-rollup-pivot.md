@@ -2,6 +2,7 @@
 title: 조인 & 집합 문법 (Oracle, MySQL, PostgreSQL)
 date: 2026-04-23 01:00:00 +0900
 categories: [DB, 이론]
+order: 2
 tags: [SQL, Oracle, MySQL, PostgreSQL, JOIN, UNION, ROLLUP, PIVOT, 집합연산]
 ---
 

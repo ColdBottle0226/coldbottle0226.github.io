@@ -2,6 +2,7 @@
 title: 서브쿼리 & 뷰
 date: 2026-04-23 02:00:00 +0900
 categories: [DB, 이론]
+order: 3
 tags: [SQL, Oracle, MySQL, PostgreSQL, 서브쿼리, 인라인뷰, CTE, WITH절, EXISTS]
 ---
 
