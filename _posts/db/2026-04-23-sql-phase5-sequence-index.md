@@ -1,5 +1,5 @@
 ---
-title: DBMS별 SQL 문법 완전 정리 — Oracle, MySQL, PostgreSQL 비교 (PHASE 5 시퀀스 & 인덱스)
+title: 시퀀스 & 인덱스
 date: 2026-04-23 04:00:00 +0900
 categories: [DB, 이론]
 order: 5
