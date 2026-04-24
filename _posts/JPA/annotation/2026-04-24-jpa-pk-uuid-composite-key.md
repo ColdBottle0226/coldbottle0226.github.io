@@ -1,7 +1,7 @@
 ---
 title: "JPA PK 전략 완전 정복 — UUID · 복합키 · @EmbeddedId"
 date: 2026-04-24 10:00:00 +0900
-categories: [JPA, 엔티티 어노테이션]
+categories: []
 tags: [JPA, 엔티티 어노테이션, GeneratedValue, UUID, IdClass, EmbeddedId, 복합키, Persistable]
 ---
 
