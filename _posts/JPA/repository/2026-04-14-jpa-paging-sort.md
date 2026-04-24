@@ -1,7 +1,7 @@
 ---
 title: "페이징과 정렬 — Page, Slice, Sort 완전 정복"
 date: 2026-04-14 09:30:00 +0900
-categories: [JPA, 리포지토리]
+categories: []
 tags: [JPA, 리포지토리, Pageable, Page, Slice, Sort, 페이징, SpringDataJPA]
 order: 4
 ---

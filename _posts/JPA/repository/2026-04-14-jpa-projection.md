@@ -1,7 +1,7 @@
 ---
 title: "Projection — 필요한 필드만 조회하는 방법"
 date: 2026-04-14 09:40:00 +0900
-categories: [JPA, 리포지토리]
+categories: []
 tags: [JPA, 리포지토리, Projection, DTO, 인터페이스Projection, QueryProjection, SpringDataJPA]
 order: 5
 ---

@@ -2,6 +2,7 @@
 title: ORM / JPA / Hibernate 이론
 date: 2026-04-02 09:00:00 +0900
 categories: [JPA, 이론]
+order: 0
 tags: [JPA, ORM, Hibernate, JDBC, SpringDataJPA, Dialect, 패러다임불일치]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "커스텀 Repository — QueryDSL 연동을 위한 확장 패턴"
 date: 2026-04-14 09:50:00 +0900
-categories: [JPA, 리포지토리]
+categories: []
 tags: [JPA, 리포지토리, 커스텀Repository, RepositoryImpl, QueryDSL, EntityManager, SpringDataJPA]
 order: 6
 ---

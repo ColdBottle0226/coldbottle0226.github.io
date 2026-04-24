@@ -1,7 +1,7 @@
 ---
 title: "Repository 계층 구조 — JpaRepository가 제공하는 것들"
 date: 2026-04-14 09:00:00 +0900
-categories: [JPA, 리포지토리]
+categories: []
 tags: [JPA, 리포지토리, JpaRepository, CrudRepository, SimpleJpaRepository, SpringDataJPA]
 order: 1
 ---

@@ -1,7 +1,7 @@
 ---
 title: "@Query 어노테이션 — JPQL과 벌크 연산 완전 정복"
 date: 2026-04-14 09:20:00 +0900
-categories: [JPA, 리포지토리]
+categories: []
 tags: [JPA, 리포지토리, Query, JPQL, Modifying, 벌크연산, nativeQuery, SpringDataJPA]
 order: 3
 ---

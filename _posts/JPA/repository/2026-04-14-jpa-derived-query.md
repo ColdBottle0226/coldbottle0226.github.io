@@ -1,7 +1,7 @@
 ---
 title: "메서드 이름 쿼리 — 이름만으로 JPQL을 만드는 방법"
 date: 2026-04-14 09:10:00 +0900
-categories: [JPA, 리포지토리]
+categories: []
 tags: [JPA, 리포지토리, 메서드이름쿼리, DerivedQuery, SpringDataJPA, QueryMethod]
 order: 2
 ---
