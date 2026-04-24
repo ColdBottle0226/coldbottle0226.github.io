@@ -1,7 +1,7 @@
 ---
 title: 영속성 컨텍스트
 date: 2026-04-24 09:10:00 +0900
-categories: [JPA, 영속성 컨텍스트]
+categories: [JPA, 기본 개념]
 order: 1
 tags: [JPA, 영속성 컨텍스트, EntityManager, EntityManagerFactory, ThreadLocal, PersistenceContext, 엔티티생명주기, 비영속, 영속, 준영속, 1차캐시, 쓰기지연, flush, JPQL, BatchInsert, 더티체킹, DirtyChecking, DynamicUpdate, OSIV, OpenSessionInView, LazyInitializationException]
 ---

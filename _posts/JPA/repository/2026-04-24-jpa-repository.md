@@ -1,7 +1,7 @@
 ---
 title: JPA Repository
 date: 2026-04-24 09:30:00 +0900
-categories: [JPA, 리포지토리]
+categories: [JPA, 기본 개념]
 order: 4
 tags: [JPA, 리포지토리, JpaRepository, CrudRepository, SimpleJpaRepository, SpringDataJPA, 메서드이름쿼리, DerivedQuery, QueryMethod, Query, JPQL, Modifying, 벌크연산, nativeQuery, Pageable, Page, Slice, Sort, 페이징, Projection, DTO, 인터페이스Projection, QueryProjection, 커스텀Repository, RepositoryImpl, QueryDSL, EntityManager]
 ---

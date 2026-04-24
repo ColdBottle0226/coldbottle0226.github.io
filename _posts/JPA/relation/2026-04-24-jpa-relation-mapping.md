@@ -1,7 +1,7 @@
 ---
 title: JPA 연관관계 매핑
 date: 2026-04-24 09:20:00 +0900
-categories: [JPA, 연관관계 매핑]
+categories: [JPA, 기본 개념]
 order: 3
 tags: [JPA, 연관관계 매핑, ManyToOne, OneToOne, JoinColumn, FetchType, LAZY, 양방향, 연관관계주인, mappedBy, 편의메서드, toString, ManyToMany, 중간엔티티, JoinTable, CascadeType, orphanRemoval, 영속성전이, 고아객체]
 ---

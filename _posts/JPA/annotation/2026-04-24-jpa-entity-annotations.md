@@ -1,7 +1,7 @@
 ---
 title: JPA 엔티티 어노테이션
 date: 2026-04-24 09:00:00 +0900
-categories: [JPA, 엔티티 어노테이션]
+categories: [JPA, 기본 개념]
 order: 2
 tags: [JPA, 엔티티 어노테이션, Entity, Table, Id, GeneratedValue, Column, Transient, Enumerated, Temporal, Lob, Convert, Converter, Embeddable, Embedded, AttributeOverride, 값타입, Inheritance, MappedSuperclass, DiscriminatorColumn, SingleTable, Joined, Auditing, CreatedDate, LastModifiedDate, CreatedBy, EnableJpaAuditing, AuditorAware]
 ---
