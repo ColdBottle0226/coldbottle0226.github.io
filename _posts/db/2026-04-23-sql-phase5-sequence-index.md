@@ -1,7 +1,7 @@
 ---
 title: 시퀀스 & 인덱스
 date: 2026-04-23 04:00:00 +0900
-categories: [DB, 이론]
+categories: [DB, DB 이론]
 order: 5
 tags: [SQL, Oracle, MySQL, PostgreSQL, 시퀀스, 인덱스, BTree, 성능최적화, 인덱스튜닝]
 ---

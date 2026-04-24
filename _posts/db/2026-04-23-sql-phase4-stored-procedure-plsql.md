@@ -1,7 +1,7 @@
 ---
 title: 저장 프로시저 & PL/SQL
 date: 2026-04-23 03:00:00 +0900
-categories: [DB, 이론]
+categories: [DB, DB 이론]
 order: 4
 tags: [SQL, Oracle, MySQL, PostgreSQL, 저장프로시저, PL/SQL, 함수, 트리거, 커서]
 ---

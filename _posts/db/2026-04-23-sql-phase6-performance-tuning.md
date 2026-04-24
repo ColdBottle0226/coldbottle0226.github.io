@@ -1,7 +1,7 @@
 ---
 title: SQL 성능 튜닝
 date: 2026-04-23 05:00:00 +0900
-categories: [DB, 이론]
+categories: [DB, DB 이론]
 order: 6
 tags: [SQL, Oracle, MySQL, PostgreSQL, 성능튜닝, 실행계획, 슬로우쿼리, EXPLAIN, 인덱스튜닝, N+1]
 ---
