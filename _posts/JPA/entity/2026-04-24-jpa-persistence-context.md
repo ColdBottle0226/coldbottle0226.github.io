@@ -3,7 +3,7 @@ title: 영속성 컨텍스트
 date: 2026-04-24 09:10:00 +0900
 categories: [JPA, 기본 개념]
 order: 1
-tags: [JPA, 영속성 컨텍스트, EntityManager, EntityManagerFactory, ThreadLocal, PersistenceContext, 엔티티생명주기, 비영속, 영속, 준영속, 1차캐시, 쓰기지연, flush, JPQL, BatchInsert, 더티체킹, DirtyChecking, DynamicUpdate, OSIV, OpenSessionInView, LazyInitializationException]
+tags: [JPA, 영속성 컨텍스트, EntityManager, EntityManagerFactory, ThreadLocal, PersistenceContext, 엔티티생명주기, 비영속, 영속, 준영속, 1차캐시, 쓰기지연, flush, JPQL, BatchInsert, 더티체킹, DirtyChecking, DynamicUpdate, OSIV, OpenSessionInView, LazyInitializationException, JpaRepository, SimpleJpaRepository]
 ---
 
 ##  1. 영속성 컨텍스트란
@@ -550,6 +550,138 @@ public MemberWithOrdersResponse findWithOrders(Long id) {
     return new MemberWithOrdersResponse(member);
 }
 ```
+
+---
+
+##  7. 영속성 컨텍스트와 JpaRepository의 관계
+
+---
+
+### 📌 직접 쓰지 않아도 항상 동작한다
+
+실무에서 `@PersistenceContext`로 `EntityManager`를 직접 주입받아 사용하는 경우는 드물다. 하지만 `JpaRepository`를 쓸 때도 영속성 컨텍스트는 **내부에서 항상 동작**하고 있다.
+
+`bookRepository.save(book)`을 호출했을 때 실제 흐름은 다음과 같다.
+
+```
+bookRepository.save(book)
+    → SimpleJpaRepository.save()
+        → entityManager.persist(book)   ← 영속성 컨텍스트에 등록
+            → 쓰기 지연 SQL 저장소에 INSERT 적재
+                → 트랜잭션 커밋 시 flush → DB 반영
+```
+
+개발자는 `bookRepository.save(book)`만 호출하지만 뒤에서는 영속성 컨텍스트가 전부 동작하고 있다. `JpaRepository`는 영속성 컨텍스트를 편리하게 쓸 수 있도록 감싸놓은 추상화 계층이다.
+
+---
+
+### 📌 영속성 컨텍스트를 몰라서 생기는 버그들
+
+직접 다루지 않아도 동작 방식을 모르면 아래 상황들이 원인 불명의 버그로 이어진다.
+
+**① save() 없이 수정했는데 DB에 반영됨 — 더티 체킹**
+
+```java
+@Transactional
+public void updateName(Long id, String name) {
+    Member member = memberRepository.findById(id).orElseThrow();
+    member.setName(name);
+    // memberRepository.save(member)를 호출하지 않았는데
+    // 트랜잭션 종료 시 UPDATE가 자동 실행됨
+}
+```
+
+`findById()`로 가져온 엔티티는 영속 상태다. 트랜잭션이 끝날 때 영속성 컨텍스트가 스냅샷과 비교해서 변경을 감지하고 UPDATE를 자동 실행한다. 이 동작을 모르면 "save를 안 했는데 왜 반영됐지?" 또는 반대로 "준영속 상태 엔티티를 수정했는데 왜 반영이 안 되지?"라는 상황으로 이어진다.
+
+**② LazyInitializationException — 트랜잭션 밖에서 지연 로딩 시도**
+
+```java
+// OSIV OFF 환경에서 @Transactional이 없는 컨트롤러
+Member member = memberService.findById(1L);  // 트랜잭션 종료 → 준영속 상태
+member.getOrders().size();  // → LazyInitializationException!
+// 영속성 컨텍스트가 이미 닫혔으므로 프록시를 초기화할 수 없음
+```
+
+트랜잭션이 끝나면 영속성 컨텍스트도 닫힌다. 이 상태에서 지연 로딩을 시도하면 프록시를 초기화할 수 없어 예외가 발생한다.
+
+**③ 벌크 연산 후 1차 캐시 불일치**
+
+```java
+@Transactional
+public void test() {
+    // 1. price = 10000 인 상태로 1차 캐시에 캐싱됨
+    Book book = bookRepository.findById(1L).get();
+
+    // 2. 벌크 UPDATE — 영속성 컨텍스트를 우회하고 DB에 직접 반영됨
+    bookRepository.bulkUpdatePrice(1.1, "IT"); // DB에서 price = 11000
+
+    // 3. 1차 캐시에서 반환 → DB와 불일치!
+    Book sameBook = bookRepository.findById(1L).get();
+    System.out.println(sameBook.getPrice()); // 10000 (잘못된 값)
+}
+```
+
+벌크 연산은 영속성 컨텍스트를 거치지 않고 DB에 직접 실행된다. 1차 캐시가 갱신되지 않으므로 `@Modifying(clearAutomatically = true)` 옵션이 필요하다.
+
+**④ 같은 트랜잭션에서 findById를 두 번 호출해도 쿼리가 한 번만 나감**
+
+```java
+@Transactional
+public void test() {
+    Member m1 = memberRepository.findById(1L).get();  // DB SELECT 실행
+    Member m2 = memberRepository.findById(1L).get();  // SQL 없음 — 1차 캐시 반환
+
+    System.out.println(m1 == m2); // true — 동일한 인스턴스
+}
+```
+
+1차 캐시 덕분에 같은 PK 조회는 한 번만 DB를 거친다. 불필요한 DB 왕복이 줄어들고 동일성도 보장된다.
+
+---
+
+### 📌 EntityManager를 직접 쓰는 경우
+
+실무에서 직접 쓰는 경우는 크게 두 가지다.
+
+**커스텀 Repository에서 JPQL 직접 실행**
+
+```java
+@RequiredArgsConstructor
+public class BookRepositoryImpl implements BookRepositoryCustom {
+
+    private final EntityManager em;  // 직접 주입받아 사용
+
+    public List<Book> searchBooks(String keyword) {
+        return em.createQuery(
+            "SELECT b FROM Book b WHERE b.title LIKE :keyword", Book.class)
+            .setParameter("keyword", "%" + keyword + "%")
+            .getResultList();
+    }
+}
+```
+
+**대용량 배치에서 flush/clear 직접 제어**
+
+```java
+@Transactional
+public void batchInsert(List<Book> books) {
+    for (int i = 0; i < books.size(); i++) {
+        em.persist(books.get(i));
+        if (i % 100 == 0) {
+            em.flush();  // 100건마다 DB에 내보내고
+            em.clear();  // 1차 캐시 비워서 OOM 방지
+        }
+    }
+}
+```
+
+대량 데이터를 한꺼번에 `persist()`하면 1차 캐시에 모든 엔티티가 쌓여 OOM(OutOfMemoryError)이 발생할 수 있다. 일정 단위로 `flush()`와 `clear()`를 호출해서 1차 캐시를 비워야 한다.
+
+---
+
+### 📌 정리
+
+영속성 컨텍스트는 `JpaRepository` 뒤에서 항상 동작하는 엔진이다. 직접 다룰 일은 거의 없지만, 더티 체킹 / 1차 캐시 / `LazyInitializationException` / 벌크 연산 불일치 같은 현상들이 전부 여기서 나온다. 이 동작 원리를 이해하고 있어야 원인 불명의 버그 앞에서 빠르게 대응할 수 있다.
 
 ---
 
