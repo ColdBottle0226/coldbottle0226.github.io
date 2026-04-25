@@ -2,6 +2,7 @@
 title: "JPQL 개념 및 활용"
 date: 2026-04-24 11:30:00 +0900
 categories: [JPA, 심화 개념]
+order: 1
 tags: [JPA, JPQL, TypedQuery, Query, NamedQuery, fetchJoin, 서브쿼리, 집합함수, CASE WHEN, COALESCE, 파라미터바인딩]
 ---
 

@@ -2,6 +2,7 @@
 title: "FetchType과 N+1 문제"
 date: 2026-04-24 11:00:00 +0900
 categories: [JPA, 심화 개념]
+order: 0
 tags: [JPA, FetchType, EAGER, LAZY, N+1, 프록시, fetchJoin, EntityGraph, BatchSize, LazyInitializationException, default_batch_fetch_size]
 ---
 

@@ -2,6 +2,7 @@
 title: "JPA 실전 패턴"
 date: 2026-04-24 13:30:00 +0900
 categories: [JPA, 심화 개념]
+order: 5
 tags: [JPA, 낙관적잠금, 비관적잠금, Version, OptimisticLockException, PESSIMISTIC_WRITE, SoftDelete, SQLDelete, Where, 도메인이벤트, DomainEvents, AbstractAggregateRoot, DataJpaTest, Testcontainers, 테스트전략]
 ---
 

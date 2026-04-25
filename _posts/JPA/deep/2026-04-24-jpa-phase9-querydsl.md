@@ -2,6 +2,7 @@
 title: "QueryDSL"
 date: 2026-04-24 12:30:00 +0900
 categories: [JPA, 심화 개념]
+order: 3
 tags: [JPA, QueryDSL, JPAQueryFactory, Q클래스, BooleanBuilder, BooleanExpression, fetchJoin, Projections, QueryProjection, 동적쿼리, 커스텀Repository]
 ---
 

@@ -2,6 +2,7 @@
 title: "JPA 성능 최적화"
 date: 2026-04-24 13:00:00 +0900
 categories: [JPA, 심화 개념]
+order: 4
 tags: [JPA, 성능최적화, Modifying, 벌크연산, readOnly, 읽기전용트랜잭션, 2차캐시, EhCache, Caffeine, p6spy, HibernateStatistics, clearAutomatically, flushAutomatically]
 ---
 

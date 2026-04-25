@@ -1,7 +1,7 @@
 ---
 title: SwiftUI 시작하기 - 개발 환경과 앱 구조 이해
 date: 2026-03-19 00:00:00 +0900
-categories: [Swift]
+categories: [Swift, 기본개념]
 tags: [Swift, Basic]
 ---
 

@@ -2,6 +2,7 @@
 title: "Criteria API와 Specification 패턴"
 date: 2026-04-24 12:00:00 +0900
 categories: [JPA, 심화 개념]
+order: 2
 tags: [JPA, CriteriaAPI, CriteriaBuilder, CriteriaQuery, Predicate, Specification, JpaSpecificationExecutor, 동적쿼리, QueryDSL]
 ---
 
