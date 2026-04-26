@@ -1,7 +1,7 @@
 ---
 title: Spring Boot Spring Security 완전 정리 — 필터 체인, JWT 인증, 인가
 date: 2026-04-21 12:00:00 +0900
-categories: [Spring]
+categories: [Spring, 시큐리티]
 tags: [SpringBoot, SpringSecurity, JWT, FilterChain, Authentication, Authorization]
 ---
 
