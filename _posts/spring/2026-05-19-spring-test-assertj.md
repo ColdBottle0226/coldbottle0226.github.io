@@ -1,6 +1,6 @@
 ---
 title: AssertJ 개념
-date: 2026-05-19 09:00:00 +0900
+date: 2026-05-18 09:00:00 +0900
 categories: [Spring, 테스트코드]
 order: 1
 tags: [TDD, AssertJ, JUnit5, SpringBoot, SoftAssertions, usingRecursiveComparison]
